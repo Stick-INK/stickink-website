@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StickINK – Dein E-Ink Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --beige:#D9D2C5;--beige-dark:#C8BFB0;--coral:#C96840;--coral-dark:#B05A34;--sage:#5F8A72;--dark:#2C2A27;--text:#3E3A35;--muted:#7A7167; }
+    html{scroll-behavior:smooth}body{font-family:'Inter',sans-serif;background:var(--beige);color:var(--text);line-height:1.6}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(217,210,197,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--beige-dark);padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--dark)}.logo span{color:var(--coral)}
+    .ncta{background:var(--coral);color:#fff;padding:.5rem 1.2rem;border-radius:6px;font-size:.85rem;font-weight:600;text-decoration:none}
+    .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;padding:7rem 6rem 4rem;max-width:1280px;margin:0 auto}
+    .badge{display:inline-block;background:var(--sage);color:#fff;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;padding:.3rem .9rem;border-radius:999px;margin-bottom:1.2rem}
+    h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4vw,3.4rem);line-height:1.15;color:var(--dark);margin-bottom:1.2rem}
+    h1 em{font-style:normal;color:var(--coral)}.ht p{font-size:1.05rem;color:var(--muted);max-width:480px;margin-bottom:2rem}
+    .sf{display:flex;gap:.6rem;flex-wrap:wrap}
+    .sf input{flex:1;min-width:200px;padding:.75rem 1rem;border:1.5px solid var(--beige-dark);border-radius:8px;background:#fff;font-size:.95rem;color:var(--text);outline:none}
+    .sf input:focus{border-color:var(--coral)}
+    .sf button{background:var(--coral);color:#fff;border:none;padding:.75rem 1.4rem;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer}
+    .fn{font-size:.78rem;color:var(--muted);margin-top:.6rem}
+    .ok{display:none;background:var(--sage);color:#fff;padding:.8rem 1.2rem;border-radius:8px;font-size:.9rem;margin-top:.8rem}
+    .hv{display:flex;justify-content:center}
+    .df{background:#1a1917;border-radius:16px;padding:16px;box-shadow:0 30px 80px rgba(0,0,0,.25);max-width:480px;width:100%}
+    .ds{background:#f0ede8;border-radius:8px;aspect-ratio:800/480;overflow:hidden}
+    .sg{width:100%;height:100%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:1px;background:#ddd}
+    .sw{background:#f0ede8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;padding:1rem}
+    .wt{font-size:2.2rem;font-weight:700;color:#2C2A27;font-family:'Playfair Display',serif}
+    .wl{font-size:.65rem;text-transform:uppercase;letter-spacing:1px;color:#7A7167}
+    .wtmp{font-size:1.8rem;font-weight:600;color:#5F8A72}
+    .ti{display:flex;align-items:center;gap:.4rem;font-size:.7rem;color:#3E3A35}
+    .ck{width:12px;height:12px;border:1.5px solid #C96840;border-radius:3px;flex-shrink:0}
+    .ck.d{background:#C96840}.sv{font-size:1.1rem;font-weight:700;color:#2C2A27}.su{color:#5F8A72;font-size:.7rem}
+    .sec{padding:6rem;max-width:1280px;margin:0 auto}
+    .sl{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--sage);margin-bottom:.8rem}
+    .sec h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);color:var(--dark);margin-bottom:1rem}
+    .sec>p{color:var(--muted);max-width:560px;margin-bottom:3rem}
+    .fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+    .fc{background:#fff;border-radius:14px;padding:1.8rem;border:1px solid var(--beige-dark);transition:transform .2s,box-shadow .2s}
+    .fc:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.08)}
+    .fi{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1rem}
+    .ic{background:rgba(201,104,64,.12)}.is{background:rgba(95,138,114,.12)}.id{background:rgba(44,42,39,.08)}
+    .fc h3{font-size:1rem;font-weight:600;color:var(--dark);margin-bottom:.4rem}.fc p{font-size:.875rem;color:var(--muted);line-height:1.55}
+    .ds2{background:var(--dark);padding:6rem;color:#fff}
+    .di{max-width:1280px;margin:0 auto}.ds2 .sl{color:var(--coral)}
+    .ds2 h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);color:#fff;margin-bottom:1rem}
+    .dsub{color:rgba(255,255,255,.55);margin-bottom:3rem}
+    .wg{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-top:2rem}
+    .wp{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:1.4rem 1.2rem;text-align:center}
+    .em{font-size:1.8rem;margin-bottom:.5rem}.wp h4{font-size:.9rem;font-weight:600;color:#fff;margin-bottom:.25rem}.wp p{font-size:.75rem;color:rgba(255,255,255,.45)}
+    .spg{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
+    .sg2 h4{font-size:.75rem;text-transform:uppercase;letter-spacing:1px;color:var(--sage);margin-bottom:1rem}
+    .sr{display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--beige-dark);font-size:.875rem}
+    .sr:last-child{border:none}.sr span:first-child{color:var(--muted)}.sr span:last-child{font-weight:500;color:var(--dark)}
+    .cta{background:var(--coral);padding:6rem;text-align:center;color:#fff}
+    .cta h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem}
+    .cta>p{font-size:1.05rem;opacity:.85;margin-bottom:2rem}
+    .cf{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;max-width:480px;margin:0 auto}
+    .cf input{flex:1;min-width:200px;padding:.8rem 1rem;border-radius:8px;border:none;font-size:.95rem;outline:none}
+    .cf button{background:var(--dark);color:#fff;border:none;padding:.8rem 1.4rem;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer}
+    .cn{font-size:.78rem;opacity:.7;margin-top:.8rem}
+    footer{background:var(--dark);color:rgba(255,255,255,.4);text-align:center;padding:2rem;font-size:.8rem}
+    footer span{color:var(--coral)}
+    @media(max-width:900px){.hero{grid-template-columns:1fr;padding:6rem 2rem 3rem;gap:2rem}.hv{order:-1}.sec{padding:4rem 2rem}.ds2{padding:4rem 2rem}.cta{padding:4rem 2rem}.spg{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav><div class="logo">Stick<span>INK</span></div><a href="#n" class="ncta">Benachrichtigt werden</a></nav>
+<section class="hero">
+  <div class="ht">
+    <div class="badge">🚀 Bald auf Kickstarter</div>
+    <h1>Dein Schreibtisch.<br><em>Ruhig informiert.</em></h1>
+    <p>StickINK verwandelt ein 7,5-Zoll E-Ink Display in ein immer sichtbares Dashboard – Uhr, Wetter, To-Dos, Aktien. Kein Blinken. Kein Strom. Keine Ablenkung.</p>
+    <div id="n"><form class="sf" onsubmit="go(event,'r1')"><input type="email" placeholder="deine@email.de" required/><button>Beim Launch dabei sein →</button></form><p class="fn">Kein Spam. Nur eine E-Mail wenn wir auf Kickstarter live gehen.</p><div class="ok" id="r1">✓ Super! Wir melden uns beim Launch.</div></div>
+  </div>
+  <div class="hv"><div class="df"><div class="ds"><div class="sg">
+    <div class="sw"><div class="wt">14:32</div><div class="wl">Montag, 2. März</div></div>
+    <div class="sw"><div style="font-size:2rem">⛅</div><div class="wtmp">12°C</div><div class="wl">Stuttgart</div></div>
+    <div class="sw" style="align-items:flex-start;gap:.5rem"><div class="wl">To-Do</div><div class="ti"><div class="ck d"></div>E-Mails beantworten</div><div class="ti"><div class="ck d"></div>Meeting vorbereiten</div><div class="ti"><div class="ck"></div>Kickstarter starten</div></div>
+    <div class="sw"><div class="wl">AAPL</div><div class="sv">$189.42</div><div class="su">↑ +1.24%</div></div>
+  </div></div></div></div>
+</section>
+<section class="sec">
+  <div class="sl">Warum StickINK</div><h2>Informiert ohne abgelenkt zu sein.</h2><p>Ein klassischer Monitor strahlt, blinkt, lenkt ab. StickINK zeigt nur das Wichtigste – papierähnlich, ohne Strom zu verbrauchen.</p>
+  <div class="fg">
+    <div class="fc"><div class="fi ic">🔋</div><h3>Kein Strom im Standby</h3><p>E-Ink hält das Bild ohne Energie. Strom wird nur beim Aktualisieren verbraucht.</p></div>
+    <div class="fc"><div class="fi is">👁️</div><h3>Blendarm & augenschonend</h3><p>Wie Papier. Kein Flimmern, keine Hintergrundbeleuchtung – angenehm für lange Arbeitstage.</p></div>
+    <div class="fc"><div class="fi id">🔌</div><h3>Plug & Play</h3><p>USB verbinden, StickINK.exe starten – fertig. Kein Installer, kein Python nötig.</p></div>
+    <div class="fc"><div class="fi ic">🎛️</div><h3>Bis zu 4 Screens</h3><p>Wechsle zwischen Layouts – Arbeit, Privat, Finanzen, Morgenroutine.</p></div>
+    <div class="fc"><div class="fi is">🤖</div><h3>Auto-Refresh</h3><p>Wetter, Aktien und Uhr aktualisieren sich automatisch im einstellbaren Intervall.</p></div>
+    <div class="fc"><div class="fi id">🖼️</div><h3>Eigene Bilder</h3><p>Floyd-Steinberg Dithering sorgt für perfekte E-Ink Darstellung deiner Fotos.</p></div>
+  </div>
+</section>
+<div class="ds2"><div class="di">
+  <div class="sl">Widgets</div><h2>Alles was du brauchst.<br>Nichts was du nicht brauchst.</h2><p class="dsub">Konfiguriere dein Dashboard frei.</p>
+  <div class="wg">
+    <div class="wp"><div class="em">🕐</div><h4>Uhr</h4><p>Digital, analog oder beides</p></div>
+    <div class="wp"><div class="em">⛅</div><h4>Wetter</h4><p>Aktuell, 3-Tage oder Stunden</p></div>
+    <div class="wp"><div class="em">✅</div><h4>To-Do Liste</h4><p>Aufgaben abhaken & speichern</p></div>
+    <div class="wp"><div class="em">📈</div><h4>Aktien & Krypto</h4><p>AAPL, BTC-USD & mehr</p></div>
+    <div class="wp"><div class="em">🖼️</div><h4>Bild-Upload</h4><p>Eigenes Foto mit Crop-Dialog</p></div>
+    <div class="wp"><div class="em">📅</div><h4>Kalender</h4><p>Outlook-Integration (bald)</p></div>
+  </div>
+</div></div>
+<section class="sec">
+  <div class="sl">Technische Details</div><h2>Gebaut für Langlebigkeit.</h2><p>Hochwertige Hardware, durchdachte Software – als fertiges Bundle, sofort einsatzbereit.</p>
+  <div class="spg">
+    <div class="sg2"><h4>Display</h4><div class="sr"><span>Größe</span><span>7,5 Zoll</span></div><div class="sr"><span>Auflösung</span><span>800 × 480 px</span></div><div class="sr"><span>Farben</span><span>16 Graustufen</span></div><div class="sr"><span>Partial Refresh</span><span>~0,5 Sek.</span></div><div class="sr"><span>Stromverbrauch</span><span>0 W im Standby</span></div></div>
+    <div class="sg2"><h4>Software & Anschluss</h4><div class="sr"><span>Verbindung</span><span>USB-Kabel</span></div><div class="sr"><span>Betriebssystem</span><span>Windows 10 / 11</span></div><div class="sr"><span>Installation</span><span>Kein Installer nötig</span></div><div class="sr"><span>Wetter API</span><span>Open-Meteo (kostenlos)</span></div><div class="sr"><span>Börsen API</span><span>yfinance (kostenlos)</span></div></div>
+  </div>
+</section>
+<section class="cta">
+  <h2>Sei dabei wenn wir live gehen.</h2><p>Trag dich ein und erhalte als Erstes den Kickstarter-Link – inklusive Early Bird Rabatt.</p>
+  <form class="cf" onsubmit="go(event,'r2')"><input type="email" placeholder="deine@email.de" required/><button>Jetzt eintragen</button></form>
+  <p class="cn">Kein Spam. Keine Weitergabe.</p>
+  <div class="ok" id="r2" style="background:rgba(0,0,0,.2);margin-top:1rem">✓ Perfekt! Wir melden uns.</div>
+</section>
+<footer><p>© 2026 <span>StickINK</span> · Handmade in Germany · <a href="mailto:hallo@stickink.de" style="color:rgba(255,255,255,.35)">hallo@stickink.de</a></p></footer>
+<script>function go(e,id){e.preventDefault();document.getElementById(id).style.display='block';e.target.reset()}</script>
+</body>
+</html>
