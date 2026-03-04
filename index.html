@@ -36,8 +36,11 @@ body{font-family:"Inter",sans-serif;background:var(--beige);color:var(--text);li
 
 /* ─── NAV ─── */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(217,210,197,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--beige-dark);height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem}
-.nav-logo{display:flex;align-items:center}
-.nav-logo img{height:40px;width:auto;object-fit:contain;mix-blend-mode:multiply}
+.nav-logo{display:flex;align-items:center;gap:.55rem;text-decoration:none}
+.nav-logo-icon{width:34px;height:34px;background:var(--sage);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nav-logo-icon svg{width:18px;height:18px}
+.nav-logo-text{font-family:"Playfair Display",serif;font-size:1.25rem;color:var(--dark);line-height:1}
+.nav-logo-text em{font-style:normal;color:var(--coral)}
 .nav-right{display:flex;align-items:center;gap:1rem}
 .lang-toggle{display:flex;align-items:center;background:rgba(44,42,39,.07);border-radius:999px;padding:3px;gap:2px}
 .lang-btn{background:none;border:none;padding:.3rem .7rem;border-radius:999px;font-size:.8rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;font-family:"Inter",sans-serif}
@@ -167,18 +170,15 @@ h1 em{font-style:italic;color:var(--coral)}
 .ks-form-wrap{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-lg);padding:2.5rem}
 
 /* ─── BREVO FORM OVERRIDES ─── */
-#sib-container,#sib-container2{background:transparent!important;border:none!important;padding:0!important;max-width:100%!important}
-#sib-container .sib-form-block p,#sib-container2 .sib-form-block p{display:none!important}
+#sib-container,#sib-container2{background:transparent!important;background-image:none!important;border:none!important;padding:0!important;max-width:100%!important}
+.sib-container--large,.sib-container--vertical{background:transparent!important;background-image:none!important}
 .sib-form-block .input{width:100%;padding:.8rem 1.1rem!important;border:1.5px solid var(--beige-dark)!important;border-radius:9px!important;background:#fff!important;font-size:.95rem!important;font-family:"Inter",sans-serif!important;color:var(--text)!important;outline:none!important;transition:border .2s!important}
 .sib-form-block .input:focus{border-color:var(--coral)!important;box-shadow:0 0 0 3px rgba(201,104,64,.1)!important}
 .sib-form-block .input::placeholder{color:#bbb!important}
 .sib-form-block__button{width:100%;background:var(--coral)!important;color:#fff!important;border:none!important;padding:.85rem 1.5rem!important;border-radius:9px!important;font-size:.95rem!important;font-weight:700!important;font-family:"Inter",sans-serif!important;cursor:pointer;margin-top:.4rem!important;transition:background .2s!important;letter-spacing:.01em}
 .sib-form-block__button:hover{background:var(--coral-dark)!important}
-.sib-optin .entry__choice label{display:flex;align-items:flex-start;gap:.6rem;cursor:pointer}
-.checkbox_tick_positive{width:16px;height:16px;border:1.5px solid var(--beige-dark);border-radius:4px;flex-shrink:0;margin-top:3px;background:#fff}
-.input_replaced:checked+.checkbox_tick_positive{background:var(--coral);border-color:var(--coral)}
-.input_replaced{display:none}
-.sib-optin span p{font-size:.78rem!important;color:var(--muted)!important;font-family:"Inter",sans-serif!important;line-height:1.5!important}
+.sib-optin .entry__choice{text-align:left}
+#sib-container a,#sib-container2 a{color:var(--text)!important;text-decoration:none!important}
 .entry__error{border-radius:9px!important;font-family:"Inter",sans-serif!important}
 #success-message,#success-message2{background:#e8f5ee!important;border-color:var(--sage)!important;color:#085229!important;border-radius:9px!important;font-family:"Inter",sans-serif!important}
 .form__entry{margin-bottom:.5rem}
@@ -188,14 +188,17 @@ h1 em{font-style:italic;color:var(--coral)}
 .ks-form-wrap .sib-form-block .input{border-color:rgba(255,255,255,.15)!important;background:rgba(255,255,255,.07)!important;color:#fff!important}
 .ks-form-wrap .sib-form-block .input::placeholder{color:rgba(255,255,255,.3)!important}
 .ks-form-wrap .sib-form-block .input:focus{border-color:var(--coral)!important}
-.ks-form-wrap .checkbox_tick_positive{background:transparent;border-color:rgba(255,255,255,.2)}
-.ks-form-wrap .sib-optin span p{color:rgba(255,255,255,.45)!important}
+.ks-form-wrap .sib-optin label{color:rgba(255,255,255,.45)!important}
 .ks-form-wrap .fn{color:rgba(255,255,255,.35)}
 
 /* ─── FOOTER ─── */
 footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 2rem}
 .footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-.footer-logo img{height:32px;width:auto;opacity:.8;mix-blend-mode:luminosity}
+.footer-logo{display:flex;align-items:center;gap:.5rem;text-decoration:none}
+.footer-logo-icon{width:28px;height:28px;background:rgba(255,255,255,.15);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.footer-logo-icon svg{width:14px;height:14px}
+.footer-logo-text{font-family:"Playfair Display",serif;font-size:1.05rem;color:rgba(255,255,255,.6);line-height:1}
+.footer-logo-text em{font-style:normal;color:var(--coral)}
 .footer-copy{font-size:.8rem;color:rgba(255,255,255,.35)}
 .footer-links{display:flex;align-items:center;gap:1.5rem}
 .footer-links a{font-size:.8rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
@@ -224,7 +227,12 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 <!-- ─── NAV ─── -->
 <nav>
   <a href="#" class="nav-logo">
-    <img src="assets/logo.png" alt="StickINK"/>
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="3,9 7,13 15,5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <span class="nav-logo-text">Stick<em>INK</em></span>
   </a>
   <div class="nav-right">
     <div class="lang-toggle" role="group" aria-label="Language">
@@ -244,36 +252,64 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 
     <!-- Waitlist Form -->
     <div id="waitlist">
-      <div class="sib-form" id="sib-form">
-        <div id="sib-container" class="sib-container--large sib-container--blue">
-          <form id="sib-form-el" action="https://e5371206.sibforms.com/serve/MUIFAM1Tn-QS1INvXc8osTR2IZtY_9FpGt-gxNZd11ghjqt9U00bC9QpopDN1O9jAzTahdwe1GDS-ZDshZ26j0gR12T87vq9s_ueZSLrMFvzGzf_mSpjvjy7KvKnka2t73dIynY-FdQ5oLjzXlXC1Un7cqvyqdiHkcONyvjh_fcbewQt5buxsHA5WQHSvA032gGP-Y33qKx8Y_bFBA==" method="POST" data-type="subscription" novalidate>
-            <div class="sib-form-block form__entry entry__field">
-              <div class="form__entry entry__field">
-                <input class="input" maxlength="200" type="text" id="EMAIL" name="EMAIL"
-                  data-de-placeholder="deine@email.de" data-en-placeholder="your@email.com"
-                  placeholder="deine@email.de" autocomplete="off" required/>
-              </div>
+      <div class="sib-form">
+        <div id="sib-form-container" class="sib-form-container">
+          <div id="error-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;max-width:540px;">
+            <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+              <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon"><path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z"/></svg>
+              <span class="sib-form-message-panel__inner-text" data-de="Deine Anmeldung konnte nicht gespeichert werden. Bitte versuche es erneut." data-en="Your signup could not be saved. Please try again.">Deine Anmeldung konnte nicht gespeichert werden. Bitte versuche es erneut.</span>
             </div>
-            <div class="sib-form-block sib-optin">
-              <div class="entry__choice">
-                <label>
-                  <input type="checkbox" class="input_replaced" value="1" id="OPT_IN" name="OPT_IN" required/>
-                  <span class="checkbox_tick_positive"></span>
-                  <span><p data-de="Ich stimme zu, dass meine E-Mail für den StickINK Kickstarter-Launch gespeichert wird." data-en="I agree that my email will be stored for the StickINK Kickstarter launch.">Ich stimme zu, dass meine E-Mail für den StickINK Kickstarter-Launch gespeichert wird.</p></span>
-                </label>
-              </div>
-            </div>
-            <div class="sib-form-block">
-              <button class="sib-form-block__button" form="sib-form-el" data-de="Beim Launch dabei sein →" data-en="Notify Me at Launch →">Beim Launch dabei sein →</button>
-            </div>
-            <input type="text" name="email_address_check" value="" class="input--hidden" style="display:none"/>
-            <input type="hidden" name="locale" id="locale-field" value="de"/>
-          </form>
-          <div id="success-message" class="sib-form-message-panel" style="display:none">
-            <div class="sib-form-message-panel__text" data-de="✓ Super! Du bekommst eine E-Mail sobald wir live gehen." data-en="✓ Great! You'll get an email when we go live.">✓ Super! Du bekommst eine E-Mail sobald wir live gehen.</div>
           </div>
-          <div id="error-message" class="sib-form-message-panel" style="display:none">
-            <div class="sib-form-message-panel__text" data-de="Anmeldung fehlgeschlagen. Bitte nochmal versuchen." data-en="Signup failed. Please try again.">Anmeldung fehlgeschlagen. Bitte nochmal versuchen.</div>
+          <div></div>
+          <div id="success-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#085229; background-color:#e7faf0; border-radius:3px; border-color:#13ce66;max-width:540px;">
+            <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+              <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z"/></svg>
+              <span class="sib-form-message-panel__inner-text" data-de="Deine Anmeldung war erfolgreich." data-en="Your signup was successful.">Deine Anmeldung war erfolgreich.</span>
+            </div>
+          </div>
+          <div></div>
+          <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:rgba(255,255,255,1); max-width:540px; border-radius:3px; border-width:1px; border-color:#C0CCD9; border-style:solid; direction:ltr">
+            <form id="sib-form" method="POST" action="https://e5371206.sibforms.com/serve/MUIFAM1Tn-QS1INvXc8osTR2IZtY_9FpGt-gxNZd11ghjqt9U00bC9QpopDN1O9jAzTahdwe1GDS-ZDshZ26j0gR12T87vq9s_ueZSLrMFvzGzf_mSpjvjy7KvKnka2t73dIynY-FdQ5oLjzXlXC1Un7cqvyqdiHkcONyvjh_fcbewQt5buxsHA5WQHSvA032gGP-Y33qKx8Y_bFBA==" data-type="subscription">
+              <div style="padding:8px 0;">
+                <div class="sib-input sib-form-block">
+                  <div class="form__entry entry_block">
+                    <div class="form__label-row">
+                      <div class="entry__field">
+                        <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off"
+                          data-de-placeholder="deine@email.de" data-en-placeholder="your@email.com"
+                          placeholder="deine@email.de" data-required="true" required/>
+                      </div>
+                    </div>
+                    <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:8px 0;">
+                <div class="sib-optin sib-form-block" data-required="true">
+                  <div class="form__entry entry_mcq">
+                    <div class="form__label-row">
+                      <div class="entry__choice" style="display:flex;align-items:flex-start;gap:8px;text-align:left;">
+                        <input type="checkbox" value="1" id="OPT_IN" name="OPT_IN" required style="width:18px;height:18px;min-width:18px;flex-shrink:0;margin-top:3px;accent-color:#C96840;cursor:pointer;"/>
+                        <label for="OPT_IN" style="font-size:13px;font-family:Inter,Helvetica,sans-serif;color:#3E3A35;line-height:1.5;cursor:pointer;">
+                          <p data-de="Ich bin einverstanden dass meine E-Mail-Adresse für den Kickstarter-Launch von StickINK gespeichert wird." data-en="I agree that my email address will be stored for the StickINK Kickstarter launch.">Ich bin einverstanden dass meine E-Mail-Adresse für den Kickstarter-Launch von StickINK gespeichert wird.</p>
+                        </label>
+                      </div>
+                    </div>
+                    <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:8px 0;">
+                <div class="sib-form-block" style="text-align:left">
+                  <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
+                    <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512"><path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"/></svg>
+                    <span data-de="Beim Launch dabei sein →" data-en="Notify Me at Launch →">Beim Launch dabei sein →</span>
+                  </button>
+                </div>
+              </div>
+              <input type="text" name="email_address_check" value="" class="input--hidden" style="display:none"/>
+              <input type="hidden" name="locale" id="locale-field" value="de"/>
+            </form>
           </div>
         </div>
       </div>
@@ -564,34 +600,64 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
     <p class="ks-desc" data-de="StickINK startet bald auf Kickstarter. Trag dich jetzt in die Warteliste ein – du bekommst als Erstes den Link und sicherst dir Zugang zum günstigsten Early Bird Preis." data-en="StickINK launches on Kickstarter soon. Join the waitlist now – you'll be the first to get the link and secure the best Early Bird price.">StickINK startet bald auf Kickstarter. Trag dich jetzt in die Warteliste ein – du bekommst als Erstes den Link und sicherst dir Zugang zum günstigsten Early Bird Preis.</p>
 
     <div class="ks-form-wrap">
-      <div class="sib-form" id="sib-form2">
-        <div id="sib-container2" class="sib-container--large sib-container--blue">
-          <form id="sib-form-el2" action="https://e5371206.sibforms.com/serve/MUIFAM1Tn-QS1INvXc8osTR2IZtY_9FpGt-gxNZd11ghjqt9U00bC9QpopDN1O9jAzTahdwe1GDS-ZDshZ26j0gR12T87vq9s_ueZSLrMFvzGzf_mSpjvjy7KvKnka2t73dIynY-FdQ5oLjzXlXC1Un7cqvyqdiHkcONyvjh_fcbewQt5buxsHA5WQHSvA032gGP-Y33qKx8Y_bFBA==" method="POST" data-type="subscription" novalidate>
-            <div class="sib-form-block form__entry entry__field">
-              <input class="input" maxlength="200" type="text" id="EMAIL2" name="EMAIL"
-                data-de-placeholder="deine@email.de" data-en-placeholder="your@email.com"
-                placeholder="deine@email.de" autocomplete="off" required/>
+      <div class="sib-form">
+        <div id="sib-form-container2" class="sib-form-container">
+          <div id="error-message2" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;max-width:540px;">
+            <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+              <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon"><path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z"/></svg>
+              <span class="sib-form-message-panel__inner-text" data-de="Deine Anmeldung konnte nicht gespeichert werden. Bitte versuche es erneut." data-en="Your signup could not be saved. Please try again.">Deine Anmeldung konnte nicht gespeichert werden. Bitte versuche es erneut.</span>
             </div>
-            <div class="sib-form-block sib-optin">
-              <div class="entry__choice">
-                <label>
-                  <input type="checkbox" class="input_replaced" value="1" id="OPT_IN2" name="OPT_IN" required/>
-                  <span class="checkbox_tick_positive"></span>
-                  <span><p data-de="Ich stimme zu, dass meine E-Mail für den StickINK Kickstarter-Launch gespeichert wird." data-en="I agree that my email will be stored for the StickINK Kickstarter launch.">Ich stimme zu, dass meine E-Mail für den StickINK Kickstarter-Launch gespeichert wird.</p></span>
-                </label>
-              </div>
-            </div>
-            <div class="sib-form-block">
-              <button class="sib-form-block__button" form="sib-form-el2" data-de="Jetzt vormerken →" data-en="Join the Waitlist →">Jetzt vormerken →</button>
-            </div>
-            <input type="text" name="email_address_check" value="" class="input--hidden" style="display:none"/>
-            <input type="hidden" name="locale" id="locale-field2" value="de"/>
-          </form>
-          <div id="success-message2" class="sib-form-message-panel" style="display:none">
-            <div class="sib-form-message-panel__text" data-de="✓ Perfekt! Wir melden uns zum Launch." data-en="✓ Perfect! We'll reach out at launch.">✓ Perfekt! Wir melden uns zum Launch.</div>
           </div>
-          <div id="error-message2" class="sib-form-message-panel" style="display:none">
-            <div class="sib-form-message-panel__text" data-de="Anmeldung fehlgeschlagen. Bitte nochmal versuchen." data-en="Signup failed. Please try again.">Anmeldung fehlgeschlagen. Bitte nochmal versuchen.</div>
+          <div></div>
+          <div id="success-message2" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#085229; background-color:#e7faf0; border-radius:3px; border-color:#13ce66;max-width:540px;">
+            <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+              <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z"/></svg>
+              <span class="sib-form-message-panel__inner-text" data-de="Deine Anmeldung war erfolgreich." data-en="Your signup was successful.">Deine Anmeldung war erfolgreich.</span>
+            </div>
+          </div>
+          <div></div>
+          <div id="sib-container2" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:rgba(255,255,255,1); max-width:540px; border-radius:3px; border-width:1px; border-color:#C0CCD9; border-style:solid; direction:ltr">
+            <form id="sib-form2" method="POST" action="https://e5371206.sibforms.com/serve/MUIFAM1Tn-QS1INvXc8osTR2IZtY_9FpGt-gxNZd11ghjqt9U00bC9QpopDN1O9jAzTahdwe1GDS-ZDshZ26j0gR12T87vq9s_ueZSLrMFvzGzf_mSpjvjy7KvKnka2t73dIynY-FdQ5oLjzXlXC1Un7cqvyqdiHkcONyvjh_fcbewQt5buxsHA5WQHSvA032gGP-Y33qKx8Y_bFBA==" data-type="subscription">
+              <div style="padding:8px 0;">
+                <div class="sib-input sib-form-block">
+                  <div class="form__entry entry_block">
+                    <div class="form__label-row">
+                      <div class="entry__field">
+                        <input class="input" type="text" id="EMAIL2" name="EMAIL" autocomplete="off"
+                          data-de-placeholder="deine@email.de" data-en-placeholder="your@email.com"
+                          placeholder="deine@email.de" data-required="true" required/>
+                      </div>
+                    </div>
+                    <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:8px 0;">
+                <div class="sib-optin sib-form-block" data-required="true">
+                  <div class="form__entry entry_mcq">
+                    <div class="form__label-row">
+                      <div class="entry__choice" style="display:flex;align-items:flex-start;gap:8px;text-align:left;">
+                        <input type="checkbox" value="1" id="OPT_IN2" name="OPT_IN" required style="width:18px;height:18px;min-width:18px;flex-shrink:0;margin-top:3px;accent-color:#C96840;cursor:pointer;"/>
+                        <label for="OPT_IN2" style="font-size:13px;font-family:Inter,Helvetica,sans-serif;color:#3E3A35;line-height:1.5;cursor:pointer;">
+                          <p data-de="Ich bin einverstanden dass meine E-Mail-Adresse für den Kickstarter-Launch von StickINK gespeichert wird." data-en="I agree that my email address will be stored for the StickINK Kickstarter launch.">Ich bin einverstanden dass meine E-Mail-Adresse für den Kickstarter-Launch von StickINK gespeichert wird.</p>
+                        </label>
+                      </div>
+                    </div>
+                    <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:8px 0;">
+                <div class="sib-form-block" style="text-align:left">
+                  <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form2" type="submit">
+                    <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512"><path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"/></svg>
+                    <span data-de="Jetzt vormerken →" data-en="Join the Waitlist →">Jetzt vormerken →</span>
+                  </button>
+                </div>
+              </div>
+              <input type="text" name="email_address_check" value="" class="input--hidden" style="display:none"/>
+              <input type="hidden" name="locale" id="locale-field2" value="de"/>
+            </form>
           </div>
         </div>
       </div>
@@ -604,7 +670,12 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 <footer>
   <div class="footer-inner">
     <a href="#" class="footer-logo">
-      <img src="assets/logo.png" alt="StickINK"/>
+      <div class="footer-logo-icon">
+        <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="3,9 7,13 15,5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="footer-logo-text">Stick<em>INK</em></span>
     </a>
     <span class="footer-copy">© 2026 StickINK · <span data-de="Handmade in Germany" data-en="Handmade in Germany">Handmade in Germany</span></span>
     <div class="footer-links">
