@@ -177,8 +177,7 @@ h1 em{font-style:italic;color:var(--coral)}
 .sib-form-block .input::placeholder{color:#bbb!important}
 .sib-form-block__button{width:100%;background:var(--coral)!important;color:#fff!important;border:none!important;padding:.85rem 1.5rem!important;border-radius:9px!important;font-size:.95rem!important;font-weight:700!important;font-family:"Inter",sans-serif!important;cursor:pointer;margin-top:.4rem!important;transition:background .2s!important;letter-spacing:.01em}
 .sib-form-block__button:hover{background:var(--coral-dark)!important}
-.sib-optin .entry__choice{text-align:left}
-#sib-container a,#sib-container2 a{color:var(--text)!important;text-decoration:none!important}
+#sib-container a,#sib-container2 a{color:var(--coral)!important;text-decoration:none!important}
 .entry__error{border-radius:9px!important;font-family:"Inter",sans-serif!important}
 #success-message,#success-message2{background:#e8f5ee!important;border-color:var(--sage)!important;color:#085229!important;border-radius:9px!important;font-family:"Inter",sans-serif!important}
 .form__entry{margin-bottom:.5rem}
@@ -188,7 +187,6 @@ h1 em{font-style:italic;color:var(--coral)}
 .ks-form-wrap .sib-form-block .input{border-color:rgba(255,255,255,.15)!important;background:rgba(255,255,255,.07)!important;color:#fff!important}
 .ks-form-wrap .sib-form-block .input::placeholder{color:rgba(255,255,255,.3)!important}
 .ks-form-wrap .sib-form-block .input:focus{border-color:var(--coral)!important}
-.ks-form-wrap .sib-optin label{color:rgba(255,255,255,.45)!important}
 .ks-form-wrap .fn{color:rgba(255,255,255,.35)}
 
 /* ─── FOOTER ─── */
@@ -287,11 +285,11 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
               <div style="padding:8px 0;">
                 <div class="sib-optin sib-form-block" data-required="true">
                   <div class="form__entry entry_mcq">
-                    <div class="form__label-row">
-                      <div class="entry__choice" style="display:flex;align-items:flex-start;gap:8px;text-align:left;">
-                        <input type="checkbox" value="1" id="OPT_IN" name="OPT_IN" required style="width:18px;height:18px;min-width:18px;flex-shrink:0;margin-top:3px;accent-color:#C96840;cursor:pointer;"/>
-                        <label for="OPT_IN" style="font-size:13px;font-family:Inter,Helvetica,sans-serif;color:#3E3A35;line-height:1.5;cursor:pointer;">
-                          <p data-de="Ich bin einverstanden dass meine E-Mail-Adresse für den Kickstarter-Launch von StickINK gespeichert wird." data-en="I agree that my email address will be stored for the StickINK Kickstarter launch.">Ich bin einverstanden dass meine E-Mail-Adresse für den Kickstarter-Launch von StickINK gespeichert wird.</p>
+                    <div class="form__label-row ">
+                      <div class="entry__choice" style="">
+                        <label>
+                          <input type="checkbox" class="input_replaced" value="1" id="OPT_IN" name="OPT_IN" required />
+                          <span class="checkbox checkbox_tick_positive" style="margin-left:"></span><span style="font-size:14px; text-align:left; font-family:Helvetica, sans-serif; color:#3C4858; background-color:transparent;"><p data-de="Ich bin einverstanden dass meine E-Mail-Adresse für den Kickstarter-Launch von StickINK gespeichert wird." data-en="I agree that my email address will be stored for the StickINK Kickstarter launch.">Ich bin einverstanden dass meine E-Mail-Adresse für den Kickstarter-Launch von StickINK gespeichert wird.</p><span data-required="*" style="display: inline;" class="entry__label entry__label_optin"></span></span>
                         </label>
                       </div>
                     </div>
@@ -300,14 +298,14 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
                 </div>
               </div>
               <div style="padding:8px 0;">
-                <div class="sib-form-block" style="text-align:left">
+                <div class="sib-form-block" style="text-align: left">
                   <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
                     <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512"><path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"/></svg>
                     <span data-de="Beim Launch dabei sein →" data-en="Notify Me at Launch →">Beim Launch dabei sein →</span>
                   </button>
                 </div>
               </div>
-              <input type="text" name="email_address_check" value="" class="input--hidden" style="display:none"/>
+              <input type="text" name="email_address_check" value="" class="input--hidden">
               <input type="hidden" name="locale" id="locale-field" value="de"/>
             </form>
           </div>
@@ -635,11 +633,11 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
               <div style="padding:8px 0;">
                 <div class="sib-optin sib-form-block" data-required="true">
                   <div class="form__entry entry_mcq">
-                    <div class="form__label-row">
-                      <div class="entry__choice" style="display:flex;align-items:flex-start;gap:8px;text-align:left;">
-                        <input type="checkbox" value="1" id="OPT_IN2" name="OPT_IN" required style="width:18px;height:18px;min-width:18px;flex-shrink:0;margin-top:3px;accent-color:#C96840;cursor:pointer;"/>
-                        <label for="OPT_IN2" style="font-size:13px;font-family:Inter,Helvetica,sans-serif;color:#3E3A35;line-height:1.5;cursor:pointer;">
-                          <p data-de="Ich bin einverstanden dass meine E-Mail-Adresse für den Kickstarter-Launch von StickINK gespeichert wird." data-en="I agree that my email address will be stored for the StickINK Kickstarter launch.">Ich bin einverstanden dass meine E-Mail-Adresse für den Kickstarter-Launch von StickINK gespeichert wird.</p>
+                    <div class="form__label-row ">
+                      <div class="entry__choice" style="">
+                        <label>
+                          <input type="checkbox" class="input_replaced" value="1" id="OPT_IN2" name="OPT_IN" required />
+                          <span class="checkbox checkbox_tick_positive" style="margin-left:"></span><span style="font-size:14px; text-align:left; font-family:Helvetica, sans-serif; color:#3C4858; background-color:transparent;"><p data-de="Ich bin einverstanden dass meine E-Mail-Adresse für den Kickstarter-Launch von StickINK gespeichert wird." data-en="I agree that my email address will be stored for the StickINK Kickstarter launch.">Ich bin einverstanden dass meine E-Mail-Adresse für den Kickstarter-Launch von StickINK gespeichert wird.</p><span data-required="*" style="display: inline;" class="entry__label entry__label_optin"></span></span>
                         </label>
                       </div>
                     </div>
@@ -648,14 +646,14 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
                 </div>
               </div>
               <div style="padding:8px 0;">
-                <div class="sib-form-block" style="text-align:left">
+                <div class="sib-form-block" style="text-align: left">
                   <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form2" type="submit">
                     <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512"><path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"/></svg>
                     <span data-de="Jetzt vormerken →" data-en="Join the Waitlist →">Jetzt vormerken →</span>
                   </button>
                 </div>
               </div>
-              <input type="text" name="email_address_check" value="" class="input--hidden" style="display:none"/>
+              <input type="text" name="email_address_check" value="" class="input--hidden">
               <input type="hidden" name="locale" id="locale-field2" value="de"/>
             </form>
           </div>
