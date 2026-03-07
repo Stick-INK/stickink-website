@@ -65,7 +65,7 @@ body{font-family:"Outfit",sans-serif;background:var(--beige);color:var(--text);l
 @keyframes slideRight{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:none}}
 @keyframes scaleIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
 @keyframes mockupFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-@keyframes einkRefresh{0%,88%,100%{opacity:0}90%{opacity:1;background:var(--ink)}92%{opacity:1;background:#f5f3ed}94%{opacity:0}}
+
 @keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 var(--coral-glow)}50%{box-shadow:0 0 24px 4px var(--coral-glow)}}
 @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
 @keyframes dotPulse{0%,100%{opacity:.6}50%{opacity:1}}
@@ -168,7 +168,7 @@ h1 em{font-style:italic;color:var(--coral)}
 .eink-stock .eink-change{font-weight:700}
 .eink-stock .eink-change.up{color:#2d6a2d}
 .eink-stock .eink-change.down{color:#8b2222}
-.eink-refresh-overlay{position:absolute;inset:0;background:var(--ink);opacity:0;pointer-events:none;animation:einkRefresh 10s ease-in-out 4s infinite}
+.eink-refresh-overlay{position:absolute;inset:0;background:var(--ink);opacity:0;pointer-events:none;transition:opacity .12s}
 .eink-label{text-align:center;margin-top:1rem;font-size:.72rem;color:var(--muted);font-weight:500;opacity:0;animation:slideUp .6s var(--ease-expo) 1.2s forwards}
 .eink-shadow{width:70%;height:16px;margin:0 auto;margin-top:-6px;background:radial-gradient(ellipse,rgba(44,42,39,.12) 0%,transparent 70%);animation:mockupFloat 6s ease-in-out 2s infinite;animation-fill-mode:both}
 
@@ -1037,16 +1037,65 @@ if (heroSection && heroGlow) {
   });
 }
 
-// ── Live mockup clock ──
-function updateMockupClock() {
-  const now = new Date();
-  const h = String(now.getHours()).padStart(2, '0');
-  const m = String(now.getMinutes()).padStart(2, '0');
-  const el = document.getElementById('mockup-time');
-  if (el) el.textContent = h + ':' + m;
+// ── E-Ink Mockup Refresh Cycle ──
+// Content only changes DURING the blink flash, like real E-Ink
+const einkOverlay = document.querySelector('.eink-refresh-overlay');
+const einkTime = document.getElementById('mockup-time');
+const einkTemp = document.querySelector('.eink-temp');
+const einkStocks = document.querySelectorAll('.eink-stock .eink-change');
+
+const weatherStates = [
+  { icon: '\u2601\uFE0F', temp: '12\u00B0C', city: 'Hamburg' },
+  { icon: '\u2600\uFE0F', temp: '18\u00B0C', city: 'Hamburg' },
+  { icon: '\u26C5', temp: '15\u00B0C', city: 'Hamburg' },
+  { icon: '\uD83C\uDF27\uFE0F', temp: '9\u00B0C', city: 'Hamburg' },
+  { icon: '\u2601\uFE0F', temp: '11\u00B0C', city: 'Hamburg' }
+];
+const stockData = [
+  ['+1.2%', '-0.8%', '+0.3%'],
+  ['+0.6%', '+2.1%', '-0.1%'],
+  ['-0.4%', '-1.3%', '+0.7%'],
+  ['+1.8%', '+0.4%', '-0.5%'],
+  ['+0.2%', '-0.2%', '+1.1%']
+];
+let refreshIndex = 0;
+
+function einkRefreshCycle() {
+  // Phase 1: Flash black
+  einkOverlay.style.opacity = '1';
+  setTimeout(function() {
+    // Phase 2: Flash white (content updates hidden behind white)
+    einkOverlay.style.background = '#f5f3ed';
+    // Update all content NOW (invisible behind overlay)
+    var now = new Date();
+    einkTime.textContent = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+    refreshIndex = (refreshIndex + 1) % weatherStates.length;
+    var w = weatherStates[refreshIndex];
+    document.querySelector('.eink-wicon').textContent = w.icon;
+    einkTemp.textContent = w.temp;
+    var s = stockData[refreshIndex];
+    einkStocks.forEach(function(el, i) {
+      el.textContent = s[i];
+      el.className = 'eink-change ' + (s[i].charAt(0) === '+' ? 'up' : 'down');
+    });
+    setTimeout(function() {
+      // Phase 3: Reveal new content
+      einkOverlay.style.opacity = '0';
+      setTimeout(function() {
+        einkOverlay.style.background = 'var(--ink)';
+      }, 200);
+    }, 150);
+  }, 150);
 }
-updateMockupClock();
-setInterval(updateMockupClock, 30000);
+
+// Initial time set (no flash)
+(function() {
+  var now = new Date();
+  einkTime.textContent = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+})();
+
+// Refresh every 8 seconds
+setInterval(einkRefreshCycle, 8000);
 
 // ── 3D Card tilt ──
 document.querySelectorAll('.fc, .wc').forEach(card => {
