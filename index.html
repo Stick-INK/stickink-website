@@ -76,6 +76,8 @@ body{font-family:"Outfit",sans-serif;background:var(--beige);color:var(--text);l
 .reveal-right{opacity:0;transform:translateX(40px);transition:opacity .8s var(--ease-expo),transform .8s var(--ease-expo)}
 .reveal-scale{opacity:0;transform:scale(.92);transition:opacity .8s var(--ease-expo),transform .8s var(--ease-expo)}
 .reveal.visible,.reveal-left.visible,.reveal-right.visible,.reveal-scale.visible{opacity:1;transform:none}
+.reveal-card{opacity:0;transform:translateY(32px);transition:opacity .8s var(--ease-expo),transform .8s var(--ease-expo)}
+.reveal-card.visible{opacity:1;transform:none}
 
 /* ─── NAV ─── */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(217,210,197,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid transparent;height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;transition:border-color .3s,box-shadow .3s}
@@ -588,32 +590,32 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
     <h2 class="reveal" style="transition-delay:.08s" data-de="Informiert. Ohne abgelenkt zu sein." data-en="Informed. Without the Distraction.">Informiert. Ohne abgelenkt zu sein.</h2>
     <p class="sec-desc reveal" style="transition-delay:.16s" data-de="Ein klassischer Monitor strahlt, blinkt und lenkt ab. StickINK zeigt nur das Wichtigste &#8211; papier&#228;hnlich, blendarm und energiesparend." data-en="A regular monitor radiates, blinks, and distracts. StickINK shows only what matters &#8211; paper-like, glare-free, and energy-efficient.">Ein klassischer Monitor strahlt, blinkt und lenkt ab. StickINK zeigt nur das Wichtigste &#8211; papier&#228;hnlich, blendarm und energiesparend.</p>
     <div class="fg">
-      <div class="fc reveal">
+      <div class="fc reveal-card">
         <div class="fi ic">&#128267;</div>
         <h3 data-de="Kein Strom im Standby" data-en="Zero Power Standby">Kein Strom im Standby</h3>
         <p data-de="E-Ink ist bistabil: Das Bild bleibt ohne Strom &#8211; genau wie gedrucktes Papier. Strom wird nur beim Aktualisieren ben&#246;tigt." data-en="E-Ink is bistable: the image stays without power &#8211; just like printed paper. Power is only used when updating.">E-Ink ist bistabil: Das Bild bleibt ohne Strom &#8211; genau wie gedrucktes Papier. Strom wird nur beim Aktualisieren ben&#246;tigt.</p>
       </div>
-      <div class="fc reveal" style="transition-delay:.08s">
+      <div class="fc reveal-card">
         <div class="fi is">&#128065;&#65039;</div>
         <h3 data-de="Blendarm wie Papier" data-en="Easy on the Eyes">Blendarm wie Papier</h3>
         <p data-de="Kein Flimmern, keine Hintergrundbeleuchtung. Angenehm f&#252;r die Augen &#8211; auch nach einem langen Arbeitstag vor dem Monitor." data-en="No flicker, no backlight. Gentle on the eyes &#8211; even after a long day in front of your computer.">Kein Flimmern, keine Hintergrundbeleuchtung. Angenehm f&#252;r die Augen &#8211; auch nach einem langen Arbeitstag vor dem Monitor.</p>
       </div>
-      <div class="fc reveal" style="transition-delay:.16s">
+      <div class="fc reveal-card">
         <div class="fi id">&#128268;</div>
         <h3 data-de="Plug &amp; Play" data-en="Plug &amp; Play">Plug &amp; Play</h3>
         <p data-de="USB verbinden, StickINK.exe doppelklicken &#8211; sofort einsatzbereit. Kein Installer, kein Python, keine Konfiguration." data-en="Connect via USB, double-click StickINK.exe &#8211; ready instantly. No installer, no Python, no configuration.">USB verbinden, StickINK.exe doppelklicken &#8211; sofort einsatzbereit. Kein Installer, kein Python, keine Konfiguration.</p>
       </div>
-      <div class="fc reveal" style="transition-delay:.08s">
+      <div class="fc reveal-card">
         <div class="fi ic">&#127899;&#65039;</div>
         <h3 data-de="4 individuelle Screens" data-en="4 Custom Screens">4 individuelle Screens</h3>
         <p data-de="Wechsle zwischen Layouts &#8211; Arbeit, Privat, Finanzen, Morgenroutine. Jeder Screen individuell konfigurierbar und gespeichert." data-en="Switch between layouts &#8211; work, personal, finances, morning routine. Each screen individually configurable and saved.">Wechsle zwischen Layouts &#8211; Arbeit, Privat, Finanzen, Morgenroutine. Jeder Screen individuell konfigurierbar und gespeichert.</p>
       </div>
-      <div class="fc reveal" style="transition-delay:.16s">
+      <div class="fc reveal-card">
         <div class="fi is">&#9889;</div>
         <h3 data-de="Smart Auto-Refresh" data-en="Smart Auto-Refresh">Smart Auto-Refresh</h3>
         <p data-de="Wetter, Aktien und Uhrzeit aktualisieren sich automatisch. Das Display wird nur neu gezeichnet, wenn sich wirklich etwas &#228;ndert." data-en="Weather, stocks, and time update automatically. The display only redraws when something actually changes.">Wetter, Aktien und Uhrzeit aktualisieren sich automatisch. Das Display wird nur neu gezeichnet, wenn sich wirklich etwas &#228;ndert.</p>
       </div>
-      <div class="fc reveal" style="transition-delay:.24s">
+      <div class="fc reveal-card">
         <div class="fi ib">&#128444;&#65039;</div>
         <h3 data-de="Eigene Bilder" data-en="Custom Images">Eigene Bilder</h3>
         <p data-de="Lade dein Lieblingsfoto hoch &#8211; Floyd-Steinberg Dithering sorgt f&#252;r perfekte E-Ink-Darstellung in 16 Graustufen." data-en="Upload your favorite photo &#8211; Floyd-Steinberg dithering ensures perfect E-Ink rendering in 16 grayscale levels.">Lade dein Lieblingsfoto hoch &#8211; Floyd-Steinberg Dithering sorgt f&#252;r perfekte E-Ink-Darstellung in 16 Graustufen.</p>
@@ -650,32 +652,32 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
     <h2 class="reveal" style="transition-delay:.08s" data-de="Alles was du brauchst. Nichts was du nicht brauchst." data-en="Everything You Need. Nothing You Don't.">Alles was du brauchst. Nichts was du nicht brauchst.</h2>
     <p class="sec-desc reveal" style="transition-delay:.16s" data-de="W&#228;hle aus 6 Widgets die dir wichtig sind und stelle dein pers&#246;nliches Dashboard zusammen." data-en="Pick the 6 widgets that matter to you and build your personal dashboard.">W&#228;hle aus 6 Widgets die dir wichtig sind und stelle dein pers&#246;nliches Dashboard zusammen.</p>
     <div class="wg">
-      <div class="wc reveal">
+      <div class="wc reveal-card">
         <div class="wc-top"><span class="wc-icon">&#128336;</span></div>
         <h3 data-de="Uhr" data-en="Clock">Uhr</h3>
         <p data-de="Digital, analog oder beides kombiniert &#8211; mit Datum" data-en="Digital, analog, or both &#8211; with date display">Digital, analog oder beides kombiniert &#8211; mit Datum</p>
       </div>
-      <div class="wc reveal" style="transition-delay:.06s">
+      <div class="wc reveal-card">
         <div class="wc-top"><span class="wc-icon">&#9925;</span></div>
         <h3 data-de="Wetter" data-en="Weather">Wetter</h3>
         <p data-de="Aktuell, 3-Tage-Vorschau oder Stundenansicht" data-en="Current, 3-day forecast, or hourly view">Aktuell, 3-Tage-Vorschau oder Stundenansicht</p>
       </div>
-      <div class="wc reveal" style="transition-delay:.12s">
+      <div class="wc reveal-card">
         <div class="wc-top"><span class="wc-icon">&#9989;</span></div>
         <h3 data-de="To-Do Liste" data-en="To-Do List">To-Do Liste</h3>
         <p data-de="Aufgaben verwalten und abhaken &#8211; wird gespeichert" data-en="Manage and check off tasks &#8211; automatically saved">Aufgaben verwalten und abhaken &#8211; wird gespeichert</p>
       </div>
-      <div class="wc reveal" style="transition-delay:.06s">
+      <div class="wc reveal-card">
         <div class="wc-top"><span class="wc-icon">&#128200;</span></div>
         <h3 data-de="Aktien &amp; Krypto" data-en="Stocks &amp; Crypto">Aktien &amp; Krypto</h3>
         <p data-de="AAPL, BTC-USD, EURUSD &amp; mehr &#8211; frei konfigurierbar" data-en="AAPL, BTC-USD, EURUSD &amp; more &#8211; freely configurable">AAPL, BTC-USD, EURUSD &amp; mehr &#8211; frei konfigurierbar</p>
       </div>
-      <div class="wc reveal" style="transition-delay:.12s">
+      <div class="wc reveal-card">
         <div class="wc-top"><span class="wc-icon">&#128444;&#65039;</span></div>
         <h3 data-de="Bild-Upload" data-en="Image Upload">Bild-Upload</h3>
         <p data-de="Eigenes Foto hochladen mit Crop-Dialog &amp; Dithering" data-en="Upload your own photo with crop dialog &amp; dithering">Eigenes Foto hochladen mit Crop-Dialog &amp; Dithering</p>
       </div>
-      <div class="wc reveal" style="transition-delay:.18s">
+      <div class="wc reveal-card">
         <div class="wc-top">
           <span class="wc-icon">&#128197;</span>
           <span class="coming-soon" data-de="Bald" data-en="Soon">Bald</span>
@@ -974,6 +976,22 @@ const revealObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
   revealObserver.observe(el);
 });
+
+// ── Card grid reveal (all cards stagger together) ──
+const gridObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const cards = e.target.querySelectorAll('.reveal-card');
+      cards.forEach((card, i) => {
+        card.style.transitionDelay = (i * 0.07) + 's';
+        card.classList.add('visible');
+      });
+      gridObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fg, .wg').forEach(grid => gridObserver.observe(grid));
 
 // ── Counter animation ──
 const counterObserver = new IntersectionObserver((entries) => {
