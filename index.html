@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>StickINK – E-Ink Dashboard</title>
 <meta name="description" content="StickINK verwandelt ein 7,5-Zoll E-Ink Display in ein immer sichtbares Dashboard – Uhr, Wetter, To-Dos, Aktien. Kein Strom. Kein Flimmern."/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet"/>
+<link rel="canonical" href="https://stickink.de/"/>
+<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon.png"/>
+<link rel="apple-touch-icon" href="/assets/icon.png"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -13,52 +17,124 @@
   --beige:#D9D2C5;
   --beige-mid:#CEC6B7;
   --beige-dark:#C8BFB0;
+  --beige-light:#E8E2D8;
   --coral:#C96840;
   --coral-dark:#B05A34;
+  --coral-glow:rgba(201,104,64,.35);
   --sage:#5F8A72;
   --sage-light:rgba(95,138,114,.12);
   --dark:#2C2A27;
+  --ink:#1a1816;
   --text:#3E3A35;
   --muted:#7A7167;
   --white:#fff;
   --shadow-sm:0 2px 8px rgba(44,42,39,.08);
   --shadow-md:0 8px 32px rgba(44,42,39,.12);
   --shadow-lg:0 20px 60px rgba(44,42,39,.16);
+  --shadow-xl:0 32px 80px rgba(44,42,39,.22);
+  --ease-expo:cubic-bezier(.16,1,.3,1);
+  --ease-back:cubic-bezier(.34,1.56,.64,1);
   --radius:12px;
   --radius-lg:20px;
 }
 html{scroll-behavior:smooth}
-body{font-family:"Inter",sans-serif;background:var(--beige);color:var(--text);line-height:1.6;overflow-x:hidden}
+body{font-family:"Outfit",sans-serif;background:var(--beige);color:var(--text);line-height:1.6;overflow-x:hidden}
 
-/* ─── FADE-IN ANIMATION ─── */
-.fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
-.fade-in.visible{opacity:1;transform:none}
+/* ─── CUSTOM SCROLLBAR ─── */
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--beige)}
+::-webkit-scrollbar-thumb{background:var(--beige-dark);border-radius:99px}
+::-webkit-scrollbar-thumb:hover{background:var(--muted)}
+::selection{background:var(--coral);color:#fff}
+
+/* ─── GRAIN OVERLAY ─── */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.028;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ─── FLOATING BLOBS ─── */
+.blob{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px);opacity:.12;will-change:transform}
+.blob-1{width:300px;height:300px;background:var(--coral);top:10%;left:-5%;animation:blobDrift1 22s ease-in-out infinite}
+.blob-2{width:250px;height:250px;background:var(--sage);bottom:20%;right:-3%;animation:blobDrift2 26s ease-in-out infinite}
+.blob-3{width:200px;height:200px;background:var(--beige-dark);top:50%;left:40%;animation:blobDrift3 30s ease-in-out infinite;opacity:.08}
+@keyframes blobDrift1{0%,100%{transform:translate(0,0)}33%{transform:translate(60px,-80px)}66%{transform:translate(-40px,60px)}}
+@keyframes blobDrift2{0%,100%{transform:translate(0,0)}33%{transform:translate(-50px,70px)}66%{transform:translate(40px,-50px)}}
+@keyframes blobDrift3{0%,100%{transform:translate(0,0)}50%{transform:translate(80px,-60px)}}
+
+/* ─── KEYFRAMES ─── */
+@keyframes slideUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@keyframes slideLeft{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+@keyframes slideRight{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:none}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
+@keyframes mockupFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes einkRefresh{0%,88%,100%{opacity:0}90%{opacity:1;background:var(--ink)}92%{opacity:1;background:#f5f3ed}94%{opacity:0}}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 var(--coral-glow)}50%{box-shadow:0 0 24px 4px var(--coral-glow)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes dotPulse{0%,100%{opacity:.6}50%{opacity:1}}
+
+/* ─── SCROLL REVEAL ─── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .8s var(--ease-expo),transform .8s var(--ease-expo)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s var(--ease-expo),transform .8s var(--ease-expo)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .8s var(--ease-expo),transform .8s var(--ease-expo)}
+.reveal-scale{opacity:0;transform:scale(.92);transition:opacity .8s var(--ease-expo),transform .8s var(--ease-expo)}
+.reveal.visible,.reveal-left.visible,.reveal-right.visible,.reveal-scale.visible{opacity:1;transform:none}
 
 /* ─── NAV ─── */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(217,210,197,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--beige-dark);height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(217,210,197,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid transparent;height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;transition:border-color .3s,box-shadow .3s}
+nav.scrolled{border-bottom-color:var(--beige-dark);box-shadow:0 2px 24px rgba(44,42,39,.08)}
 .nav-logo{display:flex;align-items:center;gap:.55rem;text-decoration:none}
-.nav-logo-icon{width:34px;height:34px;background:var(--sage);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.nav-logo-icon svg{width:18px;height:18px}
+.nav-logo-icon{width:36px;height:36px;flex-shrink:0;transition:transform .3s var(--ease-back)}
+.nav-logo:hover .nav-logo-icon{transform:rotate(-8deg) scale(1.1)}
+.nav-logo-icon img{width:100%;height:100%;object-fit:contain;border-radius:8px}
 .nav-logo-text{font-family:"Playfair Display",serif;font-size:1.25rem;color:var(--dark);line-height:1}
 .nav-logo-text em{font-style:normal;color:var(--coral)}
 .nav-right{display:flex;align-items:center;gap:1rem}
 .lang-toggle{display:flex;align-items:center;background:rgba(44,42,39,.07);border-radius:999px;padding:3px;gap:2px}
-.lang-btn{background:none;border:none;padding:.3rem .7rem;border-radius:999px;font-size:.8rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;font-family:"Inter",sans-serif}
+.lang-btn{background:none;border:none;padding:.3rem .7rem;border-radius:999px;font-size:.8rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .25s var(--ease-expo);font-family:"Outfit",sans-serif}
 .lang-btn.active{background:#fff;color:var(--dark);box-shadow:var(--shadow-sm)}
-.ncta{background:var(--coral);color:#fff;padding:.55rem 1.4rem;border-radius:8px;font-size:.875rem;font-weight:600;text-decoration:none;transition:background .2s;white-space:nowrap}
-.ncta:hover{background:var(--coral-dark)}
+.lang-btn:hover:not(.active){color:var(--dark)}
+
+/* CTA Button */
+.ncta{position:relative;background:var(--coral);color:#fff;padding:.55rem 1.4rem;border-radius:8px;font-size:.875rem;font-weight:600;text-decoration:none;transition:background .2s,transform .2s;white-space:nowrap;overflow:hidden;animation:pulseGlow 3s ease-in-out infinite}
+.ncta:hover{background:var(--coral-dark);transform:translateY(-1px)}
+.ncta:active{transform:translateY(0) scale(.98)}
+
+/* Ripple */
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.35);transform:scale(0);animation:rippleOut .6s ease forwards;pointer-events:none}
+@keyframes rippleOut{to{transform:scale(4);opacity:0}}
+
+/* Hamburger */
 .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;flex-direction:column;gap:5px}
 .nav-hamburger span{display:block;width:22px;height:2px;background:var(--dark);border-radius:2px;transition:all .3s}
+.nav-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
 @media(max-width:640px){
   .nav-right .ncta{display:none}
   .nav-hamburger{display:flex}
   .lang-toggle{gap:1px}
 }
 
+/* Mobile Menu */
+.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;background:rgba(217,210,197,.98);backdrop-filter:blur(20px);padding:1.5rem;border-bottom:1px solid var(--beige-dark);z-index:199;transform:translateY(-110%);transition:transform .4s var(--ease-expo);text-align:center}
+.mobile-menu.open{transform:translateY(0)}
+.mobile-menu .ncta{display:inline-block;animation:pulseGlow 3s ease-in-out infinite}
+@media(max-width:640px){.mobile-menu{display:block}}
+
 /* ─── HERO ─── */
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;padding:8rem 6rem 5rem;max-width:1300px;margin:0 auto}
-@media(max-width:960px){.hero{grid-template-columns:1fr;padding:7rem 2rem 4rem;gap:3rem}}
-.hero-text{}
+.hero{position:relative;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;padding:8rem 6rem 5rem;max-width:1300px;margin:0 auto}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,var(--beige-dark) 1px,transparent 1px);background-size:32px 32px;opacity:.35;pointer-events:none}
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,104,64,.07) 0%,transparent 70%);pointer-events:none;transition:left .4s ease,top .4s ease;z-index:0;transform:translate(-50%,-50%)}
+@media(max-width:960px){.hero{grid-template-columns:1fr;padding:7rem 2rem 4rem;gap:3rem}.hero-glow{display:none}}
+.hero-text{position:relative;z-index:1}
+.hero-visual{position:relative;z-index:1;display:flex;justify-content:center;align-items:center}
+
+/* Hero entrance animations */
+.hero .badge{opacity:0;animation:slideUp .8s var(--ease-expo) .15s forwards}
+.hero h1{opacity:0;animation:slideUp .8s var(--ease-expo) .3s forwards}
+.hero .hero-sub{opacity:0;animation:slideUp .8s var(--ease-expo) .45s forwards}
+.hero #waitlist{opacity:0;animation:slideUp .8s var(--ease-expo) .6s forwards}
+.hero .trust-inline{opacity:0;animation:slideUp .8s var(--ease-expo) .75s forwards}
+.hero-visual .eink-device{opacity:0;animation:slideUp 1s var(--ease-expo) .5s forwards}
+
 .badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--sage);color:#fff;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.4px;padding:.35rem 1rem;border-radius:999px;margin-bottom:1.4rem}
 h1{font-family:"Playfair Display",serif;font-size:clamp(2.6rem,4.5vw,3.8rem);line-height:1.08;color:var(--dark);margin-bottom:1.2rem;letter-spacing:-.02em}
 h1 em{font-style:italic;color:var(--coral)}
@@ -67,28 +143,56 @@ h1 em{font-style:italic;color:var(--coral)}
 .ti{display:flex;align-items:center;gap:.4rem;font-size:.78rem;color:var(--muted);font-weight:500}
 .ti-dot{width:6px;height:6px;border-radius:50%;background:var(--sage)}
 
-/* Hero visual */
-.hero-visual{display:flex;justify-content:center;align-items:center}
-.product-placeholder{width:100%;max-width:520px;aspect-ratio:4/3;border:2px dashed var(--beige-dark);border-radius:var(--radius-lg);background:rgba(255,255,255,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;color:var(--muted);padding:2rem;text-align:center}
-.product-placeholder .ph-icon{font-size:2.5rem;opacity:.4}
-.product-placeholder p{font-size:.85rem;font-weight:500;opacity:.6}
-.product-placeholder small{font-size:.72rem;opacity:.4}
+/* ─── E-INK MOCKUP ─── */
+.eink-device{width:100%;max-width:480px;position:relative;animation:mockupFloat 6s ease-in-out 2s infinite;animation-fill-mode:both}
+.eink-bezel{background:var(--dark);border-radius:16px;padding:14px;box-shadow:0 4px 6px rgba(0,0,0,.08),0 25px 70px rgba(44,42,39,.22),inset 0 1px 0 rgba(255,255,255,.06);position:relative}
+.eink-bezel::after{content:'';position:absolute;top:50%;right:8px;width:4px;height:4px;border-radius:50%;background:#5F8A72;opacity:.7;transform:translateY(-50%);animation:dotPulse 2s ease infinite}
+.eink-screen{background:#f5f3ed;border-radius:4px;aspect-ratio:800/480;position:relative;overflow:hidden;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 128 128' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E")}
+.eink-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;height:100%;gap:1px;background:rgba(0,0,0,.08)}
+.eink-widget{background:#f5f3ed;display:flex;flex-direction:column;justify-content:center;padding:8% 10%}
+.eink-clock .eink-time{font-family:"Outfit",sans-serif;font-size:clamp(1.2rem,3vw,2rem);font-weight:800;color:#1a1a1a;letter-spacing:-.02em;line-height:1}
+.eink-clock .eink-date{font-size:clamp(.5rem,1.2vw,.75rem);color:#666;margin-top:4%;font-weight:500}
+.eink-weather{align-items:flex-start}
+.eink-weather .eink-wicon{font-size:clamp(.8rem,2vw,1.4rem);margin-bottom:2%;filter:grayscale(1)}
+.eink-weather .eink-temp{font-family:"Outfit",sans-serif;font-size:clamp(.8rem,2vw,1.3rem);font-weight:700;color:#1a1a1a}
+.eink-weather .eink-city{font-size:clamp(.45rem,1vw,.7rem);color:#888;font-weight:500}
+.eink-todos{gap:6%}
+.eink-todo{font-size:clamp(.4rem,1vw,.68rem);color:#333;display:flex;align-items:center;gap:6%;font-weight:500}
+.eink-todo::before{content:'';width:clamp(6px,1.2vw,10px);height:clamp(6px,1.2vw,10px);border:1.5px solid #555;border-radius:2px;flex-shrink:0}
+.eink-todo.done{color:#999;text-decoration:line-through}
+.eink-todo.done::before{background:#555;border-color:#555}
+.eink-stocks{gap:8%}
+.eink-stock{display:flex;justify-content:space-between;align-items:baseline;font-size:clamp(.4rem,1vw,.68rem);font-weight:600;color:#1a1a1a}
+.eink-stock .eink-change{font-weight:700}
+.eink-stock .eink-change.up{color:#2d6a2d}
+.eink-stock .eink-change.down{color:#8b2222}
+.eink-refresh-overlay{position:absolute;inset:0;background:var(--ink);opacity:0;pointer-events:none;animation:einkRefresh 10s ease-in-out 4s infinite}
+.eink-label{text-align:center;margin-top:1rem;font-size:.72rem;color:var(--muted);font-weight:500;opacity:0;animation:slideUp .6s var(--ease-expo) 1.2s forwards}
+.eink-shadow{width:70%;height:16px;margin:0 auto;margin-top:-6px;background:radial-gradient(ellipse,rgba(44,42,39,.12) 0%,transparent 70%);animation:mockupFloat 6s ease-in-out 2s infinite;animation-fill-mode:both}
+
+/* ─── WAVE DIVIDERS ─── */
+.wave-divider{width:100%;overflow:hidden;line-height:0;position:relative;z-index:1}
+.wave-divider svg{display:block;width:100%;height:auto}
+.wave-divider.flip{transform:scaleY(-1)}
 
 /* ─── TRUST BAR ─── */
-.trust-bar{background:#fff;border-top:1px solid var(--beige-dark);border-bottom:1px solid var(--beige-dark);padding:1.5rem 2rem}
+.trust-bar{background:#fff;border-top:1px solid var(--beige-dark);border-bottom:1px solid var(--beige-dark);padding:1.5rem 2rem;position:relative;z-index:1}
 .trust-bar-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:center;flex-wrap:wrap;gap:2.5rem}
 .tb-item{display:flex;align-items:center;gap:.6rem}
-.tb-val{font-size:1.1rem;font-weight:700;color:var(--dark)}
+.tb-val{font-size:1.1rem;font-weight:700;color:var(--dark);font-variant-numeric:tabular-nums}
 .tb-label{font-size:.8rem;color:var(--muted);font-weight:500}
 .tb-sep{width:1px;height:32px;background:var(--beige-dark)}
-@media(max-width:640px){.tb-sep{display:none};.trust-bar-inner{gap:1.5rem}}
+@media(max-width:640px){.tb-sep{display:none}.trust-bar-inner{gap:1.5rem}}
 
 /* ─── PROBLEM / SOLUTION ─── */
 .prob-sol{padding:6rem 2rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:stretch}
 @media(max-width:760px){.prob-sol{grid-template-columns:1fr;padding:4rem 1.5rem}}
-.ps-card{border-radius:var(--radius-lg);padding:2.5rem;border:1px solid var(--beige-dark)}
+.ps-card{border-radius:var(--radius-lg);padding:2.5rem;border:1px solid var(--beige-dark);transition:transform .4s var(--ease-expo),box-shadow .4s var(--ease-expo)}
+.ps-card:hover{transform:translateY(-4px)}
 .ps-card.problem{background:#fff}
+.ps-card.problem:hover{box-shadow:0 12px 40px rgba(192,57,43,.08)}
 .ps-card.solution{background:var(--dark);color:#fff;border-color:transparent}
+.ps-card.solution:hover{box-shadow:0 12px 40px rgba(95,138,114,.15)}
 .ps-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.6px;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
 .ps-card.problem .ps-label{color:var(--muted)}
 .ps-card.solution .ps-label{color:var(--coral)}
@@ -100,9 +204,9 @@ h1 em{font-style:italic;color:var(--coral)}
 .ps-card.solution p{color:rgba(255,255,255,.65)}
 .ps-list{list-style:none;margin-top:1.2rem;display:flex;flex-direction:column;gap:.5rem}
 .ps-card.problem .ps-list li{display:flex;align-items:flex-start;gap:.5rem;font-size:.88rem;color:var(--muted)}
-.ps-card.problem .ps-list li::before{content:"✗";color:#C0392B;font-weight:700;flex-shrink:0;margin-top:1px}
+.ps-card.problem .ps-list li::before{content:"\2717";color:#C0392B;font-weight:700;flex-shrink:0;margin-top:1px}
 .ps-card.solution .ps-list li{display:flex;align-items:flex-start;gap:.5rem;font-size:.88rem;color:rgba(255,255,255,.75)}
-.ps-card.solution .ps-list li::before{content:"✓";color:var(--sage);font-weight:700;flex-shrink:0;margin-top:1px}
+.ps-card.solution .ps-list li::before{content:"\2713";color:var(--sage);font-weight:700;flex-shrink:0;margin-top:1px}
 
 /* ─── SECTION BASE ─── */
 .sec{padding:6rem 2rem;max-width:1300px;margin:0 auto}
@@ -113,12 +217,13 @@ h1 em{font-style:italic;color:var(--coral)}
 .sec-center .sec-desc{text-align:center}
 
 /* ─── FEATURES ─── */
-.features-bg{background:var(--beige)}
+.features-bg{background:var(--beige);position:relative;z-index:1}
 .fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin-top:1rem}
-.fc{background:#fff;border-radius:var(--radius-lg);padding:2rem;border:1px solid var(--beige-dark);transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden}
-.fc::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.03) 100%);pointer-events:none}
-.fc:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
-.fi{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.1rem}
+.fc{background:#fff;border-radius:var(--radius-lg);padding:2rem;border:1px solid var(--beige-dark);transition:transform .4s var(--ease-expo),box-shadow .4s var(--ease-expo);position:relative;overflow:hidden;will-change:transform}
+.fc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(201,104,64,.03) 100%);opacity:0;transition:opacity .4s}
+.fc:hover::before{opacity:1}
+.fi{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.1rem;transition:transform .3s var(--ease-back)}
+.fc:hover .fi{transform:scale(1.1) rotate(-5deg)}
 .ic{background:rgba(201,104,64,.1)}
 .is{background:rgba(95,138,114,.1)}
 .id{background:rgba(44,42,39,.07)}
@@ -127,74 +232,101 @@ h1 em{font-style:italic;color:var(--coral)}
 .fc p{font-size:.87rem;color:var(--muted);line-height:1.65}
 
 /* ─── SHOWCASE ─── */
-.showcase-bg{background:#fff;border-top:1px solid var(--beige-dark);border-bottom:1px solid var(--beige-dark)}
+.showcase-bg{background:#fff;border-top:1px solid var(--beige-dark);border-bottom:1px solid var(--beige-dark);position:relative;z-index:1}
 .showcase-inner{max-width:1200px;margin:0 auto;padding:6rem 2rem;display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:center}
 @media(max-width:900px){.showcase-inner{grid-template-columns:1fr;padding:4rem 1.5rem;gap:3rem}}
-.showcase-img{width:100%;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);border:1px solid var(--beige-dark)}
+.showcase-img{width:100%;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);border:1px solid var(--beige-dark);transition:transform .5s var(--ease-expo),box-shadow .5s var(--ease-expo)}
+.showcase-img:hover{transform:scale(1.02) rotate(-.5deg);box-shadow:var(--shadow-xl)}
 .showcase-text .sl{margin-bottom:.5rem}
 .showcase-text h2{font-family:"Playfair Display",serif;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--dark);margin-bottom:1rem;line-height:1.15}
 .showcase-text p{color:var(--muted);line-height:1.75;margin-bottom:1.5rem;font-size:.95rem}
 .feature-list{list-style:none;display:flex;flex-direction:column;gap:.55rem}
-.feature-list li{display:flex;align-items:flex-start;gap:.6rem;font-size:.9rem;color:var(--text)}
-.feature-list li::before{content:"✓";color:var(--sage);font-weight:700;font-size:1rem;flex-shrink:0;margin-top:1px}
+.feature-list li{display:flex;align-items:flex-start;gap:.6rem;font-size:.9rem;color:var(--text);transition:transform .3s var(--ease-expo)}
+.feature-list li:hover{transform:translateX(4px)}
+.feature-list li::before{content:"\2713";color:var(--sage);font-weight:700;font-size:1rem;flex-shrink:0;margin-top:1px}
 
 /* ─── WIDGETS ─── */
-.widgets-bg{background:var(--beige)}
+.widgets-bg{background:var(--beige);position:relative;z-index:1}
 .wg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin-top:.5rem}
-.wc{background:#fff;border-radius:var(--radius-lg);padding:1.75rem;border:1px solid var(--beige-dark);transition:transform .25s,box-shadow .25s;position:relative}
-.wc:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.wc{background:#fff;border-radius:var(--radius-lg);padding:1.75rem;border:1px solid var(--beige-dark);transition:transform .4s var(--ease-expo),box-shadow .4s var(--ease-expo);position:relative;overflow:hidden;will-change:transform}
+.wc::after{content:'';position:absolute;inset:0;border-radius:var(--radius-lg);border:2px solid transparent;transition:border-color .3s;pointer-events:none}
+.wc:hover::after{border-color:var(--coral)}
 .wc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem}
-.wc-icon{font-size:1.6rem}
+.wc-icon{font-size:1.6rem;transition:transform .3s var(--ease-back)}
+.wc:hover .wc-icon{transform:scale(1.15)}
 .coming-soon{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--coral);background:rgba(201,104,64,.1);padding:.2rem .55rem;border-radius:999px}
 .wc h3{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:.3rem}
 .wc p{font-size:.83rem;color:var(--muted);line-height:1.6}
 
 /* ─── SPECS ─── */
-.specs-bg{background:#fff;border-top:1px solid var(--beige-dark);border-bottom:1px solid var(--beige-dark)}
+.specs-bg{background:#fff;border-top:1px solid var(--beige-dark);border-bottom:1px solid var(--beige-dark);position:relative;z-index:1}
 .specs-inner{max-width:1100px;margin:0 auto;padding:6rem 2rem}
 .specs-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:.5rem}
 @media(max-width:720px){.specs-grid{grid-template-columns:1fr;padding:0}}
-.specs-block{background:var(--beige);border-radius:var(--radius-lg);padding:2rem;border:1px solid var(--beige-dark)}
+.specs-block{background:var(--beige);border-radius:var(--radius-lg);padding:2rem;border:1px solid var(--beige-dark);transition:transform .4s var(--ease-expo)}
+.specs-block:hover{transform:translateY(-4px)}
 .specs-block h3{font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1.4px;color:var(--sage);margin-bottom:1.2rem}
 .spec-row{display:flex;justify-content:space-between;align-items:flex-start;padding:.55rem 0;border-bottom:1px solid var(--beige-dark);gap:1rem}
 .spec-row:last-child{border-bottom:none}
 .spec-key{font-size:.84rem;color:var(--muted);font-weight:500;flex-shrink:0}
 .spec-val{font-size:.84rem;color:var(--dark);font-weight:600;text-align:right}
 
+/* ─── PRODUCT SECTION ─── */
+.product-sec{background:var(--beige);padding:6rem 2rem;position:relative;z-index:1}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.product-placeholder{width:100%;aspect-ratio:1/1;border:2px dashed var(--beige-dark);border-radius:var(--radius-lg);background:rgba(255,255,255,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;color:var(--muted);padding:2rem;text-align:center;transition:border-color .3s,transform .3s var(--ease-expo)}
+.product-placeholder:hover{border-color:var(--coral);transform:translateY(-4px)}
+.product-placeholder .ph-icon{font-size:2.5rem;opacity:.4}
+.product-placeholder p{font-size:.85rem;font-weight:500;opacity:.6}
+.product-placeholder small{font-size:.72rem;opacity:.4}
+
+/* ─── BRAND BANNER ─── */
+.brand-strip{background:var(--dark);padding:4.5rem 2rem;position:relative;z-index:1;overflow:hidden}
+.brand-strip::before{content:'';position:absolute;top:-50%;left:50%;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(95,138,114,.06) 0%,transparent 60%);transform:translateX(-50%);pointer-events:none}
+.brand-strip-inner{max-width:640px;margin:0 auto;text-align:center}
+.brand-banner{display:inline-block;padding:1.2rem 2.5rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;backdrop-filter:blur(8px);transition:transform .4s var(--ease-expo),box-shadow .4s var(--ease-expo)}
+.brand-banner:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.brand-banner img{height:48px;width:auto;display:block;filter:brightness(1.05)}
+.brand-tagline{margin-top:1.2rem;font-size:.85rem;color:rgba(255,255,255,.4);font-weight:500;letter-spacing:.5px}
+@media(max-width:480px){.brand-banner{padding:.8rem 1.5rem}.brand-banner img{height:36px}}
+
 /* ─── KICKSTARTER CTA ─── */
-.ks-bg{background:var(--dark);color:#fff;padding:7rem 2rem}
-.ks-inner{max-width:680px;margin:0 auto;text-align:center}
+.ks-bg{background:var(--dark);color:#fff;padding:7rem 2rem;position:relative;overflow:hidden}
+.ks-bg::before{content:'';position:absolute;top:-40%;right:-20%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,104,64,.08) 0%,transparent 60%);pointer-events:none}
+.ks-bg::after{content:'';position:absolute;bottom:-30%;left:-15%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(95,138,114,.06) 0%,transparent 60%);pointer-events:none}
+.ks-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:1}
 .ks-bg .sl{color:var(--coral);margin-bottom:.8rem}
 .ks-bg h2{font-family:"Playfair Display",serif;font-size:clamp(2rem,3.5vw,3rem);color:#fff;margin-bottom:1rem;line-height:1.1}
 .ks-bg .ks-desc{color:rgba(255,255,255,.6);font-size:.97rem;line-height:1.75;margin-bottom:2.5rem}
-.ks-form-wrap{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-lg);padding:2.5rem}
+.ks-form-wrap{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-lg);padding:2.5rem;backdrop-filter:blur(10px)}
 
 /* ─── BREVO FORM OVERRIDES ─── */
 #sib-container,#sib-container2{background:transparent!important;background-image:none!important;border:none!important;padding:0!important;max-width:100%!important}
 .sib-container--large,.sib-container--vertical{background:transparent!important;background-image:none!important}
-.sib-form-block .input{width:100%;padding:.8rem 1.1rem!important;border:1.5px solid var(--beige-dark)!important;border-radius:9px!important;background:#fff!important;font-size:.95rem!important;font-family:"Inter",sans-serif!important;color:var(--text)!important;outline:none!important;transition:border .2s!important}
-.sib-form-block .input:focus{border-color:var(--coral)!important;box-shadow:0 0 0 3px rgba(201,104,64,.1)!important}
+.sib-form-block .input{width:100%;padding:.8rem 1.1rem!important;border:1.5px solid var(--beige-dark)!important;border-radius:9px!important;background:#fff!important;font-size:.95rem!important;font-family:"Outfit",sans-serif!important;color:var(--text)!important;outline:none!important;transition:border .3s,box-shadow .3s!important}
+.sib-form-block .input:focus{border-color:var(--coral)!important;box-shadow:0 0 0 4px rgba(201,104,64,.12)!important}
 .sib-form-block .input::placeholder{color:#bbb!important}
-.sib-form-block__button{width:100%;background:var(--coral)!important;color:#fff!important;border:none!important;padding:.85rem 1.5rem!important;border-radius:9px!important;font-size:.95rem!important;font-weight:700!important;font-family:"Inter",sans-serif!important;cursor:pointer;margin-top:.4rem!important;transition:background .2s!important;letter-spacing:.01em}
-.sib-form-block__button:hover{background:var(--coral-dark)!important}
+.sib-form-block__button{width:100%;background:var(--coral)!important;color:#fff!important;border:none!important;padding:.85rem 1.5rem!important;border-radius:9px!important;font-size:.95rem!important;font-weight:700!important;font-family:"Outfit",sans-serif!important;cursor:pointer;margin-top:.4rem!important;transition:background .2s,transform .2s,box-shadow .2s!important;letter-spacing:.01em;position:relative;overflow:hidden;animation:pulseGlow 3s ease-in-out infinite!important}
+.sib-form-block__button:hover{background:var(--coral-dark)!important;transform:translateY(-1px)!important}
+.sib-form-block__button:active{transform:translateY(0) scale(.98)!important}
 #sib-container a,#sib-container2 a{color:var(--coral)!important;text-decoration:none!important}
-.entry__error{border-radius:9px!important;font-family:"Inter",sans-serif!important}
-#success-message,#success-message2{background:#e8f5ee!important;border-color:var(--sage)!important;color:#085229!important;border-radius:9px!important;font-family:"Inter",sans-serif!important}
+.entry__error{border-radius:9px!important;font-family:"Outfit",sans-serif!important}
+#success-message,#success-message2{background:#e8f5ee!important;border-color:var(--sage)!important;color:#085229!important;border-radius:9px!important;font-family:"Outfit",sans-serif!important}
 .form__entry{margin-bottom:.5rem}
 .fn{font-size:.72rem;color:var(--muted);margin-top:.6rem;display:flex;align-items:center;gap:.3rem}
 
 /* Dark form overrides */
 .ks-form-wrap .sib-form-block .input{border-color:rgba(255,255,255,.15)!important;background:rgba(255,255,255,.07)!important;color:#fff!important}
 .ks-form-wrap .sib-form-block .input::placeholder{color:rgba(255,255,255,.3)!important}
-.ks-form-wrap .sib-form-block .input:focus{border-color:var(--coral)!important}
+.ks-form-wrap .sib-form-block .input:focus{border-color:var(--coral)!important;box-shadow:0 0 0 4px rgba(201,104,64,.15)!important}
 .ks-form-wrap .fn{color:rgba(255,255,255,.35)}
 
 /* ─── FOOTER ─── */
-footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 2rem}
+footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 2rem;position:relative;z-index:1}
 .footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .footer-logo{display:flex;align-items:center;gap:.5rem;text-decoration:none}
-.footer-logo-icon{width:28px;height:28px;background:rgba(255,255,255,.15);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.footer-logo-icon svg{width:14px;height:14px}
+.footer-logo-icon{width:28px;height:28px;flex-shrink:0}
+.footer-logo-icon img{width:100%;height:100%;object-fit:contain;border-radius:6px}
 .footer-logo-text{font-family:"Playfair Display",serif;font-size:1.05rem;color:rgba(255,255,255,.6);line-height:1}
 .footer-logo-text em{font-style:normal;color:var(--coral)}
 .footer-copy{font-size:.8rem;color:rgba(255,255,255,.35)}
@@ -211,24 +343,31 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
   .showcase-inner{padding:4rem 1.5rem}
   .specs-inner{padding:4rem 1.5rem}
   .ks-bg{padding:5rem 1.5rem}
+  .eink-device{max-width:340px}
 }
 @media(max-width:480px){
   .trust-bar-inner{gap:1rem}
   .tb-val{font-size:.95rem}
   .fg{grid-template-columns:1fr}
   .wg{grid-template-columns:1fr 1fr}
+  .eink-device{max-width:280px}
+  .eink-bezel{padding:8px;border-radius:10px}
 }
 </style>
 </head>
 <body>
 
+<!-- Decorative layers -->
+<div class="grain"></div>
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
 <!-- ─── NAV ─── -->
 <nav>
   <a href="#" class="nav-logo">
     <div class="nav-logo-icon">
-      <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <polyline points="3,9 7,13 15,5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <img src="assets/icon.png" alt="StickINK Icon" width="36" height="36"/>
     </div>
     <span class="nav-logo-text">Stick<em>INK</em></span>
   </a>
@@ -237,16 +376,25 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
       <button class="lang-btn active" id="btn-de" onclick="setLang('de')" aria-pressed="true">DE</button>
       <button class="lang-btn" id="btn-en" onclick="setLang('en')" aria-pressed="false">EN</button>
     </div>
-    <a href="#waitlist" class="ncta" data-de="Jetzt vormerken →" data-en="Join Waitlist →">Jetzt vormerken →</a>
+    <a href="#waitlist" class="ncta" data-de="Jetzt vormerken &#8594;" data-en="Join Waitlist &#8594;">Jetzt vormerken &#8594;</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#waitlist" class="ncta" data-de="Jetzt vormerken &#8594;" data-en="Join Waitlist &#8594;" onclick="document.getElementById('mobile-menu').classList.remove('open');document.getElementById('hamburger').classList.remove('open')">Jetzt vormerken &#8594;</a>
+</div>
+
 <!-- ─── HERO ─── -->
 <section class="hero">
-  <div class="hero-text fade-in">
-    <div class="badge" data-de="🚀 Bald auf Kickstarter" data-en="🚀 Coming to Kickstarter">🚀 Bald auf Kickstarter</div>
+  <div class="hero-glow" id="hero-glow"></div>
+  <div class="hero-text">
+    <div class="badge" data-de="&#128640; Bald auf Kickstarter" data-en="&#128640; Coming to Kickstarter">&#128640; Bald auf Kickstarter</div>
     <h1 data-de="Kein Bildschirm.<br>Keine Ablenkung.<br><em>Nur das Wesentliche.</em>" data-en="No Screen.<br>No Noise.<br><em>Just What Matters.</em>">Kein Bildschirm.<br>Keine Ablenkung.<br><em>Nur das Wesentliche.</em></h1>
-    <p class="hero-sub" data-de="StickINK verwandelt ein 7,5&quot; E-Ink Display in ein immer sichtbares Dashboard – Uhrzeit, Wetter, To-Dos und Aktienkurse. Kein Flimmern. Kein Strom im Standby. Immer im Blick." data-en="StickINK turns a 7.5&quot; E-Ink display into an always-visible dashboard – time, weather, tasks, and stock prices. No flicker. Zero power in standby. Always in sight.">StickINK verwandelt ein 7,5" E-Ink Display in ein immer sichtbares Dashboard – Uhrzeit, Wetter, To-Dos und Aktienkurse. Kein Flimmern. Kein Strom im Standby. Immer im Blick.</p>
+    <p class="hero-sub" data-de="StickINK verwandelt ein 7,5&quot; E-Ink Display in ein immer sichtbares Dashboard &#8211; Uhrzeit, Wetter, To-Dos und Aktienkurse. Kein Flimmern. Kein Strom im Standby. Immer im Blick." data-en="StickINK turns a 7.5&quot; E-Ink display into an always-visible dashboard &#8211; time, weather, tasks, and stock prices. No flicker. Zero power in standby. Always in sight.">StickINK verwandelt ein 7,5" E-Ink Display in ein immer sichtbares Dashboard &#8211; Uhrzeit, Wetter, To-Dos und Aktienkurse. Kein Flimmern. Kein Strom im Standby. Immer im Blick.</p>
 
     <!-- Waitlist Form -->
     <div id="waitlist">
@@ -289,7 +437,7 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
                       <div class="entry__choice" style="">
                         <label>
                           <input type="checkbox" class="input_replaced" value="1" id="OPT_IN" name="OPT_IN" required />
-                          <span class="checkbox checkbox_tick_positive" style="margin-left:"></span><span style="font-size:13px; text-align:left; font-family:Helvetica, sans-serif; color:#3C4858; background-color:transparent;"><p data-de="Ich stimme zu, dass meine E-Mail-Adresse zur Benachrichtigung über den StickINK Kickstarter-Launch gespeichert wird." data-en="I agree that my email address will be stored to notify me about the StickINK Kickstarter launch.">Ich stimme zu, dass meine E-Mail-Adresse zur Benachrichtigung über den StickINK Kickstarter-Launch gespeichert wird.</p></span>
+                          <span class="checkbox checkbox_tick_positive" style="margin-left:"></span><span style="font-size:13px; text-align:left; font-family:Helvetica, sans-serif; color:#3C4858; background-color:transparent;"><p data-de="Ich stimme zu, dass meine E-Mail-Adresse zur Benachrichtigung &uuml;ber den StickINK Kickstarter-Launch gespeichert wird." data-en="I agree that my email address will be stored to notify me about the StickINK Kickstarter launch.">Ich stimme zu, dass meine E-Mail-Adresse zur Benachrichtigung &uuml;ber den StickINK Kickstarter-Launch gespeichert wird.</p></span>
                         </label>
                       </div>
                     </div>
@@ -301,7 +449,7 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
                 <div class="sib-form-block" style="text-align: left">
                   <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
                     <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512"><path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"/></svg>
-                    <span data-de="Beim Launch dabei sein →" data-en="Notify Me at Launch →">Beim Launch dabei sein →</span>
+                    <span data-de="Beim Launch dabei sein &#8594;" data-en="Notify Me at Launch &#8594;">Beim Launch dabei sein &#8594;</span>
                   </button>
                 </div>
               </div>
@@ -314,113 +462,161 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
     </div>
 
     <div class="trust-inline">
-      <div class="ti"><span class="ti-dot"></span><span data-de="🔋 Kein Strom im Standby" data-en="🔋 Zero Power Standby">🔋 Kein Strom im Standby</span></div>
-      <div class="ti"><span class="ti-dot"></span><span data-de="🔌 Plug &amp; Play via USB" data-en="🔌 Plug &amp; Play via USB">🔌 Plug &amp; Play via USB</span></div>
-      <div class="ti"><span class="ti-dot"></span><span data-de="🇩🇪 Handmade in Germany" data-en="🇩🇪 Handmade in Germany">🇩🇪 Handmade in Germany</span></div>
+      <div class="ti"><span class="ti-dot"></span><span data-de="&#128267; Kein Strom im Standby" data-en="&#128267; Zero Power Standby">&#128267; Kein Strom im Standby</span></div>
+      <div class="ti"><span class="ti-dot"></span><span data-de="&#128268; Plug &amp; Play via USB" data-en="&#128268; Plug &amp; Play via USB">&#128268; Plug &amp; Play via USB</span></div>
+      <div class="ti"><span class="ti-dot"></span><span data-de="&#127465;&#127466; Handmade in Germany" data-en="&#127465;&#127466; Handmade in Germany">&#127465;&#127466; Handmade in Germany</span></div>
     </div>
   </div>
 
-  <div class="hero-visual fade-in" style="transition-delay:.15s">
-    <div class="product-placeholder">
-      <span class="ph-icon">📷</span>
-      <p data-de="Produktfotos folgen in Kürze" data-en="Product photos coming soon">Produktfotos folgen in Kürze</p>
-      <small data-de="7,5&quot; E-Ink Display Dashboard" data-en="7.5&quot; E-Ink Display Dashboard">7,5" E-Ink Display Dashboard</small>
+  <div class="hero-visual">
+    <div class="eink-device">
+      <div class="eink-bezel">
+        <div class="eink-screen">
+          <div class="eink-grid">
+            <div class="eink-widget eink-clock">
+              <span class="eink-time" id="mockup-time">14:35</span>
+              <span class="eink-date" data-de="Mo, 7. M&#228;r" data-en="Mon, Mar 7">Mo, 7. M&#228;r</span>
+            </div>
+            <div class="eink-widget eink-weather">
+              <span class="eink-wicon">&#9729;&#65039;</span>
+              <span class="eink-temp">12&#176;C</span>
+              <span class="eink-city">Hamburg</span>
+            </div>
+            <div class="eink-widget eink-todos">
+              <div class="eink-todo done">Meeting 10:00</div>
+              <div class="eink-todo">Code Review</div>
+              <div class="eink-todo">E-Mails</div>
+            </div>
+            <div class="eink-widget eink-stocks">
+              <div class="eink-stock">
+                <span>AAPL</span>
+                <span class="eink-change up">+1.2%</span>
+              </div>
+              <div class="eink-stock">
+                <span>BTC-USD</span>
+                <span class="eink-change down">-0.8%</span>
+              </div>
+              <div class="eink-stock">
+                <span>EURUSD</span>
+                <span class="eink-change up">+0.3%</span>
+              </div>
+            </div>
+          </div>
+          <div class="eink-refresh-overlay"></div>
+        </div>
+      </div>
+      <div class="eink-shadow"></div>
+      <p class="eink-label" data-de="7,5&quot; E-Ink &#183; 800&#215;480px &#183; 16 Graustufen" data-en="7.5&quot; E-Ink &#183; 800&#215;480px &#183; 16 Grayscale">7,5" E-Ink &#183; 800&#215;480px &#183; 16 Graustufen</p>
     </div>
   </div>
 </section>
 
+<!-- ─── WAVE DIVIDER ─── -->
+<div class="wave-divider" style="margin-top:-2px">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,20 1440,30 L1440,60 L0,60 Z" fill="#ffffff"/>
+  </svg>
+</div>
+
 <!-- ─── TRUST BAR ─── -->
-<div class="trust-bar fade-in">
+<div class="trust-bar reveal">
   <div class="trust-bar-inner">
     <div class="tb-item">
-      <span class="tb-val">0 W</span>
+      <span class="tb-val" data-count="0" data-suffix=" W">0 W</span>
       <span class="tb-label" data-de="Standby-Verbrauch" data-en="Standby Power">Standby-Verbrauch</span>
     </div>
     <div class="tb-sep"></div>
     <div class="tb-item">
-      <span class="tb-val">7,5"</span>
+      <span class="tb-val" data-count="7.5" data-suffix="&quot;" data-decimal="," >7,5"</span>
       <span class="tb-label">E-Ink Display</span>
     </div>
     <div class="tb-sep"></div>
     <div class="tb-item">
-      <span class="tb-val">16</span>
+      <span class="tb-val" data-count="16">16</span>
       <span class="tb-label" data-de="Graustufen" data-en="Grayscale levels">Graustufen</span>
     </div>
     <div class="tb-sep"></div>
     <div class="tb-item">
       <span class="tb-val">Plug&amp;Play</span>
-      <span class="tb-label" data-de="USB · kein Installer" data-en="USB · no install">USB · kein Installer</span>
+      <span class="tb-label" data-de="USB &#183; kein Installer" data-en="USB &#183; no install">USB &#183; kein Installer</span>
     </div>
     <div class="tb-sep"></div>
     <div class="tb-item">
-      <span class="tb-val">4</span>
+      <span class="tb-val" data-count="4">4</span>
       <span class="tb-label" data-de="individuelle Screens" data-en="Custom Screens">individuelle Screens</span>
     </div>
   </div>
 </div>
 
 <!-- ─── PROBLEM / SOLUTION ─── -->
-<div class="prob-sol fade-in">
-  <div class="ps-card problem">
-    <div class="ps-label"><span>⚠</span><span data-de="Das Problem" data-en="The Problem">Das Problem</span></div>
+<div class="prob-sol">
+  <div class="ps-card problem reveal-left">
+    <div class="ps-label"><span>&#9888;</span><span data-de="Das Problem" data-en="The Problem">Das Problem</span></div>
     <h3 data-de="Dein Schreibtisch lenkt dich ab." data-en="Your desk is full of distractions.">Dein Schreibtisch lenkt dich ab.</h3>
-    <p data-de="Bildschirme blinken, Notifications summen, Browser-Tabs häufen sich. Du weißt was wichtig ist – aber du siehst es nie wirklich." data-en="Screens flicker, notifications buzz, browser tabs pile up. You know what's important – but you never really see it.">Bildschirme blinken, Notifications summen, Browser-Tabs häufen sich. Du weißt was wichtig ist – aber du siehst es nie wirklich.</p>
+    <p data-de="Bildschirme blinken, Notifications summen, Browser-Tabs h&#228;ufen sich. Du wei&#223;t was wichtig ist &#8211; aber du siehst es nie wirklich." data-en="Screens flicker, notifications buzz, browser tabs pile up. You know what's important &#8211; but you never really see it.">Bildschirme blinken, Notifications summen, Browser-Tabs h&#228;ufen sich. Du wei&#223;t was wichtig ist &#8211; aber du siehst es nie wirklich.</p>
     <ul class="ps-list">
       <li data-de="Zu viele Ablenkungen auf dem Monitor" data-en="Too many distractions on your main screen">Zu viele Ablenkungen auf dem Monitor</li>
-      <li data-de="Ständige Unterbrechungen durch Notifications" data-en="Constant interruptions from notifications">Ständige Unterbrechungen durch Notifications</li>
-      <li data-de="Bildschirm-Ermüdung nach langen Arbeitstagen" data-en="Eye strain after long working days">Bildschirm-Ermüdung nach langen Arbeitstagen</li>
-      <li data-de="Wichtige Infos gehen im Lärm unter" data-en="Important info gets lost in the noise">Wichtige Infos gehen im Lärm unter</li>
+      <li data-de="St&#228;ndige Unterbrechungen durch Notifications" data-en="Constant interruptions from notifications">St&#228;ndige Unterbrechungen durch Notifications</li>
+      <li data-de="Bildschirm-Erm&#252;dung nach langen Arbeitstagen" data-en="Eye strain after long working days">Bildschirm-Erm&#252;dung nach langen Arbeitstagen</li>
+      <li data-de="Wichtige Infos gehen im L&#228;rm unter" data-en="Important info gets lost in the noise">Wichtige Infos gehen im L&#228;rm unter</li>
     </ul>
   </div>
-  <div class="ps-card solution">
-    <div class="ps-label"><span>✦</span><span data-de="Die Lösung" data-en="The Solution">Die Lösung</span></div>
-    <h3 data-de="StickINK zeigt nur was zählt." data-en="StickINK shows only what counts.">StickINK zeigt nur was zählt.</h3>
-    <p data-de="Ein ruhiges, papierähnliches E-Ink Display neben deinem Monitor. Immer sichtbar, nie ablenkend – dein persönliches Dashboard ohne Strom und ohne Lärm." data-en="A calm, paper-like E-Ink display next to your monitor. Always visible, never distracting – your personal dashboard with zero power and zero noise.">Ein ruhiges, papierähnliches E-Ink Display neben deinem Monitor. Immer sichtbar, nie ablenkend – dein persönliches Dashboard ohne Strom und ohne Lärm.</p>
+  <div class="ps-card solution reveal-right" style="transition-delay:.15s">
+    <div class="ps-label"><span>&#10022;</span><span data-de="Die L&#246;sung" data-en="The Solution">Die L&#246;sung</span></div>
+    <h3 data-de="StickINK zeigt nur was z&#228;hlt." data-en="StickINK shows only what counts.">StickINK zeigt nur was z&#228;hlt.</h3>
+    <p data-de="Ein ruhiges, papier&#228;hnliches E-Ink Display neben deinem Monitor. Immer sichtbar, nie ablenkend &#8211; dein pers&#246;nliches Dashboard ohne Strom und ohne L&#228;rm." data-en="A calm, paper-like E-Ink display next to your monitor. Always visible, never distracting &#8211; your personal dashboard with zero power and zero noise.">Ein ruhiges, papier&#228;hnliches E-Ink Display neben deinem Monitor. Immer sichtbar, nie ablenkend &#8211; dein pers&#246;nliches Dashboard ohne Strom und ohne L&#228;rm.</p>
     <ul class="ps-list">
       <li data-de="Ruhig und ablenkungsfrei wie Papier" data-en="Calm and distraction-free like paper">Ruhig und ablenkungsfrei wie Papier</li>
-      <li data-de="Kein Strom im Standby – bistabile E-Ink Technologie" data-en="Zero power in standby – bistable E-Ink technology">Kein Strom im Standby – bistabile E-Ink Technologie</li>
+      <li data-de="Kein Strom im Standby &#8211; bistabile E-Ink Technologie" data-en="Zero power in standby &#8211; bistable E-Ink technology">Kein Strom im Standby &#8211; bistabile E-Ink Technologie</li>
       <li data-de="Deine wichtigsten Infos immer im Blick" data-en="Your most important info always in sight">Deine wichtigsten Infos immer im Blick</li>
-      <li data-de="Einmalig verbinden, für immer konfiguriert" data-en="Connect once, configured forever">Einmalig verbinden, für immer konfiguriert</li>
+      <li data-de="Einmalig verbinden, f&#252;r immer konfiguriert" data-en="Connect once, configured forever">Einmalig verbinden, f&#252;r immer konfiguriert</li>
     </ul>
   </div>
+</div>
+
+<!-- ─── WAVE DIVIDER ─── -->
+<div class="wave-divider" style="margin-bottom:-2px">
+  <svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,24 C240,48 480,0 720,24 C960,48 1200,0 1440,24 L1440,48 L0,48 Z" fill="var(--beige)"/>
+  </svg>
 </div>
 
 <!-- ─── FEATURES ─── -->
 <section class="features-bg">
   <div class="sec sec-center">
-    <div class="sl fade-in" data-de="Warum StickINK" data-en="Why StickINK">Warum StickINK</div>
-    <h2 class="fade-in" data-de="Informiert. Ohne abgelenkt zu sein." data-en="Informed. Without the Distraction.">Informiert. Ohne abgelenkt zu sein.</h2>
-    <p class="sec-desc fade-in" data-de="Ein klassischer Monitor strahlt, blinkt und lenkt ab. StickINK zeigt nur das Wichtigste – papierähnlich, blendarm und energiesparend." data-en="A regular monitor radiates, blinks, and distracts. StickINK shows only what matters – paper-like, glare-free, and energy-efficient.">Ein klassischer Monitor strahlt, blinkt und lenkt ab. StickINK zeigt nur das Wichtigste – papierähnlich, blendarm und energiesparend.</p>
+    <div class="sl reveal" data-de="Warum StickINK" data-en="Why StickINK">Warum StickINK</div>
+    <h2 class="reveal" style="transition-delay:.08s" data-de="Informiert. Ohne abgelenkt zu sein." data-en="Informed. Without the Distraction.">Informiert. Ohne abgelenkt zu sein.</h2>
+    <p class="sec-desc reveal" style="transition-delay:.16s" data-de="Ein klassischer Monitor strahlt, blinkt und lenkt ab. StickINK zeigt nur das Wichtigste &#8211; papier&#228;hnlich, blendarm und energiesparend." data-en="A regular monitor radiates, blinks, and distracts. StickINK shows only what matters &#8211; paper-like, glare-free, and energy-efficient.">Ein klassischer Monitor strahlt, blinkt und lenkt ab. StickINK zeigt nur das Wichtigste &#8211; papier&#228;hnlich, blendarm und energiesparend.</p>
     <div class="fg">
-      <div class="fc fade-in">
-        <div class="fi ic">🔋</div>
+      <div class="fc reveal">
+        <div class="fi ic">&#128267;</div>
         <h3 data-de="Kein Strom im Standby" data-en="Zero Power Standby">Kein Strom im Standby</h3>
-        <p data-de="E-Ink ist bistabil: Das Bild bleibt ohne Strom – genau wie gedrucktes Papier. Strom wird nur beim Aktualisieren benötigt." data-en="E-Ink is bistable: the image stays without power – just like printed paper. Power is only used when updating.">E-Ink ist bistabil: Das Bild bleibt ohne Strom – genau wie gedrucktes Papier. Strom wird nur beim Aktualisieren benötigt.</p>
+        <p data-de="E-Ink ist bistabil: Das Bild bleibt ohne Strom &#8211; genau wie gedrucktes Papier. Strom wird nur beim Aktualisieren ben&#246;tigt." data-en="E-Ink is bistable: the image stays without power &#8211; just like printed paper. Power is only used when updating.">E-Ink ist bistabil: Das Bild bleibt ohne Strom &#8211; genau wie gedrucktes Papier. Strom wird nur beim Aktualisieren ben&#246;tigt.</p>
       </div>
-      <div class="fc fade-in" style="transition-delay:.07s">
-        <div class="fi is">👁️</div>
+      <div class="fc reveal" style="transition-delay:.08s">
+        <div class="fi is">&#128065;&#65039;</div>
         <h3 data-de="Blendarm wie Papier" data-en="Easy on the Eyes">Blendarm wie Papier</h3>
-        <p data-de="Kein Flimmern, keine Hintergrundbeleuchtung. Angenehm für die Augen – auch nach einem langen Arbeitstag vor dem Monitor." data-en="No flicker, no backlight. Gentle on the eyes – even after a long day in front of your computer.">Kein Flimmern, keine Hintergrundbeleuchtung. Angenehm für die Augen – auch nach einem langen Arbeitstag vor dem Monitor.</p>
+        <p data-de="Kein Flimmern, keine Hintergrundbeleuchtung. Angenehm f&#252;r die Augen &#8211; auch nach einem langen Arbeitstag vor dem Monitor." data-en="No flicker, no backlight. Gentle on the eyes &#8211; even after a long day in front of your computer.">Kein Flimmern, keine Hintergrundbeleuchtung. Angenehm f&#252;r die Augen &#8211; auch nach einem langen Arbeitstag vor dem Monitor.</p>
       </div>
-      <div class="fc fade-in" style="transition-delay:.14s">
-        <div class="fi id">🔌</div>
+      <div class="fc reveal" style="transition-delay:.16s">
+        <div class="fi id">&#128268;</div>
         <h3 data-de="Plug &amp; Play" data-en="Plug &amp; Play">Plug &amp; Play</h3>
-        <p data-de="USB verbinden, StickINK.exe doppelklicken – sofort einsatzbereit. Kein Installer, kein Python, keine Konfiguration." data-en="Connect via USB, double-click StickINK.exe – ready instantly. No installer, no Python, no configuration.">USB verbinden, StickINK.exe doppelklicken – sofort einsatzbereit. Kein Installer, kein Python, keine Konfiguration.</p>
+        <p data-de="USB verbinden, StickINK.exe doppelklicken &#8211; sofort einsatzbereit. Kein Installer, kein Python, keine Konfiguration." data-en="Connect via USB, double-click StickINK.exe &#8211; ready instantly. No installer, no Python, no configuration.">USB verbinden, StickINK.exe doppelklicken &#8211; sofort einsatzbereit. Kein Installer, kein Python, keine Konfiguration.</p>
       </div>
-      <div class="fc fade-in" style="transition-delay:.07s">
-        <div class="fi ic">🎛️</div>
+      <div class="fc reveal" style="transition-delay:.08s">
+        <div class="fi ic">&#127899;&#65039;</div>
         <h3 data-de="4 individuelle Screens" data-en="4 Custom Screens">4 individuelle Screens</h3>
-        <p data-de="Wechsle zwischen Layouts – Arbeit, Privat, Finanzen, Morgenroutine. Jeder Screen individuell konfigurierbar und gespeichert." data-en="Switch between layouts – work, personal, finances, morning routine. Each screen individually configurable and saved.">Wechsle zwischen Layouts – Arbeit, Privat, Finanzen, Morgenroutine. Jeder Screen individuell konfigurierbar und gespeichert.</p>
+        <p data-de="Wechsle zwischen Layouts &#8211; Arbeit, Privat, Finanzen, Morgenroutine. Jeder Screen individuell konfigurierbar und gespeichert." data-en="Switch between layouts &#8211; work, personal, finances, morning routine. Each screen individually configurable and saved.">Wechsle zwischen Layouts &#8211; Arbeit, Privat, Finanzen, Morgenroutine. Jeder Screen individuell konfigurierbar und gespeichert.</p>
       </div>
-      <div class="fc fade-in" style="transition-delay:.14s">
-        <div class="fi is">⚡</div>
+      <div class="fc reveal" style="transition-delay:.16s">
+        <div class="fi is">&#9889;</div>
         <h3 data-de="Smart Auto-Refresh" data-en="Smart Auto-Refresh">Smart Auto-Refresh</h3>
-        <p data-de="Wetter, Aktien und Uhrzeit aktualisieren sich automatisch. Das Display wird nur neu gezeichnet, wenn sich wirklich etwas ändert." data-en="Weather, stocks, and time update automatically. The display only redraws when something actually changes.">Wetter, Aktien und Uhrzeit aktualisieren sich automatisch. Das Display wird nur neu gezeichnet, wenn sich wirklich etwas ändert.</p>
+        <p data-de="Wetter, Aktien und Uhrzeit aktualisieren sich automatisch. Das Display wird nur neu gezeichnet, wenn sich wirklich etwas &#228;ndert." data-en="Weather, stocks, and time update automatically. The display only redraws when something actually changes.">Wetter, Aktien und Uhrzeit aktualisieren sich automatisch. Das Display wird nur neu gezeichnet, wenn sich wirklich etwas &#228;ndert.</p>
       </div>
-      <div class="fc fade-in" style="transition-delay:.21s">
-        <div class="fi ib">🖼️</div>
+      <div class="fc reveal" style="transition-delay:.24s">
+        <div class="fi ib">&#128444;&#65039;</div>
         <h3 data-de="Eigene Bilder" data-en="Custom Images">Eigene Bilder</h3>
-        <p data-de="Lade dein Lieblingsfoto hoch – Floyd-Steinberg Dithering sorgt für perfekte E-Ink-Darstellung in 16 Graustufen." data-en="Upload your favorite photo – Floyd-Steinberg dithering ensures perfect E-Ink rendering in 16 grayscale levels.">Lade dein Lieblingsfoto hoch – Floyd-Steinberg Dithering sorgt für perfekte E-Ink-Darstellung in 16 Graustufen.</p>
+        <p data-de="Lade dein Lieblingsfoto hoch &#8211; Floyd-Steinberg Dithering sorgt f&#252;r perfekte E-Ink-Darstellung in 16 Graustufen." data-en="Upload your favorite photo &#8211; Floyd-Steinberg dithering ensures perfect E-Ink rendering in 16 grayscale levels.">Lade dein Lieblingsfoto hoch &#8211; Floyd-Steinberg Dithering sorgt f&#252;r perfekte E-Ink-Darstellung in 16 Graustufen.</p>
       </div>
     </div>
   </div>
@@ -429,19 +625,19 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 <!-- ─── APP SHOWCASE ─── -->
 <div class="showcase-bg">
   <div class="showcase-inner">
-    <div class="fade-in">
+    <div class="reveal-left">
       <img src="assets/programm.jpg" alt="StickINK App Screenshot" class="showcase-img"/>
     </div>
-    <div class="showcase-text fade-in" style="transition-delay:.1s">
+    <div class="showcase-text reveal-right" style="transition-delay:.15s">
       <div class="sl" data-de="Die App" data-en="The App">Die App</div>
       <h2 data-de="Einfach. Sofort. Dein Dashboard." data-en="Simple. Instant. Your Dashboard.">Einfach. Sofort. Dein Dashboard.</h2>
-      <p data-de="Die StickINK Desktop-App läuft auf Windows 10 &amp; 11 – ohne Installation, direkt per Doppelklick. Konfiguriere deine Widgets, wähle dein Layout und schick es per USB ans Display." data-en="The StickINK desktop app runs on Windows 10 &amp; 11 – no installation, just double-click. Configure your widgets, choose your layout and send it via USB to the display.">Die StickINK Desktop-App läuft auf Windows 10 &amp; 11 – ohne Installation, direkt per Doppelklick. Konfiguriere deine Widgets, wähle dein Layout und schick es per USB ans Display.</p>
+      <p data-de="Die StickINK Desktop-App l&#228;uft auf Windows 10 &amp; 11 &#8211; ohne Installation, direkt per Doppelklick. Konfiguriere deine Widgets, w&#228;hle dein Layout und schick es per USB ans Display." data-en="The StickINK desktop app runs on Windows 10 &amp; 11 &#8211; no installation, just double-click. Configure your widgets, choose your layout and send it via USB to the display.">Die StickINK Desktop-App l&#228;uft auf Windows 10 &amp; 11 &#8211; ohne Installation, direkt per Doppelklick. Konfiguriere deine Widgets, w&#228;hle dein Layout und schick es per USB ans Display.</p>
       <ul class="feature-list">
         <li data-de="Live-Vorschau in der App vor dem Senden" data-en="Live preview in the app before sending">Live-Vorschau in der App vor dem Senden</li>
         <li data-de="Bis zu 4 gespeicherte Screen-Konfigurationen" data-en="Up to 4 saved screen configurations">Bis zu 4 gespeicherte Screen-Konfigurationen</li>
         <li data-de="Auto-Modus mit konfigurierbarem Intervall" data-en="Auto mode with configurable interval">Auto-Modus mit konfigurierbarem Intervall</li>
-        <li data-de="Smart Refresh: sendet nur bei tatsächlichen Änderungen" data-en="Smart Refresh: only sends on actual changes">Smart Refresh: sendet nur bei tatsächlichen Änderungen</li>
-        <li data-de="Portable ZIP – kein Installer, kein Python nötig" data-en="Portable ZIP – no installer, no Python required">Portable ZIP – kein Installer, kein Python nötig</li>
+        <li data-de="Smart Refresh: sendet nur bei tats&#228;chlichen &#196;nderungen" data-en="Smart Refresh: only sends on actual changes">Smart Refresh: sendet nur bei tats&#228;chlichen &#196;nderungen</li>
+        <li data-de="Portable ZIP &#8211; kein Installer, kein Python n&#246;tig" data-en="Portable ZIP &#8211; no installer, no Python required">Portable ZIP &#8211; kein Installer, kein Python n&#246;tig</li>
       </ul>
     </div>
   </div>
@@ -450,64 +646,71 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 <!-- ─── WIDGETS ─── -->
 <section class="widgets-bg">
   <div class="sec sec-center">
-    <div class="sl fade-in" data-de="Widgets" data-en="Widgets">Widgets</div>
-    <h2 class="fade-in" data-de="Alles was du brauchst. Nichts was du nicht brauchst." data-en="Everything You Need. Nothing You Don't.">Alles was du brauchst. Nichts was du nicht brauchst.</h2>
-    <p class="sec-desc fade-in" data-de="Wähle aus 6 Widgets die dir wichtig sind und stelle dein persönliches Dashboard zusammen." data-en="Pick the 6 widgets that matter to you and build your personal dashboard.">Wähle aus 6 Widgets die dir wichtig sind und stelle dein persönliches Dashboard zusammen.</p>
+    <div class="sl reveal" data-de="Widgets" data-en="Widgets">Widgets</div>
+    <h2 class="reveal" style="transition-delay:.08s" data-de="Alles was du brauchst. Nichts was du nicht brauchst." data-en="Everything You Need. Nothing You Don't.">Alles was du brauchst. Nichts was du nicht brauchst.</h2>
+    <p class="sec-desc reveal" style="transition-delay:.16s" data-de="W&#228;hle aus 6 Widgets die dir wichtig sind und stelle dein pers&#246;nliches Dashboard zusammen." data-en="Pick the 6 widgets that matter to you and build your personal dashboard.">W&#228;hle aus 6 Widgets die dir wichtig sind und stelle dein pers&#246;nliches Dashboard zusammen.</p>
     <div class="wg">
-      <div class="wc fade-in">
-        <div class="wc-top"><span class="wc-icon">🕐</span></div>
+      <div class="wc reveal">
+        <div class="wc-top"><span class="wc-icon">&#128336;</span></div>
         <h3 data-de="Uhr" data-en="Clock">Uhr</h3>
-        <p data-de="Digital, analog oder beides kombiniert – mit Datum" data-en="Digital, analog, or both – with date display">Digital, analog oder beides kombiniert – mit Datum</p>
+        <p data-de="Digital, analog oder beides kombiniert &#8211; mit Datum" data-en="Digital, analog, or both &#8211; with date display">Digital, analog oder beides kombiniert &#8211; mit Datum</p>
       </div>
-      <div class="wc fade-in" style="transition-delay:.06s">
-        <div class="wc-top"><span class="wc-icon">⛅</span></div>
+      <div class="wc reveal" style="transition-delay:.06s">
+        <div class="wc-top"><span class="wc-icon">&#9925;</span></div>
         <h3 data-de="Wetter" data-en="Weather">Wetter</h3>
         <p data-de="Aktuell, 3-Tage-Vorschau oder Stundenansicht" data-en="Current, 3-day forecast, or hourly view">Aktuell, 3-Tage-Vorschau oder Stundenansicht</p>
       </div>
-      <div class="wc fade-in" style="transition-delay:.12s">
-        <div class="wc-top"><span class="wc-icon">✅</span></div>
+      <div class="wc reveal" style="transition-delay:.12s">
+        <div class="wc-top"><span class="wc-icon">&#9989;</span></div>
         <h3 data-de="To-Do Liste" data-en="To-Do List">To-Do Liste</h3>
-        <p data-de="Aufgaben verwalten und abhaken – wird gespeichert" data-en="Manage and check off tasks – automatically saved">Aufgaben verwalten und abhaken – wird gespeichert</p>
+        <p data-de="Aufgaben verwalten und abhaken &#8211; wird gespeichert" data-en="Manage and check off tasks &#8211; automatically saved">Aufgaben verwalten und abhaken &#8211; wird gespeichert</p>
       </div>
-      <div class="wc fade-in" style="transition-delay:.06s">
-        <div class="wc-top"><span class="wc-icon">📈</span></div>
+      <div class="wc reveal" style="transition-delay:.06s">
+        <div class="wc-top"><span class="wc-icon">&#128200;</span></div>
         <h3 data-de="Aktien &amp; Krypto" data-en="Stocks &amp; Crypto">Aktien &amp; Krypto</h3>
-        <p data-de="AAPL, BTC-USD, EURUSD &amp; mehr – frei konfigurierbar" data-en="AAPL, BTC-USD, EURUSD &amp; more – freely configurable">AAPL, BTC-USD, EURUSD &amp; mehr – frei konfigurierbar</p>
+        <p data-de="AAPL, BTC-USD, EURUSD &amp; mehr &#8211; frei konfigurierbar" data-en="AAPL, BTC-USD, EURUSD &amp; more &#8211; freely configurable">AAPL, BTC-USD, EURUSD &amp; mehr &#8211; frei konfigurierbar</p>
       </div>
-      <div class="wc fade-in" style="transition-delay:.12s">
-        <div class="wc-top"><span class="wc-icon">🖼️</span></div>
+      <div class="wc reveal" style="transition-delay:.12s">
+        <div class="wc-top"><span class="wc-icon">&#128444;&#65039;</span></div>
         <h3 data-de="Bild-Upload" data-en="Image Upload">Bild-Upload</h3>
         <p data-de="Eigenes Foto hochladen mit Crop-Dialog &amp; Dithering" data-en="Upload your own photo with crop dialog &amp; dithering">Eigenes Foto hochladen mit Crop-Dialog &amp; Dithering</p>
       </div>
-      <div class="wc fade-in" style="transition-delay:.18s">
+      <div class="wc reveal" style="transition-delay:.18s">
         <div class="wc-top">
-          <span class="wc-icon">📅</span>
+          <span class="wc-icon">&#128197;</span>
           <span class="coming-soon" data-de="Bald" data-en="Soon">Bald</span>
         </div>
         <h3 data-de="Kalender" data-en="Calendar">Kalender</h3>
-        <p data-de="Outlook-Integration – in Entwicklung" data-en="Outlook integration – in development">Outlook-Integration – in Entwicklung</p>
+        <p data-de="Outlook-Integration &#8211; in Entwicklung" data-en="Outlook integration &#8211; in development">Outlook-Integration &#8211; in Entwicklung</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ─── WAVE DIVIDER ─── -->
+<div class="wave-divider" style="margin-bottom:-2px">
+  <svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,20 C480,48 960,0 1440,28 L1440,48 L0,48 Z" fill="#ffffff"/>
+  </svg>
+</div>
+
 <!-- ─── SPECS ─── -->
 <div class="specs-bg">
   <div class="specs-inner">
-    <div class="sec-center fade-in" style="padding:0 0 2rem">
+    <div class="sec-center reveal" style="padding:0 0 2rem">
       <div class="sl" data-de="Technische Details" data-en="Technical Details">Technische Details</div>
       <h2 data-de="Hochwertige Hardware. Durchdachte Software." data-en="Premium Hardware. Thoughtful Software.">Hochwertige Hardware. Durchdachte Software.</h2>
     </div>
     <div class="specs-grid">
-      <div class="specs-block fade-in">
+      <div class="specs-block reveal-left">
         <h3 data-de="Hardware" data-en="Hardware">Hardware</h3>
         <div class="spec-row">
           <span class="spec-key" data-de="Display" data-en="Display">Display</span>
           <span class="spec-val">7,5" E-Ink (Seeed Studio)</span>
         </div>
         <div class="spec-row">
-          <span class="spec-key" data-de="Auflösung" data-en="Resolution">Auflösung</span>
-          <span class="spec-val">800 × 480 px</span>
+          <span class="spec-key" data-de="Aufl&#246;sung" data-en="Resolution">Aufl&#246;sung</span>
+          <span class="spec-val">800 &#215; 480 px</span>
         </div>
         <div class="spec-row">
           <span class="spec-key" data-de="Farben" data-en="Colors">Farben</span>
@@ -519,7 +722,7 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
         </div>
         <div class="spec-row">
           <span class="spec-key" data-de="Refresh" data-en="Refresh">Refresh</span>
-          <span class="spec-val" data-de="Full ~2 s · Partial ~0,5 s" data-en="Full ~2 s · Partial ~0.5 s">Full ~2 s · Partial ~0,5 s</span>
+          <span class="spec-val" data-de="Full ~2 s &#183; Partial ~0,5 s" data-en="Full ~2 s &#183; Partial ~0.5 s">Full ~2 s &#183; Partial ~0,5 s</span>
         </div>
         <div class="spec-row">
           <span class="spec-key" data-de="Verbindung" data-en="Connection">Verbindung</span>
@@ -530,7 +733,7 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
           <span class="spec-val">0 W</span>
         </div>
       </div>
-      <div class="specs-block fade-in" style="transition-delay:.1s">
+      <div class="specs-block reveal-right" style="transition-delay:.12s">
         <h3 data-de="Software" data-en="Software">Software</h3>
         <div class="spec-row">
           <span class="spec-key" data-de="Betriebssystem" data-en="Operating System">Betriebssystem</span>
@@ -538,7 +741,7 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
         </div>
         <div class="spec-row">
           <span class="spec-key" data-de="Installation" data-en="Installation">Installation</span>
-          <span class="spec-val" data-de="Kein Installer nötig" data-en="No installer required">Kein Installer nötig</span>
+          <span class="spec-val" data-de="Kein Installer n&#246;tig" data-en="No installer required">Kein Installer n&#246;tig</span>
         </div>
         <div class="spec-row">
           <span class="spec-key" data-de="Screens" data-en="Screens">Screens</span>
@@ -549,7 +752,7 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
           <span class="spec-val" data-de="Open-Meteo (kostenlos)" data-en="Open-Meteo (free)">Open-Meteo (kostenlos)</span>
         </div>
         <div class="spec-row">
-          <span class="spec-key" data-de="Börsen-API" data-en="Stock API">Börsen-API</span>
+          <span class="spec-key" data-de="B&#246;rsen-API" data-en="Stock API">B&#246;rsen-API</span>
           <span class="spec-val" data-de="yfinance (kostenlos)" data-en="yfinance (free)">yfinance (kostenlos)</span>
         </div>
         <div class="spec-row">
@@ -566,36 +769,46 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 </div>
 
 <!-- ─── PRODUCT PLACEHOLDER SECTION ─── -->
-<section style="background:var(--beige);padding:6rem 2rem">
+<section class="product-sec">
   <div style="max-width:1100px;margin:0 auto">
-    <div class="sec-center fade-in" style="margin-bottom:2.5rem">
+    <div class="sec-center reveal" style="margin-bottom:2.5rem">
       <div class="sl" data-de="Das Produkt" data-en="The Product">Das Produkt</div>
-      <h2 data-de="Ein Dashboard für deinen Schreibtisch." data-en="A Dashboard for Your Desk.">Ein Dashboard für deinen Schreibtisch.</h2>
-      <p class="sec-desc" data-de="Professionelle Produktfotos folgen in Kürze. Sei gespannt." data-en="Professional product photos coming soon. Stay tuned.">Professionelle Produktfotos folgen in Kürze. Sei gespannt.</p>
+      <h2 data-de="Ein Dashboard f&#252;r deinen Schreibtisch." data-en="A Dashboard for Your Desk.">Ein Dashboard f&#252;r deinen Schreibtisch.</h2>
+      <p class="sec-desc" data-de="Professionelle Produktfotos folgen in K&#252;rze. Sei gespannt." data-en="Professional product photos coming soon. Stay tuned.">Professionelle Produktfotos folgen in K&#252;rze. Sei gespannt.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem">
-      <div class="product-placeholder fade-in" style="aspect-ratio:1/1">
-        <span class="ph-icon">📷</span>
+    <div class="product-grid">
+      <div class="product-placeholder reveal">
+        <span class="ph-icon">&#128247;</span>
         <p data-de="Frontansicht" data-en="Front View">Frontansicht</p>
       </div>
-      <div class="product-placeholder fade-in" style="aspect-ratio:1/1;transition-delay:.1s">
-        <span class="ph-icon">📷</span>
+      <div class="product-placeholder reveal" style="transition-delay:.1s">
+        <span class="ph-icon">&#128247;</span>
         <p data-de="Am Schreibtisch" data-en="On Desk">Am Schreibtisch</p>
       </div>
-      <div class="product-placeholder fade-in" style="aspect-ratio:1/1;transition-delay:.2s">
-        <span class="ph-icon">📷</span>
+      <div class="product-placeholder reveal" style="transition-delay:.2s">
+        <span class="ph-icon">&#128247;</span>
         <p data-de="Display-Nahaufnahme" data-en="Display Close-up">Display-Nahaufnahme</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ─── BRAND BANNER ─── -->
+<div class="brand-strip">
+  <div class="brand-strip-inner reveal-scale">
+    <div class="brand-banner">
+      <img src="assets/icon_preview.png" alt="StickINK – Make your goals Stick" height="48"/>
+    </div>
+    <p class="brand-tagline" data-de="Dein Dashboard. Deine Regeln. Kein Bildschirm." data-en="Your dashboard. Your rules. No screen.">Dein Dashboard. Deine Regeln. Kein Bildschirm.</p>
+  </div>
+</div>
+
 <!-- ─── KICKSTARTER CTA ─── -->
 <div class="ks-bg">
-  <div class="ks-inner fade-in">
+  <div class="ks-inner reveal-scale">
     <div class="sl" data-de="Kickstarter" data-en="Kickstarter">Kickstarter</div>
     <h2 data-de="Sei dabei wenn wir live gehen." data-en="Be There When We Launch.">Sei dabei wenn wir live gehen.</h2>
-    <p class="ks-desc" data-de="StickINK startet bald auf Kickstarter. Trag dich jetzt in die Warteliste ein – du bekommst als Erstes den Link und sicherst dir Zugang zum günstigsten Early Bird Preis." data-en="StickINK launches on Kickstarter soon. Join the waitlist now – you'll be the first to get the link and secure the best Early Bird price.">StickINK startet bald auf Kickstarter. Trag dich jetzt in die Warteliste ein – du bekommst als Erstes den Link und sicherst dir Zugang zum günstigsten Early Bird Preis.</p>
+    <p class="ks-desc" data-de="StickINK startet bald auf Kickstarter. Trag dich jetzt in die Warteliste ein &#8211; du bekommst als Erstes den Link und sicherst dir Zugang zum g&#252;nstigsten Early Bird Preis." data-en="StickINK launches on Kickstarter soon. Join the waitlist now &#8211; you'll be the first to get the link and secure the best Early Bird price.">StickINK startet bald auf Kickstarter. Trag dich jetzt in die Warteliste ein &#8211; du bekommst als Erstes den Link und sicherst dir Zugang zum g&#252;nstigsten Early Bird Preis.</p>
 
     <div class="ks-form-wrap">
       <div class="sib-form">
@@ -637,7 +850,7 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
                       <div class="entry__choice" style="">
                         <label>
                           <input type="checkbox" class="input_replaced" value="1" id="OPT_IN2" name="OPT_IN" required />
-                          <span class="checkbox checkbox_tick_positive" style="margin-left:"></span><span style="font-size:13px; text-align:left; font-family:Helvetica, sans-serif; color:rgba(255,255,255,0.75); background-color:transparent;"><p data-de="Ich stimme zu, dass meine E-Mail-Adresse zur Benachrichtigung über den StickINK Kickstarter-Launch gespeichert wird." data-en="I agree that my email address will be stored to notify me about the StickINK Kickstarter launch.">Ich stimme zu, dass meine E-Mail-Adresse zur Benachrichtigung über den StickINK Kickstarter-Launch gespeichert wird.</p></span>
+                          <span class="checkbox checkbox_tick_positive" style="margin-left:"></span><span style="font-size:13px; text-align:left; font-family:Helvetica, sans-serif; color:rgba(255,255,255,0.75); background-color:transparent;"><p data-de="Ich stimme zu, dass meine E-Mail-Adresse zur Benachrichtigung &uuml;ber den StickINK Kickstarter-Launch gespeichert wird." data-en="I agree that my email address will be stored to notify me about the StickINK Kickstarter launch.">Ich stimme zu, dass meine E-Mail-Adresse zur Benachrichtigung &uuml;ber den StickINK Kickstarter-Launch gespeichert wird.</p></span>
                         </label>
                       </div>
                     </div>
@@ -649,7 +862,7 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
                 <div class="sib-form-block" style="text-align: left">
                   <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form2" type="submit">
                     <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512"><path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"/></svg>
-                    <span data-de="Jetzt vormerken →" data-en="Join the Waitlist →">Jetzt vormerken →</span>
+                    <span data-de="Jetzt vormerken &#8594;" data-en="Join the Waitlist &#8594;">Jetzt vormerken &#8594;</span>
                   </button>
                 </div>
               </div>
@@ -659,7 +872,7 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
           </div>
         </div>
       </div>
-      <p class="fn" data-de="🔒 Kein Spam. Keine Weitergabe. Abmeldung jederzeit möglich." data-en="🔒 No spam. No sharing. Unsubscribe at any time.">🔒 Kein Spam. Keine Weitergabe. Abmeldung jederzeit möglich.</p>
+      <p class="fn" data-de="&#128274; Kein Spam. Keine Weitergabe. Abmeldung jederzeit m&#246;glich." data-en="&#128274; No spam. No sharing. Unsubscribe at any time.">&#128274; Kein Spam. Keine Weitergabe. Abmeldung jederzeit m&#246;glich.</p>
     </div>
   </div>
 </div>
@@ -669,13 +882,11 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
   <div class="footer-inner">
     <a href="#" class="footer-logo">
       <div class="footer-logo-icon">
-        <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <polyline points="3,9 7,13 15,5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <img src="assets/icon.png" alt="StickINK Icon" width="28" height="28"/>
       </div>
       <span class="footer-logo-text">Stick<em>INK</em></span>
     </a>
-    <span class="footer-copy">© 2026 StickINK · <span data-de="Handmade in Germany" data-en="Handmade in Germany">Handmade in Germany</span></span>
+    <span class="footer-copy">&copy; 2026 StickINK &middot; <span data-de="Handmade in Germany" data-en="Handmade in Germany">Handmade in Germany</span></span>
     <div class="footer-links">
       <a href="mailto:info@stickink.de">info@stickink.de</a>
       <a href="https://stickink.de">stickink.de</a>
@@ -688,10 +899,10 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 // ── Language switcher ──
 const translations = {
   de: {
-    'REQUIRED_CODE_ERROR': 'Wähle bitte einen Ländervorwahl aus.',
-    'EMAIL_INVALID': 'Die eingegebene E-Mail-Adresse ist ungültig.',
+    'REQUIRED_CODE_ERROR': 'W\u00e4hle bitte einen L\u00e4ndervorwahl aus.',
+    'EMAIL_INVALID': 'Die eingegebene E-Mail-Adresse ist ung\u00fcltig.',
     'REQUIRED': 'Dieses Feld darf nicht leer sein.',
-    'GENERIC_INVALID': 'Die eingegebenen Informationen sind nicht gültig.'
+    'GENERIC_INVALID': 'Die eingegebenen Informationen sind nicht g\u00fcltig.'
   },
   en: {
     'REQUIRED_CODE_ERROR': 'Please select a country code.',
@@ -702,7 +913,6 @@ const translations = {
 };
 
 function setLang(lang) {
-  // Update text content
   document.querySelectorAll('[data-de]').forEach(el => {
     const val = el.dataset[lang];
     if (val !== undefined) {
@@ -715,64 +925,169 @@ function setLang(lang) {
       }
     }
   });
-  // Update placeholders
   document.querySelectorAll('[data-de-placeholder]').forEach(el => {
-    const key = lang + 'Placeholder';
-    // camelCase: data-en-placeholder → dataset.enPlaceholder
     const camel = lang === 'de' ? 'dePlaceholder' : 'enPlaceholder';
     if (el.dataset[camel]) el.placeholder = el.dataset[camel];
   });
-  // Update locale fields
   ['locale-field', 'locale-field2'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.value = lang;
   });
-  // Update html lang attribute
   document.documentElement.lang = lang;
-  // Update toggle buttons
   document.getElementById('btn-de').classList.toggle('active', lang === 'de');
   document.getElementById('btn-de').setAttribute('aria-pressed', lang === 'de');
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
   document.getElementById('btn-en').setAttribute('aria-pressed', lang === 'en');
-  // Save preference
   localStorage.setItem('stickink-lang', lang);
-  // Update Brevo validation messages
   window.REQUIRED_CODE_ERROR_MESSAGE = translations[lang].REQUIRED_CODE_ERROR;
   window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = translations[lang].EMAIL_INVALID;
   window.REQUIRED_ERROR_MESSAGE = translations[lang].REQUIRED;
   window.GENERIC_INVALID_MESSAGE = translations[lang].GENERIC_INVALID;
 }
 
-// Init language
 (function() {
   const saved = localStorage.getItem('stickink-lang') || 'de';
   if (saved === 'en') setLang('en');
 })();
 
-// ── Scroll fade-in ──
-const observer = new IntersectionObserver((entries) => {
+// ── Nav scroll effect ──
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+
+// ── Mobile menu ──
+document.getElementById('hamburger').addEventListener('click', function() {
+  this.classList.toggle('open');
+  document.getElementById('mobile-menu').classList.toggle('open');
+});
+
+// ── Scroll reveal observer ──
+const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       e.target.classList.add('visible');
-      observer.unobserve(e.target);
+      revealObserver.unobserve(e.target);
     }
   });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+  revealObserver.observe(el);
+});
+
+// ── Counter animation ──
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target;
+      const countAttr = el.dataset.count;
+      if (!countAttr) return;
+      const target = parseFloat(countAttr);
+      const suffix = el.dataset.suffix || '';
+      const useComma = el.dataset.decimal === ',';
+      const duration = 1800;
+      const start = performance.now();
+      function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        let current = target * eased;
+        let display;
+        if (target % 1 !== 0) {
+          display = current.toFixed(1);
+          if (useComma) display = display.replace('.', ',');
+        } else {
+          display = Math.round(current).toString();
+        }
+        el.textContent = display + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+// ── Hero mouse glow ──
+const heroSection = document.querySelector('.hero');
+const heroGlow = document.getElementById('hero-glow');
+if (heroSection && heroGlow) {
+  heroSection.addEventListener('mousemove', e => {
+    heroGlow.style.left = e.clientX + 'px';
+    heroGlow.style.top = e.clientY + 'px';
+  });
+}
+
+// ── Live mockup clock ──
+function updateMockupClock() {
+  const now = new Date();
+  const h = String(now.getHours()).padStart(2, '0');
+  const m = String(now.getMinutes()).padStart(2, '0');
+  const el = document.getElementById('mockup-time');
+  if (el) el.textContent = h + ':' + m;
+}
+updateMockupClock();
+setInterval(updateMockupClock, 30000);
+
+// ── 3D Card tilt ──
+document.querySelectorAll('.fc, .wc').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    card.style.transform = 'perspective(800px) rotateY(' + (x * 6) + 'deg) rotateX(' + (-y * 6) + 'deg) translateY(-6px)';
+    card.style.boxShadow = '0 ' + (20 + y * 10) + 'px ' + (60 + Math.abs(x) * 20) + 'px rgba(44,42,39,.16)';
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+    card.style.boxShadow = '';
+  });
+});
+
+// ── Button ripple ──
+document.querySelectorAll('.ncta, .sib-form-block__button').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const ripple = document.createElement('span');
+    ripple.classList.add('ripple');
+    const rect = this.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+    ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 700);
+  });
+});
+
+// ── Parallax (subtle) ──
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      const scrollY = window.scrollY;
+      document.querySelectorAll('.blob').forEach((blob, i) => {
+        const speed = 0.02 + i * 0.01;
+        blob.style.transform += ''; // keep CSS animation, parallax via top offset
+      });
+      ticking = false;
+    });
+    ticking = true;
+  }
+}, { passive: true });
 
 // Brevo config
-window.REQUIRED_CODE_ERROR_MESSAGE = 'Wähle bitte einen Ländervorwahl aus.';
+window.REQUIRED_CODE_ERROR_MESSAGE = 'W\u00e4hle bitte einen L\u00e4ndervorwahl aus.';
 window.LOCALE = 'de';
-window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = 'Die eingegebenen Informationen sind nicht gültig.';
+window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = 'Die eingegebenen Informationen sind nicht g\u00fcltig.';
 window.REQUIRED_ERROR_MESSAGE = 'Dieses Feld darf nicht leer sein.';
-window.GENERIC_INVALID_MESSAGE = 'Die eingegebenen Informationen sind nicht gültig.';
+window.GENERIC_INVALID_MESSAGE = 'Die eingegebenen Informationen sind nicht g\u00fcltig.';
 window.translation = {
   common: {
-    selectedList: '{quantity} Liste ausgewählt',
-    selectedLists: '{quantity} Listen ausgewählt',
-    selectedOption: '{quantity} ausgewählt',
-    selectedOptions: '{quantity} ausgewählt'
+    selectedList: '{quantity} Liste ausgew\u00e4hlt',
+    selectedLists: '{quantity} Listen ausgew\u00e4hlt',
+    selectedOption: '{quantity} ausgew\u00e4hlt',
+    selectedOptions: '{quantity} ausgew\u00e4hlt'
   }
 };
 var AUTOHIDE = Boolean(0);
