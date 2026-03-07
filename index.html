@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>StickINK – E-Ink Dashboard</title>
-<meta name="description" content="StickINK verwandelt ein 7,5-Zoll E-Ink Display in ein immer sichtbares Dashboard – Uhr, Wetter, To-Dos, Aktien. Kein Strom. Kein Flimmern."/>
+<meta name="description" content="StickINK – dein ruhiger Fokus-Anker. Ein 7,5-Zoll E-Ink Display als ablenkungsfreies Dashboard f&#252;r Uhr, Wetter, To-Dos und Aktien. Kaum Strom. Kein Flimmern."/>
 <link rel="canonical" href="https://stickink.de/"/>
 <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon.png"/>
@@ -185,6 +185,30 @@ h1 em{font-style:italic;color:var(--coral)}
 .tb-label{font-size:.8rem;color:var(--muted);font-weight:500}
 .tb-sep{width:1px;height:32px;background:var(--beige-dark)}
 @media(max-width:640px){.tb-sep{display:none}.trust-bar-inner{gap:1.5rem}}
+
+/* ─── SCARCITY BAR ─── */
+.scarcity-bar{text-align:center;padding:1.2rem 2rem;position:relative;z-index:1}
+.scarcity-bar p{font-size:.85rem;color:var(--muted);font-weight:500;display:inline-flex;align-items:center;gap:.5rem}
+.scarcity-dot{width:7px;height:7px;border-radius:50%;background:var(--coral);animation:pulse 2s ease-in-out infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
+
+/* ─── IMAGINE SECTION ─── */
+.imagine-sec{padding:5rem 2rem;text-align:center;position:relative;z-index:1}
+.imagine-inner{max-width:720px;margin:0 auto}
+.imagine-inner::before{content:'';display:block;width:48px;height:3px;background:var(--coral);margin:0 auto 2rem;border-radius:99px}
+.imagine-inner h2{font-family:"Playfair Display",serif;font-size:clamp(1.6rem,2.8vw,2.2rem);color:var(--dark);line-height:1.25;margin-bottom:1.5rem;letter-spacing:-.01em}
+.imagine-inner p{font-size:1rem;color:var(--muted);line-height:1.85;margin-bottom:1.2rem}
+.imagine-inner .imagine-closer{font-size:1.05rem;font-weight:600;color:var(--dark);margin-top:1rem}
+
+/* ─── URGENCY BADGE ─── */
+.urgency-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(201,104,64,.1);color:var(--coral);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;padding:.45rem 1.1rem;border-radius:999px;margin-bottom:1.5rem}
+.urgency-dot{width:7px;height:7px;border-radius:50%;background:var(--coral);animation:pulse 2s ease-in-out infinite;flex-shrink:0}
+
+/* ─── LOSS AVERSION BOX ─── */
+.loss-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:1.5rem;margin-top:2rem;text-align:left}
+.loss-box p{font-size:.88rem;color:rgba(255,255,255,.6);line-height:1.7}
+.loss-box .loss-highlight{color:var(--coral);font-weight:700}
+.loss-box .loss-source{display:block;margin-top:.5rem;font-size:.72rem;color:rgba(255,255,255,.3);font-style:italic}
 
 /* ─── PROBLEM / SOLUTION ─── */
 .prob-sol{padding:6rem 2rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:stretch}
@@ -378,7 +402,7 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
       <button class="lang-btn active" id="btn-de" onclick="setLang('de')" aria-pressed="true">DE</button>
       <button class="lang-btn" id="btn-en" onclick="setLang('en')" aria-pressed="false">EN</button>
     </div>
-    <a href="#waitlist" class="ncta" data-de="Jetzt vormerken &#8594;" data-en="Join Waitlist &#8594;">Jetzt vormerken &#8594;</a>
+    <a href="#waitlist" class="ncta" data-de="Early-Bird Platz sichern &#8594;" data-en="Secure Early-Bird Spot &#8594;">Early-Bird Platz sichern &#8594;</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -387,16 +411,16 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobile-menu">
-  <a href="#waitlist" class="ncta" data-de="Jetzt vormerken &#8594;" data-en="Join Waitlist &#8594;" onclick="document.getElementById('mobile-menu').classList.remove('open');document.getElementById('hamburger').classList.remove('open')">Jetzt vormerken &#8594;</a>
+  <a href="#waitlist" class="ncta" data-de="Early-Bird Platz sichern &#8594;" data-en="Secure Early-Bird Spot &#8594;" onclick="document.getElementById('mobile-menu').classList.remove('open');document.getElementById('hamburger').classList.remove('open')">Early-Bird Platz sichern &#8594;</a>
 </div>
 
 <!-- ─── HERO ─── -->
 <section class="hero">
   <div class="hero-glow" id="hero-glow"></div>
   <div class="hero-text">
-    <div class="badge" data-de="&#128640; Bald auf Kickstarter" data-en="&#128640; Coming to Kickstarter">&#128640; Bald auf Kickstarter</div>
+    <div class="badge" data-de="&#128640; F&#252;r Menschen, die Fokus ernst nehmen" data-en="&#128640; For People Who Take Focus Seriously">&#128640; F&#252;r Menschen, die Fokus ernst nehmen</div>
     <h1 data-de="Kein Bildschirm.<br>Keine Ablenkung.<br><em>Nur das Wesentliche.</em>" data-en="No Screen.<br>No Noise.<br><em>Just What Matters.</em>">Kein Bildschirm.<br>Keine Ablenkung.<br><em>Nur das Wesentliche.</em></h1>
-    <p class="hero-sub" data-de="StickINK verwandelt ein 7,5&quot; E-Ink Display in ein immer sichtbares Dashboard &#8211; Uhrzeit, Wetter, To-Dos und Aktienkurse. Kein Flimmern. Kein Strom im Standby. Immer im Blick." data-en="StickINK turns a 7.5&quot; E-Ink display into an always-visible dashboard &#8211; time, weather, tasks, and stock prices. No flicker. Zero power in standby. Always in sight.">StickINK verwandelt ein 7,5" E-Ink Display in ein immer sichtbares Dashboard &#8211; Uhrzeit, Wetter, To-Dos und Aktienkurse. Kein Flimmern. Kein Strom im Standby. Immer im Blick.</p>
+    <p class="hero-sub" data-de="Du schaust auf und siehst sofort, was z&#228;hlt &#8211; ohne eine App zu &#246;ffnen, ohne einen Tab zu wechseln, ohne abgelenkt zu werden. StickINK ist dein ruhiger Ankerpunkt im digitalen Chaos." data-en="You look up and instantly see what matters &#8211; without opening an app, without switching a tab, without getting distracted. StickINK is your calm anchor in digital chaos.">Du schaust auf und siehst sofort, was z&#228;hlt &#8211; ohne eine App zu &#246;ffnen, ohne einen Tab zu wechseln, ohne abgelenkt zu werden. StickINK ist dein ruhiger Ankerpunkt im digitalen Chaos.</p>
 
     <!-- Waitlist Form -->
     <div id="waitlist">
@@ -451,7 +475,7 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
                 <div class="sib-form-block" style="text-align: left">
                   <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
                     <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512"><path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"/></svg>
-                    <span data-de="Beim Launch dabei sein &#8594;" data-en="Notify Me at Launch &#8594;">Beim Launch dabei sein &#8594;</span>
+                    <span data-de="Early-Bird Preis sichern &#8594;" data-en="Secure Early-Bird Price &#8594;">Early-Bird Preis sichern &#8594;</span>
                   </button>
                 </div>
               </div>
@@ -550,6 +574,11 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
   </div>
 </div>
 
+<!-- ─── SCARCITY BAR ─── -->
+<div class="scarcity-bar reveal">
+  <p><span class="scarcity-dot"></span> <span data-de="Early-Bird Pl&#228;tze sind begrenzt. Trag dich ein, bevor sie vergeben sind." data-en="Early Bird spots are limited. Sign up before they're gone.">Early-Bird Pl&#228;tze sind begrenzt. Trag dich ein, bevor sie vergeben sind.</span></p>
+</div>
+
 <!-- ─── PROBLEM / SOLUTION ─── -->
 <div class="prob-sol">
   <div class="ps-card problem reveal-left">
@@ -576,6 +605,15 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
   </div>
 </div>
 
+<!-- ─── IMAGINE SECTION ─── -->
+<div class="imagine-sec">
+  <div class="imagine-inner reveal">
+    <h2 data-de="Stell dir vor, du setzt dich an deinen Schreibtisch &#8211; und alles ist schon da." data-en="Imagine sitting down at your desk &#8211; and everything is already there.">Stell dir vor, du setzt dich an deinen Schreibtisch &#8211; und alles ist schon da.</h2>
+    <p data-de="Keine App &#246;ffnen. Kein Handy entsperren. Kein Tab suchen. Du schaust kurz nach rechts &#8211; und siehst deine Termine, das Wetter, deine n&#228;chste Aufgabe. Leise. Ruhig. Wie ein Notizzettel, der nie verloren geht." data-en="No app to open. No phone to unlock. No tab to find. You glance to the right &#8211; and see your schedule, the weather, your next task. Quiet. Calm. Like a note that never gets lost.">Keine App &#246;ffnen. Kein Handy entsperren. Kein Tab suchen. Du schaust kurz nach rechts &#8211; und siehst deine Termine, das Wetter, deine n&#228;chste Aufgabe. Leise. Ruhig. Wie ein Notizzettel, der nie verloren geht.</p>
+    <p class="imagine-closer" data-de="StickINK. Dein ruhiger Fokus-Anker." data-en="StickINK. Your calm focus anchor.">StickINK. Dein ruhiger Fokus-Anker.</p>
+  </div>
+</div>
+
 <!-- ─── WAVE DIVIDER ─── -->
 <div class="wave-divider" style="margin-bottom:-2px">
   <svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -592,33 +630,33 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
     <div class="fg">
       <div class="fc reveal-card">
         <div class="fi ic">&#128267;</div>
-        <h3 data-de="Kein Strom im Standby" data-en="Zero Power Standby">Kein Strom im Standby</h3>
-        <p data-de="E-Ink ist bistabil: Das Bild bleibt ohne Strom &#8211; genau wie gedrucktes Papier. Strom wird nur beim Aktualisieren ben&#246;tigt." data-en="E-Ink is bistable: the image stays without power &#8211; just like printed paper. Power is only used when updating.">E-Ink ist bistabil: Das Bild bleibt ohne Strom &#8211; genau wie gedrucktes Papier. Strom wird nur beim Aktualisieren ben&#246;tigt.</p>
+        <h3 data-de="Immer da. Kaum Strom." data-en="Always On. Barely Any Power.">Immer da. Kaum Strom.</h3>
+        <p data-de="Das Bild bleibt sichtbar, auch wenn der PC aus ist. Strom braucht StickINK nur kurz beim Aktualisieren &#8211; wie ein digitaler Notizzettel." data-en="The image stays visible, even when your PC is off. StickINK only needs a little power when updating &#8211; like a digital sticky note.">Das Bild bleibt sichtbar, auch wenn der PC aus ist. Strom braucht StickINK nur kurz beim Aktualisieren &#8211; wie ein digitaler Notizzettel.</p>
       </div>
       <div class="fc reveal-card">
         <div class="fi is">&#128065;&#65039;</div>
-        <h3 data-de="Blendarm wie Papier" data-en="Easy on the Eyes">Blendarm wie Papier</h3>
-        <p data-de="Kein Flimmern, keine Hintergrundbeleuchtung. Angenehm f&#252;r die Augen &#8211; auch nach einem langen Arbeitstag vor dem Monitor." data-en="No flicker, no backlight. Gentle on the eyes &#8211; even after a long day in front of your computer.">Kein Flimmern, keine Hintergrundbeleuchtung. Angenehm f&#252;r die Augen &#8211; auch nach einem langen Arbeitstag vor dem Monitor.</p>
+        <h3 data-de="Augen schonen. Fokus behalten." data-en="Protect Your Eyes. Keep Your Focus.">Augen schonen. Fokus behalten.</h3>
+        <p data-de="Kein Flimmern, keine Hintergrundbeleuchtung. Deine Augen danken es dir &#8211; besonders nach einem langen Tag am Monitor." data-en="No flicker, no backlight. Your eyes will thank you &#8211; especially after a long day at the screen.">Kein Flimmern, keine Hintergrundbeleuchtung. Deine Augen danken es dir &#8211; besonders nach einem langen Tag am Monitor.</p>
       </div>
       <div class="fc reveal-card">
         <div class="fi id">&#128268;</div>
-        <h3 data-de="Plug &amp; Play" data-en="Plug &amp; Play">Plug &amp; Play</h3>
-        <p data-de="USB verbinden, StickINK.exe doppelklicken &#8211; sofort einsatzbereit. Kein Installer, kein Python, keine Konfiguration." data-en="Connect via USB, double-click StickINK.exe &#8211; ready instantly. No installer, no Python, no configuration.">USB verbinden, StickINK.exe doppelklicken &#8211; sofort einsatzbereit. Kein Installer, kein Python, keine Konfiguration.</p>
+        <h3 data-de="Auspacken. Einstecken. Fertig." data-en="Unbox. Plug In. Done.">Auspacken. Einstecken. Fertig.</h3>
+        <p data-de="USB verbinden, Doppelklick &#8211; l&#228;uft. Kein Installer, kein Setup, keine verlorene Zeit." data-en="Connect USB, double-click &#8211; done. No installer, no setup, no wasted time.">USB verbinden, Doppelklick &#8211; l&#228;uft. Kein Installer, kein Setup, keine verlorene Zeit.</p>
       </div>
       <div class="fc reveal-card">
         <div class="fi ic">&#127899;&#65039;</div>
-        <h3 data-de="4 individuelle Screens" data-en="4 Custom Screens">4 individuelle Screens</h3>
-        <p data-de="Wechsle zwischen Layouts &#8211; Arbeit, Privat, Finanzen, Morgenroutine. Jeder Screen individuell konfigurierbar und gespeichert." data-en="Switch between layouts &#8211; work, personal, finances, morning routine. Each screen individually configurable and saved.">Wechsle zwischen Layouts &#8211; Arbeit, Privat, Finanzen, Morgenroutine. Jeder Screen individuell konfigurierbar und gespeichert.</p>
+        <h3 data-de="Arbeit. Privat. Sofort wechseln." data-en="Work. Personal. Switch Instantly.">Arbeit. Privat. Sofort wechseln.</h3>
+        <p data-de="4 gespeicherte Layouts &#8211; ein Klick, anderer Kontext. Morgens dein Kalender, abends dein Lieblingsfoto." data-en="4 saved layouts &#8211; one click, different context. Morning calendar, evening photo.">4 gespeicherte Layouts &#8211; ein Klick, anderer Kontext. Morgens dein Kalender, abends dein Lieblingsfoto.</p>
       </div>
       <div class="fc reveal-card">
         <div class="fi is">&#9889;</div>
-        <h3 data-de="Smart Auto-Refresh" data-en="Smart Auto-Refresh">Smart Auto-Refresh</h3>
-        <p data-de="Wetter, Aktien und Uhrzeit aktualisieren sich automatisch. Das Display wird nur neu gezeichnet, wenn sich wirklich etwas &#228;ndert." data-en="Weather, stocks, and time update automatically. The display only redraws when something actually changes.">Wetter, Aktien und Uhrzeit aktualisieren sich automatisch. Das Display wird nur neu gezeichnet, wenn sich wirklich etwas &#228;ndert.</p>
+        <h3 data-de="Aktuell, ohne dich zu st&#246;ren." data-en="Up to Date. Without Interrupting You.">Aktuell, ohne dich zu st&#246;ren.</h3>
+        <p data-de="Wetter, Aktien und Uhrzeit aktualisieren sich leise im Hintergrund. Kein Ping, kein Popup &#8211; nur frische Daten." data-en="Weather, stocks, and time update quietly in the background. No ping, no popup &#8211; just fresh data.">Wetter, Aktien und Uhrzeit aktualisieren sich leise im Hintergrund. Kein Ping, kein Popup &#8211; nur frische Daten.</p>
       </div>
       <div class="fc reveal-card">
         <div class="fi ib">&#128444;&#65039;</div>
-        <h3 data-de="Eigene Bilder" data-en="Custom Images">Eigene Bilder</h3>
-        <p data-de="Lade dein Lieblingsfoto hoch &#8211; Floyd-Steinberg Dithering sorgt f&#252;r perfekte E-Ink-Darstellung in 16 Graustufen." data-en="Upload your favorite photo &#8211; Floyd-Steinberg dithering ensures perfect E-Ink rendering in 16 grayscale levels.">Lade dein Lieblingsfoto hoch &#8211; Floyd-Steinberg Dithering sorgt f&#252;r perfekte E-Ink-Darstellung in 16 Graustufen.</p>
+        <h3 data-de="Dein Foto. Dein Display." data-en="Your Photo. Your Display.">Dein Foto. Dein Display.</h3>
+        <p data-de="Lade dein Lieblingsbild hoch und mach StickINK zu deinem. Automatisches Dithering sorgt f&#252;r perfekte E-Ink-Darstellung." data-en="Upload your favorite image and make StickINK yours. Automatic dithering ensures perfect E-Ink rendering.">Lade dein Lieblingsbild hoch und mach StickINK zu deinem. Automatisches Dithering sorgt f&#252;r perfekte E-Ink-Darstellung.</p>
       </div>
     </div>
   </div>
@@ -801,16 +839,17 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
     <div class="brand-banner">
       <img src="assets/icon_preview.png" alt="StickINK – Make your goals Stick" height="48"/>
     </div>
-    <p class="brand-tagline" data-de="Dein Dashboard. Deine Regeln. Kein Bildschirm." data-en="Your dashboard. Your rules. No screen.">Dein Dashboard. Deine Regeln. Kein Bildschirm.</p>
+    <p class="brand-tagline" data-de="Weniger Ablenkung. Mehr Fokus. Kaum Strom." data-en="Less Distraction. More Focus. Barely Any Power.">Weniger Ablenkung. Mehr Fokus. Kaum Strom.</p>
   </div>
 </div>
 
 <!-- ─── KICKSTARTER CTA ─── -->
 <div class="ks-bg">
   <div class="ks-inner reveal-scale">
+    <div class="urgency-badge"><span class="urgency-dot"></span> <span data-de="Limitiert auf 50 Early-Bird Pl&#228;tze" data-en="Limited to 50 Early-Bird Spots">Limitiert auf 50 Early-Bird Pl&#228;tze</span></div>
     <div class="sl" data-de="Kickstarter" data-en="Kickstarter">Kickstarter</div>
-    <h2 data-de="Sei dabei wenn wir live gehen." data-en="Be There When We Launch.">Sei dabei wenn wir live gehen.</h2>
-    <p class="ks-desc" data-de="StickINK startet bald auf Kickstarter. Trag dich jetzt in die Warteliste ein &#8211; du bekommst als Erstes den Link und sicherst dir Zugang zum g&#252;nstigsten Early Bird Preis." data-en="StickINK launches on Kickstarter soon. Join the waitlist now &#8211; you'll be the first to get the link and secure the best Early Bird price.">StickINK startet bald auf Kickstarter. Trag dich jetzt in die Warteliste ein &#8211; du bekommst als Erstes den Link und sicherst dir Zugang zum g&#252;nstigsten Early Bird Preis.</p>
+    <h2 data-de="Verpasse nicht den g&#252;nstigsten Preis." data-en="Don't Miss the Best Price.">Verpasse nicht den g&#252;nstigsten Preis.</h2>
+    <p class="ks-desc" data-de="Die ersten 50 Early-Bird-Supporter erhalten StickINK zum exklusiven Einf&#252;hrungspreis. Trag dich jetzt ein &#8211; du bekommst als Erstes den Link." data-en="The first 50 Early-Bird supporters get StickINK at an exclusive introductory price. Sign up now &#8211; you'll be the first to get the link.">Die ersten 50 Early-Bird-Supporter erhalten StickINK zum exklusiven Einf&#252;hrungspreis. Trag dich jetzt ein &#8211; du bekommst als Erstes den Link.</p>
 
     <div class="ks-form-wrap">
       <div class="sib-form">
@@ -864,7 +903,7 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
                 <div class="sib-form-block" style="text-align: left">
                   <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form2" type="submit">
                     <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512"><path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"/></svg>
-                    <span data-de="Jetzt vormerken &#8594;" data-en="Join the Waitlist &#8594;">Jetzt vormerken &#8594;</span>
+                    <span data-de="Jetzt Platz sichern &#8211; kostenlos &#8594;" data-en="Secure Your Spot &#8211; Free &#8594;">Jetzt Platz sichern &#8211; kostenlos &#8594;</span>
                   </button>
                 </div>
               </div>
@@ -875,6 +914,9 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
         </div>
       </div>
       <p class="fn" data-de="&#128274; Kein Spam. Keine Weitergabe. Abmeldung jederzeit m&#246;glich." data-en="&#128274; No spam. No sharing. Unsubscribe at any time.">&#128274; Kein Spam. Keine Weitergabe. Abmeldung jederzeit m&#246;glich.</p>
+    </div>
+    <div class="loss-box reveal">
+      <p data-de="Knowledge Worker verlieren durchschnittlich <span class='loss-highlight'>2,1 Stunden t&#228;glich</span> an digitale Ablenkungen. Das sind &#252;ber 500 Stunden pro Jahr &#8211; die du nie zur&#252;ckbekommst.<span class='loss-source'>Quelle: Gloria Mark, University of California Irvine</span>" data-en="Knowledge workers lose an average of <span class='loss-highlight'>2.1 hours per day</span> to digital distractions. That's over 500 hours per year &#8211; that you'll never get back.<span class='loss-source'>Source: Gloria Mark, University of California Irvine</span>" data-html>Knowledge Worker verlieren durchschnittlich <span class="loss-highlight">2,1 Stunden t&#228;glich</span> an digitale Ablenkungen. Das sind &#252;ber 500 Stunden pro Jahr &#8211; die du nie zur&#252;ckbekommst.<span class="loss-source">Quelle: Gloria Mark, University of California Irvine</span></p>
     </div>
   </div>
 </div>
@@ -918,7 +960,7 @@ function setLang(lang) {
   document.querySelectorAll('[data-de]').forEach(el => {
     const val = el.dataset[lang];
     if (val !== undefined) {
-      if (el.tagName === 'H1') {
+      if (el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3' || el.hasAttribute('data-html')) {
         el.innerHTML = val;
       } else if (el.tagName !== 'INPUT' && el.tagName !== 'BUTTON') {
         el.textContent = val;
