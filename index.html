@@ -271,18 +271,74 @@ h1 em{font-style:italic;color:var(--coral)}
 .feature-list li:hover{transform:translateX(4px)}
 .feature-list li::before{content:"\2713";color:var(--sage);font-weight:700;font-size:1rem;flex-shrink:0;margin-top:1px}
 
-/* ─── WIDGETS ─── */
-.widgets-bg{background:var(--beige);position:relative;z-index:1}
-.wg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin-top:.5rem}
-.wc{background:#fff;border-radius:var(--radius-lg);padding:1.75rem;border:1px solid var(--beige-dark);transition:transform .4s var(--ease-expo),box-shadow .4s var(--ease-expo);position:relative;overflow:hidden;will-change:transform}
-.wc::after{content:'';position:absolute;inset:0;border-radius:var(--radius-lg);border:2px solid transparent;transition:border-color .3s;pointer-events:none}
-.wc:hover::after{border-color:var(--coral)}
-.wc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem}
-.wc-icon{font-size:1.6rem;transition:transform .3s var(--ease-back)}
-.wc:hover .wc-icon{transform:scale(1.15)}
-.coming-soon{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--coral);background:rgba(201,104,64,.1);padding:.2rem .55rem;border-radius:999px}
-.wc h3{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:.3rem}
-.wc p{font-size:.83rem;color:var(--muted);line-height:1.6}
+/* ─── WIDGET SHOWCASE ─── */
+.ws-bg{background:var(--dark);position:relative;z-index:1}
+.ws-inner{max-width:1100px;margin:0 auto;padding:6rem 2rem}
+.ws-hero{text-align:center;margin-bottom:2.5rem}
+.ws-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(201,104,64,.15);border:1px solid rgba(201,104,64,.35);color:var(--coral);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem}
+.ws-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--coral);animation:wsPulse 2s infinite}
+@keyframes wsPulse{0%,100%{opacity:1}50%{opacity:.3}}
+.ws-bg h2{color:#fff}
+.ws-bg .sec-desc{color:rgba(255,255,255,.5);max-width:480px;margin:0 auto}
+.ws-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ws-card{border-radius:10px;overflow:hidden;cursor:default;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);transition:transform .3s var(--ease-expo),border-color .3s,box-shadow .3s;position:relative}
+.ws-card:hover{transform:translateY(-4px);border-color:var(--coral);box-shadow:0 0 0 1px rgba(201,104,64,.25),0 12px 32px rgba(201,104,64,.12)}
+.ws-card:hover .ws-hint{opacity:1;transform:translateY(0)}
+.ws-display{background:#fff;margin:10px 10px 0;border-radius:6px;height:112px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;border:1px solid #e8e4de}
+.ws-display::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.012) 3px,rgba(0,0,0,.012) 4px);pointer-events:none;z-index:2}
+.ws-info{padding:9px 11px 11px}
+.ws-row{display:flex;align-items:flex-start;gap:8px}
+.ws-icon-wrap{width:28px;height:28px;border-radius:6px;background:rgba(201,104,64,.15);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;margin-top:1px}
+.ws-wname{font-size:.8rem;font-weight:700;color:rgba(255,255,255,.9);line-height:1.2}
+.ws-wdesc{font-size:.68rem;color:rgba(255,255,255,.35);line-height:1.4;margin-top:2px}
+.ws-hint{position:absolute;top:8px;right:8px;background:var(--coral);color:#fff;font-size:9px;font-weight:800;letter-spacing:.08em;padding:3px 7px;border-radius:4px;opacity:0;transform:translateY(-4px);transition:all .2s;text-transform:uppercase}
+/* B&W Display Content */
+.d-clock{display:flex;flex-direction:column;align-items:center;gap:2px;width:100%;padding:0 8px}
+.d-daybadge{background:#000;color:#fff;font-size:9px;font-weight:900;letter-spacing:.14em;padding:2px 10px;border-radius:2px;text-transform:uppercase;font-family:'Outfit',sans-serif}
+.d-time{font-size:46px;font-weight:900;color:#000;letter-spacing:-3px;line-height:1;font-family:'Outfit',sans-serif}
+.d-sep{width:50px;border:none;border-top:2px dashed #000;opacity:.2;margin:2px 0}
+.d-date-txt{font-size:12px;font-weight:700;color:#000;font-family:'Outfit',sans-serif}
+.d-wx{width:100%;padding:0 12px;display:flex;flex-direction:column;gap:0}
+.dwx-top{display:flex;align-items:center;gap:8px;margin-bottom:2px}
+.dwx-ic{font-size:0;width:28px;height:28px}
+.dwx-temp{font-size:38px;font-weight:900;color:#000;letter-spacing:-2px;line-height:1;font-family:'Outfit',sans-serif}
+.dwx-info .dwx-cond{font-size:11px;font-weight:700;color:#000}
+.dwx-info .dwx-city{font-size:9px;font-weight:600;color:#000;letter-spacing:.06em;text-transform:uppercase;opacity:.4}
+.dwx-days{display:flex;border-top:1.5px solid #000;padding-top:5px;margin-top:3px}
+.dwx-d{flex:1;text-align:center}
+.dwx-d-name{font-size:8px;font-weight:800;color:#000;opacity:.4;letter-spacing:.06em;text-transform:uppercase}
+.dwx-d-temp{font-size:11px;font-weight:900;color:#000;margin-top:1px}
+.d-cal{width:calc(100% - 16px)}
+.dcal-hdr{font-size:9px;font-weight:900;color:#000;letter-spacing:.1em;text-transform:uppercase;text-align:center;margin-bottom:3px;font-family:'Outfit',sans-serif}
+.dcal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:0}
+.dcc{text-align:center;font-size:8.5px;font-weight:600;color:#000;padding:1.5px 0;opacity:.35;font-family:'Outfit',sans-serif}
+.dcc.hd{opacity:.25;font-size:7.5px;font-weight:800;text-transform:uppercase}
+.dcc.dim{opacity:.15}
+.dcc.today{background:#000;color:#fff;border-radius:2px;opacity:1;font-weight:900}
+.dcc.num{opacity:.7}
+.dcal-ev{margin-top:4px;background:#000;color:#fff;border-radius:2px;padding:2px 6px;font-size:8.5px;font-weight:700;font-family:'Outfit',sans-serif}
+.d-todo{width:calc(100% - 18px);display:flex;flex-direction:column;gap:5px}
+.dti{display:flex;align-items:center;gap:7px}
+.dtb{width:11px;height:11px;border:2px solid #000;border-radius:2px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.dtb.done{background:#000}
+.dtb.done::after{content:'';display:block;width:4px;height:3px;border-left:1.5px solid #fff;border-bottom:1.5px solid #fff;transform:rotate(-45deg) translateY(-1px)}
+.dtt{font-size:11px;font-weight:600;color:#000;font-family:'Outfit',sans-serif}
+.dtt.done{text-decoration:line-through;opacity:.25;font-weight:400}
+.d-stocks{width:calc(100% - 14px)}
+.dsr{display:flex;justify-content:space-between;align-items:center;padding:3.5px 0;border-bottom:1px solid rgba(0,0,0,.08)}
+.dsr:last-child{border:none}
+.dss{font-size:11px;font-weight:900;color:#000;letter-spacing:.02em;font-family:'Outfit',sans-serif}
+.dsv{font-size:10.5px;font-weight:800;font-family:'Outfit',sans-serif}
+.dsv.up{color:#000}
+.dsv.dn{color:#000;opacity:.45}
+.d-cd{display:flex;flex-direction:column;align-items:center;gap:0}
+.dcd-lbl{font-size:9px;font-weight:800;color:#000;opacity:.35;letter-spacing:.12em;text-transform:uppercase}
+.dcd-num{font-size:56px;font-weight:900;color:#000;line-height:1;letter-spacing:-4px;font-family:'Outfit',sans-serif}
+.dcd-unit{font-size:9px;font-weight:800;color:#000;opacity:.35;letter-spacing:.12em;text-transform:uppercase}
+.dcd-ev{font-size:11px;font-weight:700;color:#000;margin-top:3px;border:1.5px solid #000;padding:1px 8px;border-radius:2px}
+.d-img{width:100%;height:100%;position:relative;overflow:hidden}
+.d-img svg{display:block;width:100%;height:100%}
+.d-img-lbl{position:absolute;bottom:5px;right:6px;background:#000;color:#fff;font-size:8px;font-weight:800;padding:2px 5px;border-radius:2px;letter-spacing:.06em}
 
 /* ─── SPECS ─── */
 .specs-bg{background:#fff;border-top:1px solid var(--beige-dark);border-bottom:1px solid var(--beige-dark);position:relative;z-index:1}
@@ -376,20 +432,45 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 .webapp-cta:hover{gap:.8rem;color:#fff}
 
 /* ─── COMPARISON TABLE ─── */
-.compare-bg{background:var(--beige);position:relative;z-index:1}
+.compare-bg{background:var(--dark);position:relative;z-index:1}
 .compare-inner{max-width:900px;margin:0 auto;padding:6rem 2rem}
-.compare-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:2rem;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md)}
-.compare-table th,.compare-table td{padding:.9rem 1rem;text-align:center;font-size:.85rem;border-bottom:1px solid var(--beige-dark)}
-.compare-table thead th{background:var(--dark);color:#fff;font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:1px}
-.compare-table thead th:first-child{text-align:left}
-.compare-table tbody td:first-child{text-align:left;font-weight:600;color:var(--dark);background:rgba(255,255,255,.5)}
-.compare-table tbody td{background:#fff;color:var(--muted)}
-.compare-table tbody tr:last-child td{border-bottom:none}
-.col-highlight{background:rgba(95,138,114,.08)!important;color:var(--dark)!important;font-weight:600}
-.compare-table thead .col-highlight{background:var(--sage)!important}
-.compare-check{color:var(--sage);font-weight:700;font-size:1.1rem}
-.compare-cross{color:#C0392B;opacity:.5;font-size:1.1rem}
-.compare-meh{color:var(--muted);font-size:.75rem}
+.compare-bg h2{color:#fff}
+.compare-scores{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:2rem}
+.sc{border-radius:10px;padding:14px 12px 12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);transition:transform .2s;text-align:center}
+.sc.winner{background:rgba(201,104,64,.08);border:1.5px solid var(--coral);box-shadow:0 0 0 1px rgba(201,104,64,.2),0 8px 28px rgba(201,104,64,.15);position:relative}
+.sc.winner::before{content:attr(data-winner-de);position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--coral);color:#fff;font-size:9px;font-weight:900;letter-spacing:.1em;padding:3px 10px;border-radius:20px;white-space:nowrap}
+html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
+.sc-name{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.sc.winner .sc-name{color:var(--coral)}
+.sc:not(.winner) .sc-name{color:rgba(255,255,255,.3)}
+.sc-ring{position:relative;width:56px;height:56px;margin:0 auto 8px}
+.sc-ring svg{width:56px;height:56px;transform:rotate(-90deg)}
+.sc-ring-bg{fill:none;stroke:rgba(255,255,255,.08);stroke-width:5}
+.sc-ring-fill{fill:none;stroke-width:5;stroke-linecap:round;transition:stroke-dashoffset 1.2s cubic-bezier(.34,1.2,.64,1)}
+.sc.winner .sc-ring-fill{stroke:var(--coral)}
+.sc:not(.winner) .sc-ring-fill{stroke:rgba(255,255,255,.15)}
+.sc-num{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:16px;font-weight:900}
+.sc.winner .sc-num{color:var(--coral)}
+.sc:not(.winner) .sc-num{color:rgba(255,255,255,.2)}
+.sc-label{font-size:10px;color:rgba(255,255,255,.25);font-weight:600}
+.tbl-wrap{border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+.tbl-head{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr 1fr;background:rgba(0,0,0,.3)}
+.th{padding:12px 8px;text-align:center;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+.th.winner{background:var(--coral);color:#fff}
+.th.feat{text-align:left;padding-left:16px}
+.tbl-row{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr 1fr;border-top:1px solid rgba(255,255,255,.04);transition:background .15s}
+.tbl-row:hover{background:rgba(255,255,255,.02)}
+.tbl-row:nth-child(odd){background:rgba(0,0,0,.1)}
+.tbl-row:nth-child(odd):hover{background:rgba(255,255,255,.03)}
+.td{padding:13px 8px;display:flex;align-items:center;justify-content:center}
+.td.feat{justify-content:flex-start;padding-left:16px;font-size:13px;font-weight:600;color:rgba(255,255,255,.65)}
+.td.winner-col{background:rgba(201,104,64,.05)}
+.ico-yes{width:26px;height:26px;border-radius:50%;background:rgba(95,138,114,.12);border:1.5px solid rgba(95,138,114,.35);display:flex;align-items:center;justify-content:center}
+.ico-yes::after{content:'\2713';font-size:13px;font-weight:900;color:var(--sage)}
+.ico-no{width:26px;height:26px;border-radius:50%;background:rgba(201,104,64,.1);border:1.5px solid rgba(201,104,64,.3);display:flex;align-items:center;justify-content:center}
+.ico-no::after{content:'\2717';font-size:12px;font-weight:900;color:var(--coral)}
+.ico-mid{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center}
+.ico-mid::after{content:'~';font-size:14px;font-weight:700;color:rgba(255,255,255,.2)}
 
 /* ─── FAQ ─── */
 .faq-bg{background:#fff;border-top:1px solid var(--beige-dark);position:relative;z-index:1}
@@ -417,18 +498,22 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
   .hiw-inner{padding:4rem 1.5rem}
   .webapp-inner{padding:4rem 1.5rem}
   .compare-inner{padding:4rem 1.5rem}
+  .ws-inner{padding:4rem 1.5rem}
   .faq-inner{padding:4rem 1.5rem}
 }
 @media(max-width:640px){
   .hiw-steps{grid-template-columns:1fr 1fr;gap:2rem 1.5rem}
   .hiw-steps::before{display:none}
-  .compare-table th,.compare-table td{padding:.6rem .5rem;font-size:.75rem}
+  .compare-scores{grid-template-columns:repeat(2,1fr)}
+  .td.feat{font-size:11px;padding-left:10px}
+  .th.feat{padding-left:10px}
+  .ws-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:480px){
   .trust-bar-inner{gap:1rem}
   .tb-val{font-size:.95rem}
   .fg{grid-template-columns:1fr}
-  .wg{grid-template-columns:1fr 1fr}
+  .ws-grid{grid-template-columns:1fr}
   .eink-device{max-width:280px}
   .eink-bezel{padding:8px;border-radius:10px}
 }
@@ -748,47 +833,181 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 </section>
 
 <!-- ─── WIDGETS ─── -->
-<section class="widgets-bg">
-  <div class="sec sec-center">
-    <div class="sl reveal" data-de="Widgets" data-en="Widgets">Widgets</div>
-    <h2 class="reveal" style="transition-delay:.08s" data-de="Sechs Widgets. Null Ablenkung." data-en="Six Widgets. Zero Distraction.">Sechs Widgets. Null Ablenkung.</h2>
-    <p class="sec-desc reveal" style="transition-delay:.16s" data-de="Jedes Widget liefert genau eine Info &#8211; auf einen Blick, ohne Klick. Kombiniere sie zu deinem perfekten Dashboard." data-en="Each widget delivers exactly one piece of info &#8211; at a glance, no click needed. Combine them into your perfect dashboard.">Jedes Widget liefert genau eine Info &#8211; auf einen Blick, ohne Klick. Kombiniere sie zu deinem perfekten Dashboard.</p>
-    <div class="wg">
-      <div class="wc reveal-card">
-        <div class="wc-top"><span class="wc-icon">&#128336;</span></div>
-        <h3 data-de="Uhr" data-en="Clock">Uhr</h3>
-        <p data-de="Digital, analog oder beides kombiniert &#8211; mit Datum" data-en="Digital, analog, or both &#8211; with date display">Digital, analog oder beides kombiniert &#8211; mit Datum</p>
-      </div>
-      <div class="wc reveal-card">
-        <div class="wc-top"><span class="wc-icon">&#9925;</span></div>
-        <h3 data-de="Wetter" data-en="Weather">Wetter</h3>
-        <p data-de="Aktuell, 3-Tage-Vorschau oder Stundenansicht" data-en="Current, 3-day forecast, or hourly view">Aktuell, 3-Tage-Vorschau oder Stundenansicht</p>
-      </div>
-      <div class="wc reveal-card">
-        <div class="wc-top"><span class="wc-icon">&#9989;</span></div>
-        <h3 data-de="To-Do Liste" data-en="To-Do List">To-Do Liste</h3>
-        <p data-de="Aufgaben verwalten und abhaken &#8211; wird gespeichert" data-en="Manage and check off tasks &#8211; automatically saved">Aufgaben verwalten und abhaken &#8211; wird gespeichert</p>
-      </div>
-      <div class="wc reveal-card">
-        <div class="wc-top"><span class="wc-icon">&#128200;</span></div>
-        <h3 data-de="Aktien &amp; Krypto" data-en="Stocks &amp; Crypto">Aktien &amp; Krypto</h3>
-        <p data-de="AAPL, BTC-USD, EURUSD &amp; mehr &#8211; frei konfigurierbar" data-en="AAPL, BTC-USD, EURUSD &amp; more &#8211; freely configurable">AAPL, BTC-USD, EURUSD &amp; mehr &#8211; frei konfigurierbar</p>
-      </div>
-      <div class="wc reveal-card">
-        <div class="wc-top"><span class="wc-icon">&#128444;&#65039;</span></div>
-        <h3 data-de="Bild-Upload" data-en="Image Upload">Bild-Upload</h3>
-        <p data-de="Eigenes Foto hochladen mit Crop-Dialog &amp; Dithering" data-en="Upload your own photo with crop dialog &amp; dithering">Eigenes Foto hochladen mit Crop-Dialog &amp; Dithering</p>
-      </div>
-      <div class="wc reveal-card">
-        <div class="wc-top">
-          <span class="wc-icon">&#128197;</span>
+<div class="ws-bg">
+  <div class="ws-inner">
+    <div class="ws-hero">
+      <div class="ws-badge reveal"><span class="ws-badge-dot"></span> <span data-de="9 Widgets verf&#252;gbar" data-en="9 Widgets Available">9 Widgets verf&#252;gbar</span></div>
+      <h2 class="reveal" style="transition-delay:.08s" data-de="Dein Dashboard. <span style='color:var(--coral)'>Immer im Blick.</span>" data-en="Your Dashboard. <span style='color:var(--coral)'>Always in Sight.</span>" data-html>Dein Dashboard. <span style="color:var(--coral)">Immer im Blick.</span></h2>
+      <p class="sec-desc reveal" style="transition-delay:.16s" data-de="Plug &amp; Play via USB. Kein Account. Keine Cloud. Deine Daten bleiben bei dir &#8211; f&#252;r immer." data-en="Plug &amp; Play via USB. No account. No cloud. Your data stays with you &#8211; forever.">Plug &amp; Play via USB. Kein Account. Keine Cloud. Deine Daten bleiben bei dir &#8211; f&#252;r immer.</p>
+    </div>
+    <div class="ws-grid">
+      <!-- Uhr -->
+      <div class="ws-card reveal-card">
+        <div class="ws-hint" data-de="Live Demo" data-en="Live Demo">Live Demo</div>
+        <div class="ws-display">
+          <div class="d-clock">
+            <div class="d-daybadge" id="ws-lday">MONTAG</div>
+            <div class="d-time" id="ws-ltime">--:--</div>
+            <hr class="d-sep">
+            <div class="d-date-txt" id="ws-ldate">17. M&#228;rz 2026</div>
+          </div>
         </div>
-        <h3 data-de="Kalender" data-en="Calendar">Kalender</h3>
-        <p data-de="ICS-Link, CalDAV oder Microsoft &#8211; dein Kalender, dein Format" data-en="ICS link, CalDAV, or Microsoft &#8211; your calendar, your format">ICS-Link, CalDAV oder Microsoft &#8211; dein Kalender, dein Format</p>
+        <div class="ws-info"><div class="ws-row">
+          <div class="ws-icon-wrap">&#128336;</div>
+          <div><div class="ws-wname" data-de="Uhr" data-en="Clock">Uhr</div><div class="ws-wdesc" data-de="Digital oder analog &middot; mit Datum &amp; Wochentag" data-en="Digital or analog &middot; with date &amp; weekday">Digital oder analog &middot; mit Datum &amp; Wochentag</div></div>
+        </div></div>
+      </div>
+      <!-- Wetter -->
+      <div class="ws-card reveal-card">
+        <div class="ws-hint" data-de="Echtzeit" data-en="Real-time">Echtzeit</div>
+        <div class="ws-display">
+          <div class="d-wx">
+            <div class="dwx-top">
+              <svg class="dwx-ic" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28"><circle cx="14" cy="10" r="5" fill="#000"/><path d="M5 20c0-3.866 4.03-7 9-7s9 3.134 9 7" stroke="#000" stroke-width="2" fill="none"/><path d="M2 22h24" stroke="#000" stroke-width="1.5"/><path d="M14 2v2M14 18v2M2 10h2M24 10h2M4.93 4.93l1.41 1.41M19.66 19.66l1.41 1.41M4.93 15.07l1.41-1.41M19.66 4.93l1.41 1.41" stroke="#000" stroke-width="1.5" opacity="0.3"/></svg>
+              <span class="dwx-temp">14&#176;</span>
+              <div class="dwx-info">
+                <div class="dwx-cond" data-de="Bedeckt" data-en="Overcast">Bedeckt</div>
+                <div class="dwx-city">Hamburg</div>
+              </div>
+            </div>
+            <div class="dwx-days">
+              <div class="dwx-d"><div class="dwx-d-name" data-de="Mo" data-en="Mon">Mo</div><div style="font-size:13px">&#9729;</div><div class="dwx-d-temp">14&#176;</div></div>
+              <div class="dwx-d"><div class="dwx-d-name" data-de="Di" data-en="Tue">Di</div><div style="font-size:13px">&#127783;</div><div class="dwx-d-temp">11&#176;</div></div>
+              <div class="dwx-d"><div class="dwx-d-name" data-de="Mi" data-en="Wed">Mi</div><div style="font-size:13px">&#9729;</div><div class="dwx-d-temp">17&#176;</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="ws-info"><div class="ws-row">
+          <div class="ws-icon-wrap">&#9925;</div>
+          <div><div class="ws-wname" data-de="Wetter" data-en="Weather">Wetter</div><div class="ws-wdesc" data-de="Aktuell &middot; 3-Tage &middot; Stundenansicht" data-en="Current &middot; 3-day &middot; hourly view">Aktuell &middot; 3-Tage &middot; Stundenansicht</div></div>
+        </div></div>
+      </div>
+      <!-- Kalender -->
+      <div class="ws-card reveal-card">
+        <div class="ws-hint" data-de="Outlook &amp; mehr" data-en="Outlook &amp; more">Outlook &amp; mehr</div>
+        <div class="ws-display">
+          <div class="d-cal">
+            <div class="dcal-hdr" data-de="M&#228;rz 2026" data-en="March 2026">M&#228;rz 2026</div>
+            <div class="dcal-grid">
+              <div class="dcc hd" data-de="Mo" data-en="Mo">Mo</div><div class="dcc hd" data-de="Di" data-en="Tu">Di</div><div class="dcc hd" data-de="Mi" data-en="We">Mi</div><div class="dcc hd" data-de="Do" data-en="Th">Do</div><div class="dcc hd" data-de="Fr" data-en="Fr">Fr</div><div class="dcc hd" data-de="Sa" data-en="Sa">Sa</div><div class="dcc hd" data-de="So" data-en="Su">So</div>
+              <div class="dcc dim">24</div><div class="dcc dim">25</div><div class="dcc dim">26</div><div class="dcc dim">27</div><div class="dcc dim">28</div><div class="dcc dim">1</div><div class="dcc dim">2</div>
+              <div class="dcc num">3</div><div class="dcc num">4</div><div class="dcc num">5</div><div class="dcc num">6</div><div class="dcc num">7</div><div class="dcc num">8</div><div class="dcc num">9</div>
+              <div class="dcc num">10</div><div class="dcc num">11</div><div class="dcc num">12</div><div class="dcc num">13</div><div class="dcc num">14</div><div class="dcc num">15</div><div class="dcc num">16</div>
+              <div class="dcc today">17</div>
+            </div>
+            <div class="dcal-ev" data-de="&#9654; 10:00 Team-Meeting" data-en="&#9654; 10:00 Team Meeting">&#9654; 10:00 Team-Meeting</div>
+          </div>
+        </div>
+        <div class="ws-info"><div class="ws-row">
+          <div class="ws-icon-wrap">&#128197;</div>
+          <div><div class="ws-wname" data-de="Kalender" data-en="Calendar">Kalender</div><div class="ws-wdesc" data-de="ICS &middot; CalDAV &middot; Microsoft Graph" data-en="ICS &middot; CalDAV &middot; Microsoft Graph">ICS &middot; CalDAV &middot; Microsoft Graph</div></div>
+        </div></div>
+      </div>
+      <!-- To-Do -->
+      <div class="ws-card reveal-card">
+        <div class="ws-hint" data-de="Gespeichert" data-en="Saved">Gespeichert</div>
+        <div class="ws-display">
+          <div class="d-todo">
+            <div class="dti"><div class="dtb done"></div><span class="dtt done" data-de="E-Mails beantworten" data-en="Reply to emails">E-Mails beantworten</span></div>
+            <div class="dti"><div class="dtb done"></div><span class="dtt done" data-de="Standup vorbereiten" data-en="Prepare standup">Standup vorbereiten</span></div>
+            <div class="dti"><div class="dtb"></div><span class="dtt" data-de="PR reviewen" data-en="Review PR">PR reviewen</span></div>
+            <div class="dti"><div class="dtb"></div><span class="dtt" data-de="Angebot schreiben" data-en="Write proposal">Angebot schreiben</span></div>
+            <div class="dti"><div class="dtb"></div><span class="dtt" data-de="Sport" data-en="Exercise">Sport</span></div>
+          </div>
+        </div>
+        <div class="ws-info"><div class="ws-row">
+          <div class="ws-icon-wrap">&#9989;</div>
+          <div><div class="ws-wname" data-de="To-Do Liste" data-en="To-Do List">To-Do Liste</div><div class="ws-wdesc" data-de="Aufgaben abhaken &middot; bleibt gespeichert" data-en="Check off tasks &middot; stays saved">Aufgaben abhaken &middot; bleibt gespeichert</div></div>
+        </div></div>
+      </div>
+      <!-- Aktien -->
+      <div class="ws-card reveal-card">
+        <div class="ws-hint" data-de="Live-Kurse" data-en="Live Quotes">Live-Kurse</div>
+        <div class="ws-display">
+          <div class="d-stocks">
+            <div class="dsr"><span class="dss">AAPL</span><span class="dsv up">&#9650; +1.2 %</span></div>
+            <div class="dsr"><span class="dss">BTC-USD</span><span class="dsv dn">&#9660; &#8722;0.8 %</span></div>
+            <div class="dsr"><span class="dss">DAX</span><span class="dsv up">&#9650; +0.4 %</span></div>
+            <div class="dsr"><span class="dss">EUR/USD</span><span class="dsv up">&#9650; +0.3 %</span></div>
+          </div>
+        </div>
+        <div class="ws-info"><div class="ws-row">
+          <div class="ws-icon-wrap">&#128200;</div>
+          <div><div class="ws-wname" data-de="Aktien &amp; Krypto" data-en="Stocks &amp; Crypto">Aktien &amp; Krypto</div><div class="ws-wdesc" data-de="Beliebige Symbole &middot; Yahoo Finance" data-en="Any symbols &middot; Yahoo Finance">Beliebige Symbole &middot; Yahoo Finance</div></div>
+        </div></div>
+      </div>
+      <!-- Countdown -->
+      <div class="ws-card reveal-card">
+        <div class="ws-hint" data-de="Frei konfigurierbar" data-en="Fully configurable">Frei konfigurierbar</div>
+        <div class="ws-display">
+          <div class="d-cd">
+            <div class="dcd-lbl" data-de="noch" data-en="in">noch</div>
+            <div class="dcd-num">18</div>
+            <div class="dcd-unit" data-de="Tage" data-en="Days">Tage</div>
+            <div class="dcd-ev" data-de="&#9992; Urlaub" data-en="&#9992; Vacation">&#9992; Urlaub</div>
+          </div>
+        </div>
+        <div class="ws-info"><div class="ws-row">
+          <div class="ws-icon-wrap">&#9203;</div>
+          <div><div class="ws-wname" data-de="Countdown" data-en="Countdown">Countdown</div><div class="ws-wdesc" data-de="Urlaub &middot; Deadline &middot; Geburtstag" data-en="Vacation &middot; Deadline &middot; Birthday">Urlaub &middot; Deadline &middot; Geburtstag</div></div>
+        </div></div>
+      </div>
+      <!-- Zitat -->
+      <div class="ws-card reveal-card">
+        <div class="ws-hint" data-de="T&#228;glich neu" data-en="Daily new">T&#228;glich neu</div>
+        <div class="ws-display">
+          <div style="padding:10px 12px;display:flex;flex-direction:column;justify-content:center;height:100%">
+            <div style="font-size:32px;color:#000;opacity:.1;line-height:.8;font-family:Georgia,serif">&ldquo;</div>
+            <div style="font-size:10px;font-style:italic;color:#000;line-height:1.5;margin-top:4px;font-weight:600">Simplicity is the ultimate sophistication.</div>
+            <div style="font-size:9px;color:#000;opacity:.35;font-weight:700;margin-top:5px;align-self:flex-end;letter-spacing:.03em">&mdash; Leonardo da Vinci</div>
+          </div>
+        </div>
+        <div class="ws-info"><div class="ws-row">
+          <div class="ws-icon-wrap">&#128172;</div>
+          <div><div class="ws-wname" data-de="Tages-Zitat" data-en="Daily Quote">Tages-Zitat</div><div class="ws-wdesc" data-de="T&#228;gliche Inspiration &middot; automatisch" data-en="Daily inspiration &middot; automatic">T&#228;gliche Inspiration &middot; automatisch</div></div>
+        </div></div>
+      </div>
+      <!-- Custom Image -->
+      <div class="ws-card reveal-card">
+        <div class="ws-hint">Dithering</div>
+        <div class="ws-display">
+          <div class="d-img">
+            <svg viewBox="0 0 220 112" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+              <rect width="220" height="112" fill="#fff"/>
+              <rect width="220" height="56" fill="#fff"/>
+              <g fill="#000"><rect x="0" y="0" width="1" height="1" opacity=".08"/><rect x="8" y="1" width="1" height="1" opacity=".05"/><rect x="16" y="0" width="1" height="1" opacity=".04"/><rect x="24" y="1" width="1" height="1" opacity=".08"/><rect x="32" y="0" width="1" height="1" opacity=".07"/><rect x="40" y="1" width="1" height="1" opacity=".07"/><rect x="60" y="0" width="1" height="1" opacity=".08"/><rect x="80" y="2" width="1" height="1" opacity=".04"/><rect x="100" y="1" width="1" height="1" opacity=".05"/><rect x="120" y="0" width="1" height="1" opacity=".06"/><rect x="140" y="4" width="1" height="1" opacity=".07"/><rect x="160" y="3" width="1" height="1" opacity=".08"/><rect x="180" y="2" width="1" height="1" opacity=".04"/><rect x="200" y="1" width="1" height="1" opacity=".05"/></g>
+              <polygon points="0,56 25,28 55,44 80,18 110,36 140,22 170,38 200,20 220,32 220,56" fill="#000" opacity="0.85"/>
+              <rect y="56" width="220" height="56" fill="#000"/>
+              <g fill="#fff"><rect x="5" y="62" width="2" height="1" opacity=".15"/><rect x="32" y="60" width="2" height="1" opacity=".12"/><rect x="64" y="65" width="2" height="1" opacity=".14"/><rect x="96" y="61" width="2" height="1" opacity=".15"/><rect x="128" y="66" width="2" height="1" opacity=".18"/><rect x="160" y="63" width="2" height="1" opacity=".2"/><rect x="192" y="67" width="2" height="1" opacity=".18"/><rect x="10" y="84" width="3" height="1" opacity=".1"/><rect x="46" y="82" width="3" height="1" opacity=".12"/><rect x="82" y="86" width="3" height="1" opacity=".1"/><rect x="118" y="80" width="3" height="1" opacity=".12"/><rect x="154" y="95" width="3" height="1" opacity=".1"/><rect x="190" y="89" width="3" height="1" opacity=".12"/></g>
+              <polygon points="20,56 26,34 32,56" fill="#fff"/>
+              <polygon points="158,56 165,30 172,56" fill="#fff"/>
+              <polygon points="174,56 180,38 186,56" fill="#fff"/>
+            </svg>
+            <div class="d-img-lbl">DITHERED</div>
+          </div>
+        </div>
+        <div class="ws-info"><div class="ws-row">
+          <div class="ws-icon-wrap">&#128444;&#65039;</div>
+          <div><div class="ws-wname" data-de="Bild-Upload" data-en="Image Upload">Bild-Upload</div><div class="ws-wdesc" data-de="Foto hochladen &middot; Floyd-Steinberg Dithering" data-en="Upload photo &middot; Floyd-Steinberg dithering">Foto hochladen &middot; Floyd-Steinberg Dithering</div></div>
+        </div></div>
+      </div>
+      <!-- Bild-URL -->
+      <div class="ws-card reveal-card">
+        <div class="ws-hint" data-de="Grafana ready" data-en="Grafana ready">Grafana ready</div>
+        <div class="ws-display">
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;height:100%">
+            <div id="ws-ubars" style="display:flex;align-items:flex-end;gap:3px;height:56px"></div>
+            <div style="font-size:9px;font-weight:700;color:#000;opacity:.3;letter-spacing:.08em;text-transform:uppercase" data-de="Webcam &middot; Grafana &middot; Chart-URL" data-en="Webcam &middot; Grafana &middot; Chart URL">Webcam &middot; Grafana &middot; Chart-URL</div>
+          </div>
+        </div>
+        <div class="ws-info"><div class="ws-row">
+          <div class="ws-icon-wrap">&#128279;</div>
+          <div><div class="ws-wname" data-de="Bild-URL" data-en="Image URL">Bild-URL</div><div class="ws-wdesc" data-de="Beliebige URL &middot; automatisch aktuell" data-en="Any URL &middot; auto-refreshed">Beliebige URL &middot; automatisch aktuell</div></div>
+        </div></div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
 <!-- ─── WEB APP ─── -->
 <div class="webapp-bg">
@@ -840,72 +1059,21 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 <section class="compare-bg">
   <div class="compare-inner">
     <div class="sec-center reveal">
-      <div class="sl" data-de="Vergleich" data-en="Comparison">Vergleich</div>
-      <h2 data-de="Warum nicht einfach&hellip;?" data-en="Why not just&hellip;?">Warum nicht einfach&hellip;?</h2>
+      <div class="sl" style="color:var(--coral)" data-de="Vergleich" data-en="Comparison">Vergleich</div>
+      <h2 data-de="Warum nicht einfach <span style='color:var(--coral)'>ein Handy?</span>" data-en="Why not just use <span style='color:var(--coral)'>a phone?</span>" data-html>Warum nicht einfach <span style="color:var(--coral)">ein Handy?</span></h2>
     </div>
-    <div class="compare-table reveal" style="transition-delay:.12s">
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th class="col-highlight" data-de="StickINK" data-en="StickINK">StickINK</th>
-            <th data-de="Handy" data-en="Phone">Handy</th>
-            <th data-de="2.&nbsp;Monitor" data-en="2nd Monitor">2.&nbsp;Monitor</th>
-            <th data-de="Haftnotizen" data-en="Sticky Notes">Haftnotizen</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td data-de="Ablenkungsfrei" data-en="Distraction-free">Ablenkungsfrei</td>
-            <td class="col-highlight"><span class="compare-check">&#10003;</span></td>
-            <td><span class="compare-cross">&#10007;</span></td>
-            <td><span class="compare-cross">&#10007;</span></td>
-            <td><span class="compare-check">&#10003;</span></td>
-          </tr>
-          <tr>
-            <td data-de="Auto-Updates" data-en="Auto Updates">Auto-Updates</td>
-            <td class="col-highlight"><span class="compare-check">&#10003;</span></td>
-            <td><span class="compare-check">&#10003;</span></td>
-            <td><span class="compare-check">&#10003;</span></td>
-            <td><span class="compare-cross">&#10007;</span></td>
-          </tr>
-          <tr>
-            <td data-de="Augenschonend" data-en="Eye-friendly">Augenschonend</td>
-            <td class="col-highlight"><span class="compare-check">&#10003;</span></td>
-            <td><span class="compare-cross">&#10007;</span></td>
-            <td><span class="compare-cross">&#10007;</span></td>
-            <td><span class="compare-check">&#10003;</span></td>
-          </tr>
-          <tr>
-            <td data-de="Kaum Strom" data-en="Barely Any Power">Kaum Strom</td>
-            <td class="col-highlight"><span class="compare-check">&#10003;</span></td>
-            <td><span class="compare-cross">&#10007;</span></td>
-            <td><span class="compare-cross">&#10007;</span></td>
-            <td><span class="compare-check">&#10003;</span></td>
-          </tr>
-          <tr>
-            <td data-de="Immer sichtbar" data-en="Always visible">Immer sichtbar</td>
-            <td class="col-highlight"><span class="compare-check">&#10003;</span></td>
-            <td><span class="compare-cross">&#10007;</span></td>
-            <td><span class="compare-meh">~</span></td>
-            <td><span class="compare-check">&#10003;</span></td>
-          </tr>
-          <tr>
-            <td data-de="Personalisierbar" data-en="Customizable">Personalisierbar</td>
-            <td class="col-highlight"><span class="compare-check">&#10003;</span></td>
-            <td><span class="compare-check">&#10003;</span></td>
-            <td><span class="compare-check">&#10003;</span></td>
-            <td><span class="compare-cross">&#10007;</span></td>
-          </tr>
-          <tr>
-            <td data-de="Plug &amp; Play" data-en="Plug &amp; Play">Plug &amp; Play</td>
-            <td class="col-highlight"><span class="compare-check">&#10003;</span></td>
-            <td><span class="compare-cross">&#10007;</span></td>
-            <td><span class="compare-cross">&#10007;</span></td>
-            <td><span class="compare-check">&#10003;</span></td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- Score rings -->
+    <div class="compare-scores reveal" style="transition-delay:.1s" id="compare-scores"></div>
+    <!-- Table -->
+    <div class="tbl-wrap reveal" style="transition-delay:.2s">
+      <div class="tbl-head">
+        <div class="th feat"></div>
+        <div class="th winner">StickINK</div>
+        <div class="th" data-de="Handy" data-en="Phone">Handy</div>
+        <div class="th" data-de="2. Monitor" data-en="2nd Monitor">2. Monitor</div>
+        <div class="th" data-de="Haftnotizen" data-en="Sticky Notes">Haftnotizen</div>
+      </div>
+      <div id="compare-tbody"></div>
     </div>
   </div>
 </section>
@@ -1232,7 +1400,7 @@ const gridObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.fg, .wg, .hiw-steps').forEach(grid => gridObserver.observe(grid));
+document.querySelectorAll('.fg, .ws-grid, .hiw-steps').forEach(grid => gridObserver.observe(grid));
 
 // ── Counter animation ──
 const counterObserver = new IntersectionObserver((entries) => {
@@ -1339,7 +1507,7 @@ function einkRefreshCycle() {
 setInterval(einkRefreshCycle, 8000);
 
 // ── 3D Card tilt ──
-document.querySelectorAll('.fc, .wc').forEach(card => {
+document.querySelectorAll('.fc').forEach(card => {
   card.addEventListener('mousemove', e => {
     const rect = card.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
@@ -1383,6 +1551,103 @@ window.addEventListener('scroll', () => {
     ticking = true;
   }
 }, { passive: true });
+
+// ── Widget Showcase: Live Clock ──
+const WS_DAYS=['SONNTAG','MONTAG','DIENSTAG','MITTWOCH','DONNERSTAG','FREITAG','SAMSTAG'];
+const WS_DAYS_EN=['SUNDAY','MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY'];
+const WS_MONTHS=['Januar','Februar','M\u00e4rz','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+const WS_MONTHS_EN=['January','February','March','April','May','June','July','August','September','October','November','December'];
+function wsClockTick(){
+  const n=new Date();
+  const el=id=>document.getElementById(id);
+  if(el('ws-ltime'))el('ws-ltime').textContent=String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0');
+  const isEn=document.documentElement.lang==='en';
+  if(el('ws-lday'))el('ws-lday').textContent=(isEn?WS_DAYS_EN:WS_DAYS)[n.getDay()];
+  if(el('ws-ldate'))el('ws-ldate').textContent=n.getDate()+'. '+(isEn?WS_MONTHS_EN:WS_MONTHS)[n.getMonth()]+' '+n.getFullYear();
+}
+wsClockTick();setInterval(wsClockTick,1000);
+
+// ── Widget Showcase: URL Bars ──
+(function(){
+  const ub=document.getElementById('ws-ubars');
+  if(!ub)return;
+  [24,40,18,50,30,56,34,48,22,42,36,52,28].forEach(function(h){
+    const b=document.createElement('div');
+    b.style.cssText='width:7px;border-radius:2px 2px 0 0;background:#000;height:'+h+'px';
+    ub.appendChild(b);
+  });
+})();
+
+// ── Comparison: Score Rings + Table ──
+(function(){
+  var ROWS=[
+    {feat:'Ablenkungsfrei',featEn:'Distraction-free',vals:[1,0,0,1]},
+    {feat:'Auto-Updates',featEn:'Auto Updates',vals:[1,1,1,0]},
+    {feat:'Augenschonend',featEn:'Eye-friendly',vals:[1,0,0,1]},
+    {feat:'Kaum Strom',featEn:'Barely Any Power',vals:[1,0,0,1]},
+    {feat:'Immer sichtbar',featEn:'Always visible',vals:[1,0,2,1]},
+    {feat:'Personalisierbar',featEn:'Customizable',vals:[1,1,1,0]},
+    {feat:'Plug & Play',featEn:'Plug & Play',vals:[1,0,0,1]}
+  ];
+  var COLS=['StickINK','Handy','2. Monitor','Haftnotizen'];
+  var COLS_EN=['StickINK','Phone','2nd Monitor','Sticky Notes'];
+  var scores=COLS.map(function(_,ci){return ROWS.filter(function(r){return r.vals[ci]===1}).length});
+  var C=2*Math.PI*22;
+  var scEl=document.getElementById('compare-scores');
+  if(scEl){
+    COLS.forEach(function(name,i){
+      var pct=scores[i]/ROWS.length;
+      var offset=C*(1-pct);
+      var isWinner=i===0;
+      var div=document.createElement('div');
+      div.className='sc'+(isWinner?' winner':'');
+      var label=isWinner?'BESTE WAHL':'';
+      if(isWinner)div.style.setProperty('--winner-label','"\\2B50 '+label+'"');
+      div.innerHTML='<div class="sc-name" data-de="'+name+'" data-en="'+COLS_EN[i]+'">'+name+'</div>'+
+        '<div class="sc-ring"><svg viewBox="0 0 56 56"><circle class="sc-ring-bg" cx="28" cy="28" r="22"/>'+
+        '<circle class="sc-ring-fill" cx="28" cy="28" r="22" stroke-dasharray="'+C+'" stroke-dashoffset="'+C+'" data-offset="'+offset+'"/></svg>'+
+        '<div class="sc-num">'+scores[i]+'/'+ROWS.length+'</div></div>'+
+        '<div class="sc-label" data-de="'+Math.round(pct*100)+'% erf\u00fcllt" data-en="'+Math.round(pct*100)+'% met">'+Math.round(pct*100)+'% erf\u00fcllt</div>';
+      scEl.appendChild(div);
+    });
+  }
+  var tbody=document.getElementById('compare-tbody');
+  if(tbody){
+    ROWS.forEach(function(row){
+      var div=document.createElement('div');
+      div.className='tbl-row';
+      var html='<div class="td feat" data-de="'+row.feat+'" data-en="'+row.featEn+'">'+row.feat+'</div>';
+      row.vals.forEach(function(v,ci){
+        var winCls=ci===0?' winner-col':'';
+        var ico='';
+        if(v===1)ico='<div class="ico-yes"></div>';
+        else if(v===0)ico='<div class="ico-no"></div>';
+        else ico='<div class="ico-mid"></div>';
+        html+='<div class="td'+winCls+'">'+ico+'</div>';
+      });
+      div.innerHTML=html;
+      tbody.appendChild(div);
+    });
+  }
+  // Animate rings when visible
+  var ringObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.sc-ring-fill').forEach(function(el){
+          el.style.strokeDashoffset=el.dataset.offset;
+        });
+        ringObs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.2});
+  if(scEl)ringObs.observe(scEl);
+})();
+
+// ── Winner badge text ──
+document.querySelectorAll('.sc.winner').forEach(function(el){
+  el.setAttribute('data-winner-de','\u2B50 BESTE WAHL');
+  el.setAttribute('data-winner-en','\u2B50 BEST PICK');
+});
 
 // ── FAQ Accordion ──
 document.querySelectorAll('.faq-q').forEach(btn => {
