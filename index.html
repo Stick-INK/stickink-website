@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>StickINK – E-Ink Dashboard</title>
-<meta name="description" content="StickINK – dein ruhiger Fokus-Anker. Ein 7,5-Zoll E-Ink Display als ablenkungsfreies Dashboard f&#252;r Uhr, Wetter, To-Dos und Aktien. Kaum Strom. Kein Flimmern."/>
+<meta name="description" content="StickINK – 7,5&quot; E-Ink Dashboard f&#252;r deinen Schreibtisch. Uhr, Wetter, Kalender, To-Dos, Aktien und Fotos auf papier&#228;hnlichem Display. Kaum Strom. Kein Flimmern. Bald auf Kickstarter."/>
 <link rel="canonical" href="https://stickink.de/"/>
 <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon.png"/>
@@ -297,15 +297,6 @@ h1 em{font-style:italic;color:var(--coral)}
 .spec-key{font-size:.84rem;color:var(--muted);font-weight:500;flex-shrink:0}
 .spec-val{font-size:.84rem;color:var(--dark);font-weight:600;text-align:right}
 
-/* ─── PRODUCT SECTION ─── */
-.product-sec{background:var(--beige);padding:6rem 2rem;position:relative;z-index:1}
-.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
-.product-placeholder{width:100%;aspect-ratio:1/1;border:2px dashed var(--beige-dark);border-radius:var(--radius-lg);background:rgba(255,255,255,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;color:var(--muted);padding:2rem;text-align:center;transition:border-color .3s,transform .3s var(--ease-expo)}
-.product-placeholder:hover{border-color:var(--coral);transform:translateY(-4px)}
-.product-placeholder .ph-icon{font-size:2.5rem;opacity:.4}
-.product-placeholder p{font-size:.85rem;font-weight:500;opacity:.6}
-.product-placeholder small{font-size:.72rem;opacity:.4}
-
 /* ─── BRAND BANNER ─── */
 .brand-strip{background:var(--dark);padding:4.5rem 2rem;position:relative;z-index:1;overflow:hidden}
 .brand-strip::before{content:'';position:absolute;top:-50%;left:50%;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(95,138,114,.06) 0%,transparent 60%);transform:translateX(-50%);pointer-events:none}
@@ -360,6 +351,59 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 .footer-links a{font-size:.8rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
 .footer-links a:hover{color:rgba(255,255,255,.8)}
 
+/* ─── HOW IT WORKS ─── */
+.hiw-bg{background:#fff;border-top:1px solid var(--beige-dark);border-bottom:1px solid var(--beige-dark);position:relative;z-index:1}
+.hiw-inner{max-width:1100px;margin:0 auto;padding:6rem 2rem}
+.hiw-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:2.5rem;position:relative}
+.hiw-steps::before{content:'';position:absolute;top:28px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,var(--beige-dark),var(--coral),var(--sage));z-index:0}
+.hiw-step{text-align:center;position:relative;z-index:1}
+.hiw-num{width:56px;height:56px;border-radius:50%;background:var(--dark);color:#fff;font-size:1.2rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;transition:transform .3s var(--ease-back),background .3s}
+.hiw-step:hover .hiw-num{transform:scale(1.1);background:var(--coral)}
+.hiw-step h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:.4rem}
+.hiw-step p{font-size:.85rem;color:var(--muted);line-height:1.6}
+
+/* ─── WEB APP ─── */
+.webapp-bg{background:var(--dark);position:relative;z-index:1;overflow:hidden}
+.webapp-bg::before{content:'';position:absolute;top:-30%;left:50%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(95,138,114,.08) 0%,transparent 60%);transform:translateX(-50%);pointer-events:none}
+.webapp-inner{max-width:1100px;margin:0 auto;padding:6rem 2rem;text-align:center;position:relative;z-index:1}
+.webapp-bg .sl{color:var(--coral)}
+.webapp-bg h2{color:#fff}
+.webapp-bg .sec-desc{color:rgba(255,255,255,.6)}
+.webapp-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;margin-top:2rem}
+.webapp-pill{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:.5rem 1.1rem;font-size:.85rem;color:rgba(255,255,255,.75);font-weight:500;transition:border-color .3s,transform .3s var(--ease-expo)}
+.webapp-pill:hover{border-color:var(--coral);transform:translateY(-2px)}
+.webapp-cta{display:inline-flex;align-items:center;gap:.5rem;margin-top:2.5rem;color:var(--coral);font-weight:600;font-size:.95rem;text-decoration:none;transition:gap .3s,color .2s}
+.webapp-cta:hover{gap:.8rem;color:#fff}
+
+/* ─── COMPARISON TABLE ─── */
+.compare-bg{background:var(--beige);position:relative;z-index:1}
+.compare-inner{max-width:900px;margin:0 auto;padding:6rem 2rem}
+.compare-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:2rem;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md)}
+.compare-table th,.compare-table td{padding:.9rem 1rem;text-align:center;font-size:.85rem;border-bottom:1px solid var(--beige-dark)}
+.compare-table thead th{background:var(--dark);color:#fff;font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:1px}
+.compare-table thead th:first-child{text-align:left}
+.compare-table tbody td:first-child{text-align:left;font-weight:600;color:var(--dark);background:rgba(255,255,255,.5)}
+.compare-table tbody td{background:#fff;color:var(--muted)}
+.compare-table tbody tr:last-child td{border-bottom:none}
+.col-highlight{background:rgba(95,138,114,.08)!important;color:var(--dark)!important;font-weight:600}
+.compare-table thead .col-highlight{background:var(--sage)!important}
+.compare-check{color:var(--sage);font-weight:700;font-size:1.1rem}
+.compare-cross{color:#C0392B;opacity:.5;font-size:1.1rem}
+.compare-meh{color:var(--muted);font-size:.75rem}
+
+/* ─── FAQ ─── */
+.faq-bg{background:#fff;border-top:1px solid var(--beige-dark);position:relative;z-index:1}
+.faq-inner{max-width:760px;margin:0 auto;padding:6rem 2rem}
+.faq-item{border-bottom:1px solid var(--beige-dark);overflow:hidden}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 0;cursor:pointer;background:none;border:none;width:100%;text-align:left;font-family:"Outfit",sans-serif;font-size:.95rem;font-weight:600;color:var(--dark);transition:color .2s}
+.faq-q:hover{color:var(--coral)}
+.faq-q::after{content:'+';font-size:1.3rem;font-weight:400;color:var(--muted);transition:transform .3s var(--ease-expo);flex-shrink:0;margin-left:1rem}
+.faq-item.open .faq-q::after{transform:rotate(45deg);color:var(--coral)}
+.faq-q.open::after{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease-expo),padding .4s}
+.faq-item.open .faq-a{max-height:300px;padding-bottom:1.2rem}
+.faq-a p{font-size:.88rem;color:var(--muted);line-height:1.75}
+
 /* ─── RESPONSIVE ─── */
 @media(max-width:768px){
   nav{padding:0 1.25rem}
@@ -370,6 +414,15 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
   .specs-inner{padding:4rem 1.5rem}
   .ks-bg{padding:5rem 1.5rem}
   .eink-device{max-width:340px}
+  .hiw-inner{padding:4rem 1.5rem}
+  .webapp-inner{padding:4rem 1.5rem}
+  .compare-inner{padding:4rem 1.5rem}
+  .faq-inner{padding:4rem 1.5rem}
+}
+@media(max-width:640px){
+  .hiw-steps{grid-template-columns:1fr 1fr;gap:2rem 1.5rem}
+  .hiw-steps::before{display:none}
+  .compare-table th,.compare-table td{padding:.6rem .5rem;font-size:.75rem}
 }
 @media(max-width:480px){
   .trust-bar-inner{gap:1rem}
@@ -488,7 +541,7 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
     </div>
 
     <div class="trust-inline">
-      <div class="ti"><span class="ti-dot"></span><span data-de="&#128267; Kein Strom im Standby" data-en="&#128267; Zero Power Standby">&#128267; Kein Strom im Standby</span></div>
+      <div class="ti"><span class="ti-dot"></span><span data-de="&#128267; Kaum Strom &#8211; nur beim Update" data-en="&#128267; Barely Any Power &#8211; Only When Updating">&#128267; Kaum Strom &#8211; nur beim Update</span></div>
       <div class="ti"><span class="ti-dot"></span><span data-de="&#128268; Plug &amp; Play via USB" data-en="&#128268; Plug &amp; Play via USB">&#128268; Plug &amp; Play via USB</span></div>
       <div class="ti"><span class="ti-dot"></span><span data-de="&#127465;&#127466; Handmade in Germany" data-en="&#127465;&#127466; Handmade in Germany">&#127465;&#127466; Handmade in Germany</span></div>
     </div>
@@ -549,7 +602,7 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
   <div class="trust-bar-inner">
     <div class="tb-item">
       <span class="tb-val" data-count="0" data-suffix=" W">0 W</span>
-      <span class="tb-label" data-de="Standby-Verbrauch" data-en="Standby Power">Standby-Verbrauch</span>
+      <span class="tb-label" data-de="im Standby (bistabil)" data-en="Standby (bistable)">im Standby (bistabil)</span>
     </div>
     <div class="tb-sep"></div>
     <div class="tb-item">
@@ -576,7 +629,7 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 
 <!-- ─── SCARCITY BAR ─── -->
 <div class="scarcity-bar reveal">
-  <p><span class="scarcity-dot"></span> <span data-de="Early-Bird Pl&#228;tze sind begrenzt. Trag dich ein, bevor sie vergeben sind." data-en="Early Bird spots are limited. Sign up before they're gone.">Early-Bird Pl&#228;tze sind begrenzt. Trag dich ein, bevor sie vergeben sind.</span></p>
+  <p><span class="scarcity-dot"></span> <span data-de="Nur 50 Early-Bird Pl&#228;tze. Trag dich ein, bevor sie vergeben sind." data-en="Only 50 Early-Bird spots. Sign up before they're gone.">Nur 50 Early-Bird Pl&#228;tze. Trag dich ein, bevor sie vergeben sind.</span></p>
 </div>
 
 <!-- ─── PROBLEM / SOLUTION ─── -->
@@ -595,10 +648,10 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
   <div class="ps-card solution reveal-right" style="transition-delay:.15s">
     <div class="ps-label"><span>&#10022;</span><span data-de="Die L&#246;sung" data-en="The Solution">Die L&#246;sung</span></div>
     <h3 data-de="StickINK zeigt nur was z&#228;hlt." data-en="StickINK shows only what counts.">StickINK zeigt nur was z&#228;hlt.</h3>
-    <p data-de="Ein ruhiges, papier&#228;hnliches E-Ink Display neben deinem Monitor. Immer sichtbar, nie ablenkend &#8211; dein pers&#246;nliches Dashboard ohne Strom und ohne L&#228;rm." data-en="A calm, paper-like E-Ink display next to your monitor. Always visible, never distracting &#8211; your personal dashboard with zero power and zero noise.">Ein ruhiges, papier&#228;hnliches E-Ink Display neben deinem Monitor. Immer sichtbar, nie ablenkend &#8211; dein pers&#246;nliches Dashboard ohne Strom und ohne L&#228;rm.</p>
+    <p data-de="Ein ruhiges, papier&#228;hnliches E-Ink Display neben deinem Monitor. Immer sichtbar, nie ablenkend &#8211; dein pers&#246;nliches Dashboard mit kaum Strom und ohne L&#228;rm." data-en="A calm, paper-like E-Ink display next to your monitor. Always visible, never distracting &#8211; your personal dashboard with barely any power and zero noise.">Ein ruhiges, papier&#228;hnliches E-Ink Display neben deinem Monitor. Immer sichtbar, nie ablenkend &#8211; dein pers&#246;nliches Dashboard mit kaum Strom und ohne L&#228;rm.</p>
     <ul class="ps-list">
       <li data-de="Ruhig und ablenkungsfrei wie Papier" data-en="Calm and distraction-free like paper">Ruhig und ablenkungsfrei wie Papier</li>
-      <li data-de="Kein Strom im Standby &#8211; bistabile E-Ink Technologie" data-en="Zero power in standby &#8211; bistable E-Ink technology">Kein Strom im Standby &#8211; bistabile E-Ink Technologie</li>
+      <li data-de="Kaum Strom &#8211; bistabile E-Ink Technologie h&#228;lt das Bild ohne Energie" data-en="Barely any power &#8211; bistable E-Ink tech holds the image without energy">Kaum Strom &#8211; bistabile E-Ink Technologie h&#228;lt das Bild ohne Energie</li>
       <li data-de="Deine wichtigsten Infos immer im Blick" data-en="Your most important info always in sight">Deine wichtigsten Infos immer im Blick</li>
       <li data-de="Einmalig verbinden, f&#252;r immer konfiguriert" data-en="Connect once, configured forever">Einmalig verbinden, f&#252;r immer konfiguriert</li>
     </ul>
@@ -614,6 +667,38 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
   </div>
 </div>
 
+<!-- ─── HOW IT WORKS ─── -->
+<div class="hiw-bg">
+  <div class="hiw-inner">
+    <div class="sec-center reveal">
+      <div class="sl" data-de="So funktioniert's" data-en="How It Works">So funktioniert's</div>
+      <h2 data-de="In 60 Sekunden startklar." data-en="Ready in 60 Seconds.">In 60 Sekunden startklar.</h2>
+    </div>
+    <div class="hiw-steps">
+      <div class="hiw-step reveal-card">
+        <div class="hiw-num">1</div>
+        <h3 data-de="Auspacken" data-en="Unbox">Auspacken</h3>
+        <p data-de="Display, ESP32 und USB-Kabel &#8211; alles dabei, nichts fehlt." data-en="Display, ESP32, and USB cable &#8211; everything included, nothing missing.">Display, ESP32 und USB-Kabel &#8211; alles dabei, nichts fehlt.</p>
+      </div>
+      <div class="hiw-step reveal-card">
+        <div class="hiw-num">2</div>
+        <h3 data-de="Einstecken" data-en="Plug In">Einstecken</h3>
+        <p data-de="USB in deinen PC &#8211; Windows erkennt StickINK automatisch." data-en="USB into your PC &#8211; Windows detects StickINK automatically.">USB in deinen PC &#8211; Windows erkennt StickINK automatisch.</p>
+      </div>
+      <div class="hiw-step reveal-card">
+        <div class="hiw-num">3</div>
+        <h3 data-de="Konfigurieren" data-en="Configure">Konfigurieren</h3>
+        <p data-de="App starten, Widgets w&#228;hlen &#8211; oder die Web-App nutzen." data-en="Launch the app, pick widgets &#8211; or use the web app.">App starten, Widgets w&#228;hlen &#8211; oder die Web-App nutzen.</p>
+      </div>
+      <div class="hiw-step reveal-card">
+        <div class="hiw-num">4</div>
+        <h3 data-de="Fertig" data-en="Done">Fertig</h3>
+        <p data-de="Dein Dashboard steht. Ab jetzt aktualisiert sich alles automatisch." data-en="Your dashboard is set. From now on, everything updates automatically.">Dein Dashboard steht. Ab jetzt aktualisiert sich alles automatisch.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ─── WAVE DIVIDER ─── -->
 <div class="wave-divider" style="margin-bottom:-2px">
   <svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -626,7 +711,7 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
   <div class="sec sec-center">
     <div class="sl reveal" data-de="Warum StickINK" data-en="Why StickINK">Warum StickINK</div>
     <h2 class="reveal" style="transition-delay:.08s" data-de="Informiert. Ohne abgelenkt zu sein." data-en="Informed. Without the Distraction.">Informiert. Ohne abgelenkt zu sein.</h2>
-    <p class="sec-desc reveal" style="transition-delay:.16s" data-de="Ein klassischer Monitor strahlt, blinkt und lenkt ab. StickINK zeigt nur das Wichtigste &#8211; papier&#228;hnlich, blendarm und energiesparend." data-en="A regular monitor radiates, blinks, and distracts. StickINK shows only what matters &#8211; paper-like, glare-free, and energy-efficient.">Ein klassischer Monitor strahlt, blinkt und lenkt ab. StickINK zeigt nur das Wichtigste &#8211; papier&#228;hnlich, blendarm und energiesparend.</p>
+    <p class="sec-desc reveal" style="transition-delay:.16s" data-de="Dein Monitor k&#228;mpft um deine Aufmerksamkeit. StickINK nicht. Es zeigt dir leise, was z&#228;hlt &#8211; wie ein Notizbuch, das sich selbst aktualisiert." data-en="Your monitor fights for your attention. StickINK doesn't. It quietly shows what matters &#8211; like a notebook that updates itself.">Dein Monitor k&#228;mpft um deine Aufmerksamkeit. StickINK nicht. Es zeigt dir leise, was z&#228;hlt &#8211; wie ein Notizbuch, das sich selbst aktualisiert.</p>
     <div class="fg">
       <div class="fc reveal-card">
         <div class="fi ic">&#128267;</div>
@@ -662,33 +747,12 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
   </div>
 </section>
 
-<!-- ─── APP SHOWCASE ─── -->
-<div class="showcase-bg">
-  <div class="showcase-inner">
-    <div class="reveal-left">
-      <img src="assets/programm.jpg" alt="StickINK App Screenshot" class="showcase-img"/>
-    </div>
-    <div class="showcase-text reveal-right" style="transition-delay:.15s">
-      <div class="sl" data-de="Die App" data-en="The App">Die App</div>
-      <h2 data-de="Einfach. Sofort. Dein Dashboard." data-en="Simple. Instant. Your Dashboard.">Einfach. Sofort. Dein Dashboard.</h2>
-      <p data-de="Die StickINK Desktop-App l&#228;uft auf Windows 10 &amp; 11 &#8211; ohne Installation, direkt per Doppelklick. Konfiguriere deine Widgets, w&#228;hle dein Layout und schick es per USB ans Display." data-en="The StickINK desktop app runs on Windows 10 &amp; 11 &#8211; no installation, just double-click. Configure your widgets, choose your layout and send it via USB to the display.">Die StickINK Desktop-App l&#228;uft auf Windows 10 &amp; 11 &#8211; ohne Installation, direkt per Doppelklick. Konfiguriere deine Widgets, w&#228;hle dein Layout und schick es per USB ans Display.</p>
-      <ul class="feature-list">
-        <li data-de="Live-Vorschau in der App vor dem Senden" data-en="Live preview in the app before sending">Live-Vorschau in der App vor dem Senden</li>
-        <li data-de="Bis zu 4 gespeicherte Screen-Konfigurationen" data-en="Up to 4 saved screen configurations">Bis zu 4 gespeicherte Screen-Konfigurationen</li>
-        <li data-de="Auto-Modus mit konfigurierbarem Intervall" data-en="Auto mode with configurable interval">Auto-Modus mit konfigurierbarem Intervall</li>
-        <li data-de="Smart Refresh: sendet nur bei tats&#228;chlichen &#196;nderungen" data-en="Smart Refresh: only sends on actual changes">Smart Refresh: sendet nur bei tats&#228;chlichen &#196;nderungen</li>
-        <li data-de="Portable ZIP &#8211; kein Installer, kein Python n&#246;tig" data-en="Portable ZIP &#8211; no installer, no Python required">Portable ZIP &#8211; kein Installer, kein Python n&#246;tig</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
 <!-- ─── WIDGETS ─── -->
 <section class="widgets-bg">
   <div class="sec sec-center">
     <div class="sl reveal" data-de="Widgets" data-en="Widgets">Widgets</div>
-    <h2 class="reveal" style="transition-delay:.08s" data-de="Alles was du brauchst. Nichts was du nicht brauchst." data-en="Everything You Need. Nothing You Don't.">Alles was du brauchst. Nichts was du nicht brauchst.</h2>
-    <p class="sec-desc reveal" style="transition-delay:.16s" data-de="W&#228;hle aus 6 Widgets die dir wichtig sind und stelle dein pers&#246;nliches Dashboard zusammen." data-en="Pick the 6 widgets that matter to you and build your personal dashboard.">W&#228;hle aus 6 Widgets die dir wichtig sind und stelle dein pers&#246;nliches Dashboard zusammen.</p>
+    <h2 class="reveal" style="transition-delay:.08s" data-de="Sechs Widgets. Null Ablenkung." data-en="Six Widgets. Zero Distraction.">Sechs Widgets. Null Ablenkung.</h2>
+    <p class="sec-desc reveal" style="transition-delay:.16s" data-de="Jedes Widget liefert genau eine Info &#8211; auf einen Blick, ohne Klick. Kombiniere sie zu deinem perfekten Dashboard." data-en="Each widget delivers exactly one piece of info &#8211; at a glance, no click needed. Combine them into your perfect dashboard.">Jedes Widget liefert genau eine Info &#8211; auf einen Blick, ohne Klick. Kombiniere sie zu deinem perfekten Dashboard.</p>
     <div class="wg">
       <div class="wc reveal-card">
         <div class="wc-top"><span class="wc-icon">&#128336;</span></div>
@@ -718,14 +782,52 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
       <div class="wc reveal-card">
         <div class="wc-top">
           <span class="wc-icon">&#128197;</span>
-          <span class="coming-soon" data-de="Bald" data-en="Soon">Bald</span>
         </div>
         <h3 data-de="Kalender" data-en="Calendar">Kalender</h3>
-        <p data-de="Outlook-Integration &#8211; in Entwicklung" data-en="Outlook integration &#8211; in development">Outlook-Integration &#8211; in Entwicklung</p>
+        <p data-de="ICS-Link, CalDAV oder Microsoft &#8211; dein Kalender, dein Format" data-en="ICS link, CalDAV, or Microsoft &#8211; your calendar, your format">ICS-Link, CalDAV oder Microsoft &#8211; dein Kalender, dein Format</p>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ─── WEB APP ─── -->
+<div class="webapp-bg">
+  <div class="webapp-inner">
+    <div class="sl reveal" data-de="Web-App" data-en="Web App">Web-App</div>
+    <h2 class="reveal" style="transition-delay:.08s" data-de="Kein Windows? Kein Problem." data-en="No Windows? No Problem.">Kein Windows? Kein Problem.</h2>
+    <p class="sec-desc reveal" style="transition-delay:.16s" data-de="Mit der StickINK Web-App unter app.stickink.de konfigurierst du dein Dashboard direkt im Browser &#8211; auf jedem Ger&#228;t. Installierbar als PWA, auch offline nutzbar." data-en="With the StickINK web app at app.stickink.de, configure your dashboard right in the browser &#8211; on any device. Installable as a PWA, works offline too.">Mit der StickINK Web-App unter app.stickink.de konfigurierst du dein Dashboard direkt im Browser &#8211; auf jedem Ger&#228;t. Installierbar als PWA, auch offline nutzbar.</p>
+    <div class="webapp-pills reveal" style="transition-delay:.24s">
+      <span class="webapp-pill" data-de="&#128197; Kalender (ICS, CalDAV, Microsoft)" data-en="&#128197; Calendar (ICS, CalDAV, Microsoft)">&#128197; Kalender (ICS, CalDAV, Microsoft)</span>
+      <span class="webapp-pill" data-de="&#9925; Wetter" data-en="&#9925; Weather">&#9925; Wetter</span>
+      <span class="webapp-pill" data-de="&#128200; Aktien &amp; Krypto" data-en="&#128200; Stocks &amp; Crypto">&#128200; Aktien &amp; Krypto</span>
+      <span class="webapp-pill" data-de="&#9989; To-Do Liste" data-en="&#9989; To-Do List">&#9989; To-Do Liste</span>
+      <span class="webapp-pill" data-de="&#128444;&#65039; Bild-Upload + Dithering" data-en="&#128444;&#65039; Image Upload + Dithering">&#128444;&#65039; Bild-Upload + Dithering</span>
+      <span class="webapp-pill" data-de="&#128241; PWA &#8211; offline nutzbar" data-en="&#128241; PWA &#8211; works offline">&#128241; PWA &#8211; offline nutzbar</span>
+    </div>
+    <a href="https://app.stickink.de" target="_blank" rel="noopener" class="webapp-cta reveal" style="transition-delay:.32s" data-de="Web-App ausprobieren &#8594;" data-en="Try the Web App &#8594;">Web-App ausprobieren &#8594;</a>
+  </div>
+</div>
+
+<!-- ─── APP SHOWCASE ─── -->
+<div class="showcase-bg">
+  <div class="showcase-inner">
+    <div class="reveal-left">
+      <img src="assets/programm.jpg" alt="StickINK App Screenshot" class="showcase-img"/>
+    </div>
+    <div class="showcase-text reveal-right" style="transition-delay:.15s">
+      <div class="sl" data-de="Die App" data-en="The App">Die App</div>
+      <h2 data-de="Dein Dashboard. Deine Regeln." data-en="Your Dashboard. Your Rules.">Dein Dashboard. Deine Regeln.</h2>
+      <p data-de="Die StickINK Desktop-App startet per Doppelklick &#8211; kein Installer, kein Setup. Zieh deine Widgets ins Layout, sieh die Live-Vorschau und schick alles mit einem Klick ans Display." data-en="The StickINK desktop app launches with a double-click &#8211; no installer, no setup. Drag your widgets into the layout, see the live preview, and send everything to the display with one click.">Die StickINK Desktop-App startet per Doppelklick &#8211; kein Installer, kein Setup. Zieh deine Widgets ins Layout, sieh die Live-Vorschau und schick alles mit einem Klick ans Display.</p>
+      <ul class="feature-list">
+        <li data-de="Live-Vorschau in der App vor dem Senden" data-en="Live preview in the app before sending">Live-Vorschau in der App vor dem Senden</li>
+        <li data-de="Bis zu 4 gespeicherte Screen-Konfigurationen" data-en="Up to 4 saved screen configurations">Bis zu 4 gespeicherte Screen-Konfigurationen</li>
+        <li data-de="Auto-Modus mit konfigurierbarem Intervall" data-en="Auto mode with configurable interval">Auto-Modus mit konfigurierbarem Intervall</li>
+        <li data-de="Smart Refresh: sendet nur bei tats&#228;chlichen &#196;nderungen" data-en="Smart Refresh: only sends on actual changes">Smart Refresh: sendet nur bei tats&#228;chlichen &#196;nderungen</li>
+        <li data-de="Portable ZIP &#8211; kein Installer, kein Python n&#246;tig" data-en="Portable ZIP &#8211; no installer, no Python required">Portable ZIP &#8211; kein Installer, kein Python n&#246;tig</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <!-- ─── WAVE DIVIDER ─── -->
 <div class="wave-divider" style="margin-bottom:-2px">
@@ -733,6 +835,80 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
     <path d="M0,20 C480,48 960,0 1440,28 L1440,48 L0,48 Z" fill="#ffffff"/>
   </svg>
 </div>
+
+<!-- ─── COMPARISON TABLE ─── -->
+<section class="compare-bg">
+  <div class="compare-inner">
+    <div class="sec-center reveal">
+      <div class="sl" data-de="Vergleich" data-en="Comparison">Vergleich</div>
+      <h2 data-de="Warum nicht einfach&hellip;?" data-en="Why not just&hellip;?">Warum nicht einfach&hellip;?</h2>
+    </div>
+    <div class="compare-table reveal" style="transition-delay:.12s">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th class="col-highlight" data-de="StickINK" data-en="StickINK">StickINK</th>
+            <th data-de="Handy" data-en="Phone">Handy</th>
+            <th data-de="2.&nbsp;Monitor" data-en="2nd Monitor">2.&nbsp;Monitor</th>
+            <th data-de="Haftnotizen" data-en="Sticky Notes">Haftnotizen</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-de="Ablenkungsfrei" data-en="Distraction-free">Ablenkungsfrei</td>
+            <td class="col-highlight"><span class="compare-check">&#10003;</span></td>
+            <td><span class="compare-cross">&#10007;</span></td>
+            <td><span class="compare-cross">&#10007;</span></td>
+            <td><span class="compare-check">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td data-de="Auto-Updates" data-en="Auto Updates">Auto-Updates</td>
+            <td class="col-highlight"><span class="compare-check">&#10003;</span></td>
+            <td><span class="compare-check">&#10003;</span></td>
+            <td><span class="compare-check">&#10003;</span></td>
+            <td><span class="compare-cross">&#10007;</span></td>
+          </tr>
+          <tr>
+            <td data-de="Augenschonend" data-en="Eye-friendly">Augenschonend</td>
+            <td class="col-highlight"><span class="compare-check">&#10003;</span></td>
+            <td><span class="compare-cross">&#10007;</span></td>
+            <td><span class="compare-cross">&#10007;</span></td>
+            <td><span class="compare-check">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td data-de="Kaum Strom" data-en="Barely Any Power">Kaum Strom</td>
+            <td class="col-highlight"><span class="compare-check">&#10003;</span></td>
+            <td><span class="compare-cross">&#10007;</span></td>
+            <td><span class="compare-cross">&#10007;</span></td>
+            <td><span class="compare-check">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td data-de="Immer sichtbar" data-en="Always visible">Immer sichtbar</td>
+            <td class="col-highlight"><span class="compare-check">&#10003;</span></td>
+            <td><span class="compare-cross">&#10007;</span></td>
+            <td><span class="compare-meh">~</span></td>
+            <td><span class="compare-check">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td data-de="Personalisierbar" data-en="Customizable">Personalisierbar</td>
+            <td class="col-highlight"><span class="compare-check">&#10003;</span></td>
+            <td><span class="compare-check">&#10003;</span></td>
+            <td><span class="compare-check">&#10003;</span></td>
+            <td><span class="compare-cross">&#10007;</span></td>
+          </tr>
+          <tr>
+            <td data-de="Plug &amp; Play" data-en="Plug &amp; Play">Plug &amp; Play</td>
+            <td class="col-highlight"><span class="compare-check">&#10003;</span></td>
+            <td><span class="compare-cross">&#10007;</span></td>
+            <td><span class="compare-cross">&#10007;</span></td>
+            <td><span class="compare-check">&#10003;</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
 <!-- ─── SPECS ─── -->
 <div class="specs-bg">
@@ -808,26 +984,49 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
   </div>
 </div>
 
-<!-- ─── PRODUCT PLACEHOLDER SECTION ─── -->
-<section class="product-sec">
-  <div style="max-width:1100px;margin:0 auto">
-    <div class="sec-center reveal" style="margin-bottom:2.5rem">
-      <div class="sl" data-de="Das Produkt" data-en="The Product">Das Produkt</div>
-      <h2 data-de="Ein Dashboard f&#252;r deinen Schreibtisch." data-en="A Dashboard for Your Desk.">Ein Dashboard f&#252;r deinen Schreibtisch.</h2>
-      <p class="sec-desc" data-de="Professionelle Produktfotos folgen in K&#252;rze. Sei gespannt." data-en="Professional product photos coming soon. Stay tuned.">Professionelle Produktfotos folgen in K&#252;rze. Sei gespannt.</p>
+<!-- ─── FAQ ─── -->
+<section class="faq-bg">
+  <div class="faq-inner">
+    <div class="sec-center reveal">
+      <div class="sl" data-de="FAQ" data-en="FAQ">FAQ</div>
+      <h2 data-de="H&#228;ufige Fragen" data-en="Frequently Asked Questions">H&#228;ufige Fragen</h2>
     </div>
-    <div class="product-grid">
-      <div class="product-placeholder reveal">
-        <span class="ph-icon">&#128247;</span>
-        <p data-de="Frontansicht" data-en="Front View">Frontansicht</p>
+    <div class="faq-list reveal" style="transition-delay:.1s">
+      <div class="faq-item">
+        <button class="faq-q" data-de="Funktioniert StickINK auf Mac oder Linux?" data-en="Does StickINK work on Mac or Linux?">Funktioniert StickINK auf Mac oder Linux?</button>
+        <div class="faq-a">
+          <p data-de="Die Desktop-App ist aktuell nur f&#252;r Windows verf&#252;gbar. Aber die Web-App unter <a href='https://app.stickink.de' target='_blank'>app.stickink.de</a> l&#228;uft auf jedem Ger&#228;t mit Browser. Windows wird nur f&#252;r die USB-&#220;bertragung zum Display ben&#246;tigt." data-en="The desktop app is currently Windows only. But the web app at <a href='https://app.stickink.de' target='_blank'>app.stickink.de</a> runs on any device with a browser. Windows is only needed for the USB transfer to the display." data-html>Die Desktop-App ist aktuell nur f&#252;r Windows verf&#252;gbar. Aber die Web-App unter <a href="https://app.stickink.de" target="_blank">app.stickink.de</a> l&#228;uft auf jedem Ger&#228;t mit Browser. Windows wird nur f&#252;r die USB-&#220;bertragung zum Display ben&#246;tigt.</p>
+        </div>
       </div>
-      <div class="product-placeholder reveal" style="transition-delay:.1s">
-        <span class="ph-icon">&#128247;</span>
-        <p data-de="Am Schreibtisch" data-en="On Desk">Am Schreibtisch</p>
+      <div class="faq-item">
+        <button class="faq-q" data-de="Muss der PC die ganze Zeit laufen?" data-en="Does my PC need to be running all the time?">Muss der PC die ganze Zeit laufen?</button>
+        <div class="faq-a">
+          <p data-de="Nein. E-Ink h&#228;lt das Bild ohne Strom. Der Auto-Modus aktualisiert das Display, solange dein PC l&#228;uft &#8211; danach bleibt das letzte Bild stehen." data-en="No. E-Ink holds the image without power. Auto mode updates the display while your PC is running &#8211; after that, the last image stays.">Nein. E-Ink h&#228;lt das Bild ohne Strom. Der Auto-Modus aktualisiert das Display, solange dein PC l&#228;uft &#8211; danach bleibt das letzte Bild stehen.</p>
+        </div>
       </div>
-      <div class="product-placeholder reveal" style="transition-delay:.2s">
-        <span class="ph-icon">&#128247;</span>
-        <p data-de="Display-Nahaufnahme" data-en="Display Close-up">Display-Nahaufnahme</p>
+      <div class="faq-item">
+        <button class="faq-q" data-de="Was ist der Early-Bird Preis?" data-en="What's the Early-Bird price?">Was ist der Early-Bird Preis?</button>
+        <div class="faq-a">
+          <p data-de="Der genaue Preis wird mit dem Kickstarter-Launch bekannt gegeben. Die ersten 50 Supporter erhalten den besten Preis. Wer auf der Waitlist steht, bekommt den Link als Erster." data-en="The exact price will be announced at Kickstarter launch. The first 50 supporters get the best price. Waitlist subscribers get the link first.">Der genaue Preis wird mit dem Kickstarter-Launch bekannt gegeben. Die ersten 50 Supporter erhalten den besten Preis. Wer auf der Waitlist steht, bekommt den Link als Erster.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" data-de="Wohin wird geliefert?" data-en="Where do you ship?">Wohin wird geliefert?</button>
+        <div class="faq-a">
+          <p data-de="Zun&#228;chst in den DACH-Raum (Deutschland, &#214;sterreich, Schweiz). Weitere EU-L&#228;nder folgen. Versandkosten werden auf der Kickstarter-Seite angegeben." data-en="Initially to DACH (Germany, Austria, Switzerland). More EU countries to follow. Shipping costs will be listed on the Kickstarter page.">Zun&#228;chst in den DACH-Raum (Deutschland, &#214;sterreich, Schweiz). Weitere EU-L&#228;nder folgen. Versandkosten werden auf der Kickstarter-Seite angegeben.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" data-de="Welche Widgets gibt es?" data-en="What widgets are available?">Welche Widgets gibt es?</button>
+        <div class="faq-a">
+          <p data-de="Uhr, Wetter, To-Do Liste, Aktien &amp; Krypto, Bild-Upload mit Dithering und Kalender (ICS-Link, CalDAV oder Microsoft)." data-en="Clock, Weather, To-Do List, Stocks &amp; Crypto, Image Upload with dithering, and Calendar (ICS link, CalDAV, or Microsoft).">Uhr, Wetter, To-Do Liste, Aktien &amp; Krypto, Bild-Upload mit Dithering und Kalender (ICS-Link, CalDAV oder Microsoft).</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" data-de="Kann ich eigene Fotos anzeigen?" data-en="Can I display my own photos?">Kann ich eigene Fotos anzeigen?</button>
+        <div class="faq-a">
+          <p data-de="Ja. Floyd-Steinberg Dithering wandelt dein Foto in 16 Graustufen um. Das Ergebnis sieht aus wie eine Illustration auf Papier." data-en="Yes. Floyd-Steinberg dithering converts your photo to 16 grayscale levels. The result looks like an illustration on paper.">Ja. Floyd-Steinberg Dithering wandelt dein Foto in 16 Graustufen um. Das Ergebnis sieht aus wie eine Illustration auf Papier.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -848,8 +1047,8 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
   <div class="ks-inner reveal-scale">
     <div class="urgency-badge"><span class="urgency-dot"></span> <span data-de="Limitiert auf 50 Early-Bird Pl&#228;tze" data-en="Limited to 50 Early-Bird Spots">Limitiert auf 50 Early-Bird Pl&#228;tze</span></div>
     <div class="sl" data-de="Kickstarter" data-en="Kickstarter">Kickstarter</div>
-    <h2 data-de="Verpasse nicht den g&#252;nstigsten Preis." data-en="Don't Miss the Best Price.">Verpasse nicht den g&#252;nstigsten Preis.</h2>
-    <p class="ks-desc" data-de="Die ersten 50 Early-Bird-Supporter erhalten StickINK zum exklusiven Einf&#252;hrungspreis. Trag dich jetzt ein &#8211; du bekommst als Erstes den Link." data-en="The first 50 Early-Bird supporters get StickINK at an exclusive introductory price. Sign up now &#8211; you'll be the first to get the link.">Die ersten 50 Early-Bird-Supporter erhalten StickINK zum exklusiven Einf&#252;hrungspreis. Trag dich jetzt ein &#8211; du bekommst als Erstes den Link.</p>
+    <h2 data-de="Wer zuerst kommt, zahlt am wenigsten." data-en="First Come, Best Price.">Wer zuerst kommt, zahlt am wenigsten.</h2>
+    <p class="ks-desc" data-de="Die ersten 50 Supporter erhalten StickINK zum niedrigsten Preis, den es jemals geben wird. Kein Risiko &#8211; du meldest dich nur f&#252;r die Benachrichtigung an. Wenn der Kickstarter startet, entscheidest du." data-en="The first 50 supporters get StickINK at the lowest price it will ever be. No risk &#8211; you're only signing up for the notification. When Kickstarter launches, you decide.">Die ersten 50 Supporter erhalten StickINK zum niedrigsten Preis, den es jemals geben wird. Kein Risiko &#8211; du meldest dich nur f&#252;r die Benachrichtigung an. Wenn der Kickstarter startet, entscheidest du.</p>
 
     <div class="ks-form-wrap">
       <div class="sib-form">
@@ -1033,7 +1232,7 @@ const gridObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.fg, .wg').forEach(grid => gridObserver.observe(grid));
+document.querySelectorAll('.fg, .wg, .hiw-steps').forEach(grid => gridObserver.observe(grid));
 
 // ── Counter animation ──
 const counterObserver = new IntersectionObserver((entries) => {
@@ -1184,6 +1383,16 @@ window.addEventListener('scroll', () => {
     ticking = true;
   }
 }, { passive: true });
+
+// ── FAQ Accordion ──
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
 
 // Brevo config
 window.REQUIRED_CODE_ERROR_MESSAGE = 'W\u00e4hle bitte einen L\u00e4ndervorwahl aus.';
