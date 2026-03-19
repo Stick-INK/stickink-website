@@ -38,7 +38,10 @@
   --radius-lg:20px;
 }
 html{scroll-behavior:smooth}
-body{font-family:"Outfit",sans-serif;background:var(--beige);color:var(--text);line-height:1.6;overflow-x:hidden}
+body{font-family:"Outfit",sans-serif;background:var(--beige);color:var(--text);line-height:1.75;overflow-x:hidden}
+
+/* ─── SCROLL PROGRESS ─── */
+.scroll-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--coral),var(--sage));z-index:1001;width:0;transition:none;pointer-events:none}
 
 /* ─── CUSTOM SCROLLBAR ─── */
 ::-webkit-scrollbar{width:8px}
@@ -144,6 +147,8 @@ h1 em{font-style:italic;color:var(--coral)}
 .trust-inline{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.4rem}
 .ti{display:flex;align-items:center;gap:.4rem;font-size:.78rem;color:var(--muted);font-weight:500}
 .ti-dot{width:6px;height:6px;border-radius:50%;background:var(--sage)}
+.hero-cta{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.8rem;padding:.85rem 2rem;background:var(--coral);color:#fff;font-weight:700;font-size:.95rem;border-radius:var(--radius);text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(201,104,64,.3);opacity:0;animation:slideUp .8s var(--ease-expo) .85s forwards}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,104,64,.4)}
 
 /* ─── E-INK MOCKUP ─── */
 .eink-device{width:100%;max-width:480px;position:relative;animation:mockupFloat 6s ease-in-out 2s infinite;animation-fill-mode:both}
@@ -190,6 +195,8 @@ h1 em{font-style:italic;color:var(--coral)}
 .scarcity-bar{text-align:center;padding:1.2rem 2rem;position:relative;z-index:1}
 .scarcity-bar p{font-size:.85rem;color:var(--muted);font-weight:500;display:inline-flex;align-items:center;gap:.5rem}
 .scarcity-dot{width:7px;height:7px;border-radius:50%;background:var(--coral);animation:pulse 2s ease-in-out infinite;flex-shrink:0}
+.scarcity-track{width:260px;height:6px;background:rgba(44,42,39,.08);border-radius:3px;overflow:hidden;margin:0 auto;margin-top:.6rem}
+.scarcity-fill{height:100%;background:linear-gradient(90deg,var(--coral),#e0825a);border-radius:3px;transition:width 1.5s cubic-bezier(.34,1.2,.64,1)}
 @keyframes pulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
 
 /* ─── IMAGINE SECTION ─── */
@@ -237,7 +244,8 @@ h1 em{font-style:italic;color:var(--coral)}
 /* ─── SECTION BASE ─── */
 .sec{padding:6rem 2rem;max-width:1300px;margin:0 auto}
 .sec-center{text-align:center}
-.sl{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:var(--sage);margin-bottom:.8rem}
+.sl{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:var(--sage);margin-bottom:.8rem;display:inline-block}
+.sl::after{content:'';display:block;width:24px;height:2px;background:var(--coral);margin:6px auto 0;border-radius:1px}
 .sec h2{font-family:"Playfair Display",serif;font-size:clamp(1.9rem,3vw,2.7rem);color:var(--dark);margin-bottom:1rem;line-height:1.15;letter-spacing:-.01em}
 .sec-desc{color:var(--muted);max-width:560px;margin:0 auto 3rem;line-height:1.75;font-size:.97rem}
 .sec-center .sec-desc{text-align:center}
@@ -249,11 +257,12 @@ h1 em{font-style:italic;color:var(--coral)}
 .fc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(201,104,64,.03) 100%);opacity:0;transition:opacity .4s}
 .fc:hover::before{opacity:1}
 .fi{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.1rem;transition:transform .3s var(--ease-back)}
+.fi svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .fc:hover .fi{transform:scale(1.1) rotate(-5deg)}
-.ic{background:rgba(201,104,64,.1)}
-.is{background:rgba(95,138,114,.1)}
-.id{background:rgba(44,42,39,.07)}
-.ib{background:rgba(201,104,64,.07)}
+.ic{background:rgba(201,104,64,.1);color:var(--coral)}
+.is{background:rgba(95,138,114,.1);color:var(--sage)}
+.id{background:rgba(44,42,39,.07);color:var(--dark)}
+.ib{background:rgba(201,104,64,.07);color:var(--coral)}
 .fc h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:.5rem}
 .fc p{font-size:.87rem;color:var(--muted);line-height:1.65}
 
@@ -278,11 +287,12 @@ h1 em{font-style:italic;color:var(--coral)}
 .ws-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(201,104,64,.15);border:1px solid rgba(201,104,64,.35);color:var(--coral);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem}
 .ws-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--coral);animation:wsPulse 2s infinite}
 @keyframes wsPulse{0%,100%{opacity:1}50%{opacity:.3}}
-.ws-bg h2{color:#fff}
+.ws-bg h2{background:linear-gradient(135deg,#fff 60%,var(--coral));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .ws-bg .sec-desc{color:rgba(255,255,255,.5);max-width:480px;margin:0 auto}
 .ws-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .ws-card{border-radius:10px;overflow:hidden;cursor:default;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);transition:transform .3s var(--ease-expo),border-color .3s,box-shadow .3s;position:relative}
-.ws-card:hover{transform:translateY(-4px);border-color:var(--coral);box-shadow:0 0 0 1px rgba(201,104,64,.25),0 12px 32px rgba(201,104,64,.12)}
+.ws-grid:hover .ws-card{opacity:.5;transition:opacity .3s,transform .2s,border-color .2s,box-shadow .2s}
+.ws-grid .ws-card:hover{opacity:1;transform:translateY(-4px);border-color:var(--coral);box-shadow:0 0 0 1px rgba(201,104,64,.25),0 12px 32px rgba(201,104,64,.12)}
 .ws-card:hover .ws-hint{opacity:1;transform:translateY(0)}
 .ws-display{background:#fff;margin:10px 10px 0;border-radius:6px;height:112px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;border:1px solid #e8e4de}
 .ws-display::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.012) 3px,rgba(0,0,0,.012) 4px);pointer-events:none;z-index:2}
@@ -369,7 +379,7 @@ h1 em{font-style:italic;color:var(--coral)}
 .ks-bg::after{content:'';position:absolute;bottom:-30%;left:-15%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(95,138,114,.06) 0%,transparent 60%);pointer-events:none}
 .ks-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:1}
 .ks-bg .sl{color:var(--coral);margin-bottom:.8rem}
-.ks-bg h2{font-family:"Playfair Display",serif;font-size:clamp(2rem,3.5vw,3rem);color:#fff;margin-bottom:1rem;line-height:1.1}
+.ks-bg h2{font-family:"Playfair Display",serif;font-size:clamp(2rem,3.5vw,3rem);background:linear-gradient(135deg,#fff 60%,var(--coral));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1rem;line-height:1.1}
 .ks-bg .ks-desc{color:rgba(255,255,255,.6);font-size:.97rem;line-height:1.75;margin-bottom:2.5rem}
 .ks-form-wrap{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-lg);padding:2.5rem;backdrop-filter:blur(10px)}
 
@@ -434,7 +444,7 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 /* ─── COMPARISON TABLE ─── */
 .compare-bg{background:var(--dark);position:relative;z-index:1}
 .compare-inner{max-width:900px;margin:0 auto;padding:6rem 2rem}
-.compare-bg h2{color:#fff}
+.compare-bg h2{background:linear-gradient(135deg,#fff 60%,var(--coral));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .compare-scores{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:2rem}
 .sc{border-radius:10px;padding:14px 12px 12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);transition:transform .2s;text-align:center}
 .sc.winner{background:rgba(201,104,64,.08);border:1.5px solid var(--coral);box-shadow:0 0 0 1px rgba(201,104,64,.2),0 8px 28px rgba(201,104,64,.15);position:relative}
@@ -485,6 +495,14 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
 .faq-item.open .faq-a{max-height:300px;padding-bottom:1.2rem}
 .faq-a p{font-size:.88rem;color:var(--muted);line-height:1.75}
 
+/* ─── MOBILE STICKY CTA ─── */
+.mobile-cta{display:none}
+@media(max-width:768px){
+  .mobile-cta{display:block;position:fixed;bottom:0;left:0;right:0;padding:12px 16px;background:var(--dark);z-index:999;transform:translateY(100%);transition:transform .3s ease;border-top:1px solid rgba(255,255,255,.08)}
+  .mobile-cta.visible{transform:translateY(0)}
+  .mobile-cta a{display:block;text-align:center;padding:12px;background:var(--coral);color:#fff;font-weight:700;font-size:.9rem;border-radius:var(--radius);text-decoration:none;box-shadow:0 4px 16px rgba(201,104,64,.35)}
+}
+
 /* ─── RESPONSIVE ─── */
 @media(max-width:768px){
   nav{padding:0 1.25rem}
@@ -505,21 +523,25 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
   .hiw-steps{grid-template-columns:1fr 1fr;gap:2rem 1.5rem}
   .hiw-steps::before{display:none}
   .compare-scores{grid-template-columns:repeat(2,1fr)}
-  .td.feat{font-size:11px;padding-left:10px}
-  .th.feat{padding-left:10px}
+  .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tbl-head,.tbl-row{min-width:500px}
   .ws-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:480px){
   .trust-bar-inner{gap:1rem}
   .tb-val{font-size:.95rem}
   .fg{grid-template-columns:1fr}
-  .ws-grid{grid-template-columns:1fr}
-  .eink-device{max-width:280px}
+  .ws-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .eink-device{max-width:340px}
   .eink-bezel{padding:8px;border-radius:10px}
 }
+/* ─── ACCESSIBILITY ─── */
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+:focus-visible{outline:2px solid var(--coral);outline-offset:2px;border-radius:4px}
 </style>
 </head>
 <body>
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- Decorative layers -->
 <div class="grain"></div>
@@ -630,6 +652,7 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
       <div class="ti"><span class="ti-dot"></span><span data-de="&#128268; Plug &amp; Play via USB" data-en="&#128268; Plug &amp; Play via USB">&#128268; Plug &amp; Play via USB</span></div>
       <div class="ti"><span class="ti-dot"></span><span data-de="&#127465;&#127466; Hergestellt in Deutschland" data-en="&#127465;&#127466; Made in Germany">&#127465;&#127466; Hergestellt in Deutschland</span></div>
     </div>
+    <a href="#ks" class="hero-cta" data-de="Early-Bird Platz sichern &#8594;" data-en="Secure Early-Bird Spot &#8594;">Early-Bird Platz sichern &#8594;</a>
   </div>
 
   <div class="hero-visual">
@@ -713,8 +736,9 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
 </div>
 
 <!-- ─── SCARCITY BAR ─── -->
-<div class="scarcity-bar reveal">
-  <p><span class="scarcity-dot"></span> <span data-de="Nur 50 Early-Bird Pl&#228;tze. Trag dich ein, bevor sie vergeben sind." data-en="Only 50 Early-Bird spots. Sign up before they're gone.">Nur 50 Early-Bird Pl&#228;tze. Trag dich ein, bevor sie vergeben sind.</span></p>
+<div class="scarcity-bar reveal" data-claimed="37">
+  <p><span class="scarcity-dot"></span> <span data-de="Nur noch <strong>13 von 50</strong> Early-Bird Pl&#228;tzen frei" data-en="Only <strong>13 of 50</strong> Early-Bird spots left" data-html>Nur noch <strong>13 von 50</strong> Early-Bird Pl&#228;tzen frei</span></p>
+  <div class="scarcity-track"><div class="scarcity-fill" style="width:0%"></div></div>
 </div>
 
 <!-- ─── PROBLEM / SOLUTION ─── -->
@@ -799,32 +823,32 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
     <p class="sec-desc reveal" style="transition-delay:.16s" data-de="Dein Monitor k&#228;mpft um deine Aufmerksamkeit. StickINK nicht. Es zeigt dir leise, was z&#228;hlt &#8211; wie ein Notizbuch, das sich selbst aktualisiert." data-en="Your monitor fights for your attention. StickINK doesn't. It quietly shows what matters &#8211; like a notebook that updates itself.">Dein Monitor k&#228;mpft um deine Aufmerksamkeit. StickINK nicht. Es zeigt dir leise, was z&#228;hlt &#8211; wie ein Notizbuch, das sich selbst aktualisiert.</p>
     <div class="fg">
       <div class="fc reveal-card">
-        <div class="fi ic">&#128267;</div>
+        <div class="fi ic"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
         <h3 data-de="Immer da. Kaum Strom." data-en="Always On. Barely Any Power.">Immer da. Kaum Strom.</h3>
         <p data-de="Das Bild bleibt sichtbar, auch wenn der PC aus ist. Strom braucht StickINK nur kurz beim Aktualisieren &#8211; wie ein digitaler Notizzettel." data-en="The image stays visible, even when your PC is off. StickINK only needs a little power when updating &#8211; like a digital sticky note.">Das Bild bleibt sichtbar, auch wenn der PC aus ist. Strom braucht StickINK nur kurz beim Aktualisieren &#8211; wie ein digitaler Notizzettel.</p>
       </div>
       <div class="fc reveal-card">
-        <div class="fi is">&#128065;&#65039;</div>
+        <div class="fi is"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
         <h3 data-de="Augen schonen. Fokus behalten." data-en="Protect Your Eyes. Keep Your Focus.">Augen schonen. Fokus behalten.</h3>
         <p data-de="Kein Flimmern, keine Hintergrundbeleuchtung. Deine Augen danken es dir &#8211; besonders nach einem langen Tag am Monitor." data-en="No flicker, no backlight. Your eyes will thank you &#8211; especially after a long day at the screen.">Kein Flimmern, keine Hintergrundbeleuchtung. Deine Augen danken es dir &#8211; besonders nach einem langen Tag am Monitor.</p>
       </div>
       <div class="fc reveal-card">
-        <div class="fi id">&#128268;</div>
+        <div class="fi id"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/><path d="M9 22h6"/><path d="M12 22v-2"/></svg></div>
         <h3 data-de="Auspacken. Einstecken. Fertig." data-en="Unbox. Plug In. Done.">Auspacken. Einstecken. Fertig.</h3>
         <p data-de="USB verbinden, Doppelklick &#8211; l&#228;uft. Kein Installer, kein Setup, keine verlorene Zeit." data-en="Connect USB, double-click &#8211; done. No installer, no setup, no wasted time.">USB verbinden, Doppelklick &#8211; l&#228;uft. Kein Installer, kein Setup, keine verlorene Zeit.</p>
       </div>
       <div class="fc reveal-card">
-        <div class="fi ic">&#127899;&#65039;</div>
+        <div class="fi ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
         <h3 data-de="Arbeit. Privat. Sofort wechseln." data-en="Work. Personal. Switch Instantly.">Arbeit. Privat. Sofort wechseln.</h3>
         <p data-de="Unbegrenzt viele Ansichten &#8211; ein Klick, anderer Kontext. Morgens dein Kalender, abends dein Lieblingsfoto. Jede Ansicht zeigt bis zu 4 Plugins." data-en="Unlimited views &#8211; one click, different context. Morning calendar, evening photo. Each view shows up to 4 plugins.">Unbegrenzt viele Ansichten &#8211; ein Klick, anderer Kontext. Morgens dein Kalender, abends dein Lieblingsfoto. Jede Ansicht zeigt bis zu 4 Plugins.</p>
       </div>
       <div class="fc reveal-card">
-        <div class="fi is">&#9889;</div>
+        <div class="fi is"><svg viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10"/><path d="M20.49 15a9 9 0 01-14.85 3.36L1 14"/></svg></div>
         <h3 data-de="Aktuell, ohne dich zu st&#246;ren." data-en="Up to Date. Without Interrupting You.">Aktuell, ohne dich zu st&#246;ren.</h3>
         <p data-de="Wetter, Aktien und Uhrzeit aktualisieren sich leise im Hintergrund. Kein Ping, kein Popup &#8211; nur frische Daten." data-en="Weather, stocks, and time update quietly in the background. No ping, no popup &#8211; just fresh data.">Wetter, Aktien und Uhrzeit aktualisieren sich leise im Hintergrund. Kein Ping, kein Popup &#8211; nur frische Daten.</p>
       </div>
       <div class="fc reveal-card">
-        <div class="fi ib">&#128444;&#65039;</div>
+        <div class="fi ib"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
         <h3 data-de="Dein Foto. Dein Display." data-en="Your Photo. Your Display.">Dein Foto. Dein Display.</h3>
         <p data-de="Lade ein Foto hoch und StickINK verwandelt es in Kunst. Das Schwarz-Wei&#223;-Dithering sieht aus wie eine handgezeichnete Illustration &#8211; dein Schreibtisch wird zum Hingucker." data-en="Upload a photo and StickINK turns it into art. The black &amp; white dithering looks like a hand-drawn illustration &#8211; your desk becomes an eye-catcher.">Lade ein Foto hoch und StickINK verwandelt es in Kunst. Das Schwarz-Wei&#223;-Dithering sieht aus wie eine handgezeichnete Illustration &#8211; dein Schreibtisch wird zum Hingucker.</p>
       </div>
@@ -1305,6 +1329,11 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
   </div>
 </footer>
 
+<!-- ─── MOBILE STICKY CTA ─── -->
+<div class="mobile-cta" id="mobileCta">
+  <a href="#ks" data-de="Early-Bird Platz sichern" data-en="Secure Early-Bird Spot">Early-Bird Platz sichern</a>
+</div>
+
 <!-- ─── SCRIPTS ─── -->
 <script>
 // ── Language switcher ──
@@ -1361,9 +1390,20 @@ function setLang(lang) {
   if (saved === 'en') setLang('en');
 })();
 
-// ── Nav scroll effect ──
+// ── Scroll progress + Nav scroll effect + Mobile CTA ──
+var scrollProg = document.getElementById('scrollProgress');
+var mobileCta = document.getElementById('mobileCta');
+var heroEl = document.querySelector('.hero');
+var ksSection = document.querySelector('.ks-bg');
 window.addEventListener('scroll', () => {
   document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 20);
+  var pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+  scrollProg.style.width = pct + '%';
+  if (mobileCta && heroEl) {
+    var heroBottom = heroEl.getBoundingClientRect().bottom;
+    var ksTop = ksSection ? ksSection.getBoundingClientRect().top : 9999;
+    mobileCta.classList.toggle('visible', heroBottom < 0 && ksTop > window.innerHeight);
+  }
 }, { passive: true });
 
 // ── Mobile menu ──
@@ -1435,6 +1475,22 @@ const counterObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 
 document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+// ── Scarcity progress bar ──
+var scarcityBar = document.querySelector('.scarcity-bar');
+if (scarcityBar) {
+  var claimed = parseInt(scarcityBar.dataset.claimed) || 0;
+  var pct = Math.min((claimed / 50) * 100, 100);
+  var scarcityObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.querySelector('.scarcity-fill').style.width = pct + '%';
+        scarcityObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  scarcityObs.observe(scarcityBar);
+}
 
 // ── Hero mouse glow ──
 const heroSection = document.querySelector('.hero');
