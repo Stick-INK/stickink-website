@@ -9,6 +9,16 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon.png"/>
 <link rel="apple-touch-icon" href="/assets/icon.png"/>
+<meta property="og:title" content="StickINK – E-Ink Dashboard f&#252;r deinen Schreibtisch"/>
+<meta property="og:description" content="Ablenkungsfreies 7,5&quot; E-Ink Display. Uhr, Wetter, Kalender, To-Dos. 0 W im Standby. Bald auf Kickstarter."/>
+<meta property="og:image" content="https://stickink.de/assets/icon_preview.png"/>
+<meta property="og:url" content="https://stickink.de/"/>
+<meta property="og:type" content="product"/>
+<meta property="og:locale" content="de_DE"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="StickINK – E-Ink Dashboard"/>
+<meta name="twitter:description" content="Ablenkungsfreies Display f&#252;r deinen Schreibtisch. Bald auf Kickstarter."/>
+<meta name="twitter:image" content="https://stickink.de/assets/icon_preview.png"/>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css"/>
 <style>
@@ -267,14 +277,6 @@ h1 em{font-style:italic;color:var(--coral)}
 .fc p{font-size:.87rem;color:var(--muted);line-height:1.65}
 
 /* ─── SHOWCASE ─── */
-.showcase-bg{background:#fff;border-top:1px solid var(--beige-dark);border-bottom:1px solid var(--beige-dark);position:relative;z-index:1}
-.showcase-inner{max-width:1200px;margin:0 auto;padding:6rem 2rem;display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:center}
-@media(max-width:900px){.showcase-inner{grid-template-columns:1fr;padding:4rem 1.5rem;gap:3rem}}
-.showcase-img{width:100%;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);border:1px solid var(--beige-dark);transition:transform .5s var(--ease-expo),box-shadow .5s var(--ease-expo)}
-.showcase-img:hover{transform:scale(1.02) rotate(-.5deg);box-shadow:var(--shadow-xl)}
-.showcase-text .sl{margin-bottom:.5rem}
-.showcase-text h2{font-family:"Playfair Display",serif;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--dark);margin-bottom:1rem;line-height:1.15}
-.showcase-text p{color:var(--muted);line-height:1.75;margin-bottom:1.5rem;font-size:.95rem}
 .feature-list{list-style:none;display:flex;flex-direction:column;gap:.55rem}
 .feature-list li{display:flex;align-items:flex-start;gap:.6rem;font-size:.9rem;color:var(--text);transition:transform .3s var(--ease-expo)}
 .feature-list li:hover{transform:translateX(4px)}
@@ -509,7 +511,6 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
   .sec{padding:4rem 1.5rem}
   h1{font-size:2.2rem}
   .prob-sol{padding:3rem 1.5rem}
-  .showcase-inner{padding:4rem 1.5rem}
   .specs-inner{padding:4rem 1.5rem}
   .ks-bg{padding:5rem 1.5rem}
   .eink-device{max-width:340px}
@@ -539,6 +540,92 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 :focus-visible{outline:2px solid var(--coral);outline-offset:2px;border-radius:4px}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "name": "StickINK",
+      "description": "7,5 Zoll E-Ink Dashboard f\u00fcr den Schreibtisch. Uhr, Wetter, Kalender, To-Dos, Aktien und Fotos auf papier\u00e4hnlichem Display. 0 W im Standby.",
+      "image": "https://stickink.de/assets/icon_preview.png",
+      "brand": {
+        "@type": "Brand",
+        "name": "StickINK"
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/PreOrder",
+        "url": "https://stickink.de/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Auf welchen Ger\u00e4ten funktioniert StickINK?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "StickINK wird per USB an einen PC oder Laptop angeschlossen. Die Konfiguration l\u00e4uft \u00fcber die Web-App unter app.stickink.de \u2013 die funktioniert auf jedem Ger\u00e4t mit Browser: Windows, Mac, Linux, Tablet oder Handy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Muss der PC die ganze Zeit laufen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein. E-Ink h\u00e4lt das Bild ohne Strom. Der Auto-Modus aktualisiert das Display, solange dein PC l\u00e4uft \u2013 danach bleibt das letzte Bild stehen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was ist der Early-Bird Preis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Der genaue Preis wird mit dem Kickstarter-Launch bekannt gegeben \u2013 deutlich weniger als der sp\u00e4tere Verkaufspreis. Die ersten 50 Supporter erhalten den besten Preis."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wohin wird geliefert?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Zun\u00e4chst in den DACH-Raum (Deutschland, \u00d6sterreich, Schweiz). Weitere EU-L\u00e4nder folgen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Welche Widgets gibt es?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Uhr, Wetter, Kalender (ICS, CalDAV, Microsoft), To-Do Liste, Aktien & Krypto, Countdown, Tages-Zitat, Bild-Upload mit Dithering und Bild-URL. Aktuell 9 Widgets \u2013 weitere folgen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann ich eigene Fotos anzeigen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Floyd-Steinberg Dithering wandelt dein Foto in ein Schwarz-Wei\u00df-Muster um. Familienfotos, Haustiere, Lieblingsorte \u2013 das Ergebnis sieht aus wie eine Illustration auf Papier."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "name": "StickINK",
+      "url": "https://stickink.de",
+      "logo": "https://stickink.de/assets/icon.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "info@stickink.de",
+        "contactType": "customer service"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <div class="scroll-progress" id="scrollProgress"></div>
@@ -549,6 +636,7 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
 <div class="blob blob-2"></div>
 <div class="blob blob-3"></div>
 
+<header>
 <!-- ─── NAV ─── -->
 <nav>
   <a href="#" class="nav-logo">
@@ -573,14 +661,16 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
 <div class="mobile-menu" id="mobile-menu">
   <a href="#waitlist" class="ncta" data-de="Early-Bird Platz sichern &#8594;" data-en="Secure Early-Bird Spot &#8594;" onclick="document.getElementById('mobile-menu').classList.remove('open');document.getElementById('hamburger').classList.remove('open')">Early-Bird Platz sichern &#8594;</a>
 </div>
+</header>
 
+<main>
 <!-- ─── HERO ─── -->
 <section class="hero">
   <div class="hero-glow" id="hero-glow"></div>
   <div class="hero-text">
     <div class="badge" data-de="&#128640; F&#252;r Menschen, die Fokus ernst nehmen" data-en="&#128640; For People Who Take Focus Seriously">&#128640; F&#252;r Menschen, die Fokus ernst nehmen</div>
     <h1 data-de="Kein Bildschirm.<br>Keine Ablenkung.<br><em>Nur das Wesentliche.</em>" data-en="No Screen.<br>No Noise.<br><em>Just What Matters.</em>">Kein Bildschirm.<br>Keine Ablenkung.<br><em>Nur das Wesentliche.</em></h1>
-    <p class="hero-sub" data-de="Du schaust auf und siehst sofort, was z&#228;hlt &#8211; ohne eine App zu &#246;ffnen, ohne einen Tab zu wechseln, ohne abgelenkt zu werden. StickINK ist dein ruhiger Ankerpunkt im digitalen Chaos." data-en="You look up and instantly see what matters &#8211; without opening an app, without switching a tab, without getting distracted. StickINK is your calm anchor in digital chaos.">Du schaust auf und siehst sofort, was z&#228;hlt &#8211; ohne eine App zu &#246;ffnen, ohne einen Tab zu wechseln, ohne abgelenkt zu werden. StickINK ist dein ruhiger Ankerpunkt im digitalen Chaos.</p>
+    <p class="hero-sub" data-de="Ein Blick gen&#252;gt: Termine, Wetter, Aufgaben &#8211; ohne Handy, ohne Tab-Wechsel, ohne Ablenkung. StickINK ist dein ruhiger Ankerpunkt im digitalen Chaos." data-en="One glance is all it takes: schedule, weather, tasks &#8211; no phone, no tab-switching, no distractions. StickINK is your calm anchor in digital chaos.">Ein Blick gen&#252;gt: Termine, Wetter, Aufgaben &#8211; ohne Handy, ohne Tab-Wechsel, ohne Ablenkung. StickINK ist dein ruhiger Ankerpunkt im digitalen Chaos.</p>
 
     <!-- Waitlist Form -->
     <div id="waitlist">
@@ -648,9 +738,9 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
     </div>
 
     <div class="trust-inline">
-      <div class="ti"><span class="ti-dot"></span><span data-de="&#128267; Kaum Strom &#8211; nur beim Update" data-en="&#128267; Barely Any Power &#8211; Only When Updating">&#128267; Kaum Strom &#8211; nur beim Update</span></div>
+      <div class="ti"><span class="ti-dot"></span><span data-de="&#9889; 0 W im Standby &#8211; nur beim Update aktiv" data-en="&#9889; 0 W standby &#8211; active only when updating">&#9889; 0 W im Standby &#8211; nur beim Update aktiv</span></div>
       <div class="ti"><span class="ti-dot"></span><span data-de="&#128268; Plug &amp; Play via USB" data-en="&#128268; Plug &amp; Play via USB">&#128268; Plug &amp; Play via USB</span></div>
-      <div class="ti"><span class="ti-dot"></span><span data-de="&#127465;&#127466; Hergestellt in Deutschland" data-en="&#127465;&#127466; Made in Germany">&#127465;&#127466; Hergestellt in Deutschland</span></div>
+      <div class="ti"><span class="ti-dot"></span><span data-de="&#127465;&#127466; Entwickelt &amp; hergestellt in Deutschland" data-en="&#127465;&#127466; Designed &amp; made in Germany">&#127465;&#127466; Entwickelt &amp; hergestellt in Deutschland</span></div>
     </div>
     <a href="#ks" class="hero-cta" data-de="Early-Bird Platz sichern &#8594;" data-en="Secure Early-Bird Spot &#8594;">Early-Bird Platz sichern &#8594;</a>
   </div>
@@ -693,7 +783,7 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
         </div>
       </div>
       <div class="eink-shadow"></div>
-      <p class="eink-label" data-de="7,5&quot; E-Ink &#183; 800&#215;480px &#183; Schwarz &amp; Wei&#223;" data-en="7.5&quot; E-Ink &#183; 800&#215;480px &#183; Black &amp; White">7,5" E-Ink &#183; 800&#215;480px &#183; Schwarz &amp; Wei&#223;</p>
+      <p class="eink-label" data-de="7,5&quot; E-Ink &#183; 800&#215;480 Pixel &#183; Schwarz &amp; Wei&#223; &#183; Papier-Optik" data-en="7.5&quot; E-Ink &#183; 800&#215;480 pixels &#183; Black &amp; White &#183; Paper-like">7,5" E-Ink &#183; 800&#215;480 Pixel &#183; Schwarz &amp; Wei&#223; &#183; Papier-Optik</p>
     </div>
   </div>
 </section>
@@ -720,17 +810,17 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
     <div class="tb-sep"></div>
     <div class="tb-item">
       <span class="tb-val">S/W</span>
-      <span class="tb-label" data-de="Schwarz &amp; Wei&#223;" data-en="Black &amp; White">Schwarz &amp; Wei&#223;</span>
+      <span class="tb-label" data-de="wie Papier &#8211; kein Flimmern" data-en="paper-like &#8211; no flicker">wie Papier &#8211; kein Flimmern</span>
     </div>
     <div class="tb-sep"></div>
     <div class="tb-item">
       <span class="tb-val">Plug&amp;Play</span>
-      <span class="tb-label" data-de="USB &#183; kein Installer" data-en="USB &#183; no install">USB &#183; kein Installer</span>
+      <span class="tb-label" data-de="USB &#183; Web-App" data-en="USB &#183; Web App">USB &#183; Web-App</span>
     </div>
     <div class="tb-sep"></div>
     <div class="tb-item">
       <span class="tb-val">&infin;</span>
-      <span class="tb-label" data-de="Ansichten m&#246;glich" data-en="Views possible">Ansichten m&#246;glich</span>
+      <span class="tb-label" data-de="Ansichten &#8211; je 4 Plugins" data-en="views &#8211; 4 plugins each">Ansichten &#8211; je 4 Plugins</span>
     </div>
   </div>
 </div>
@@ -748,10 +838,10 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
     <h3 data-de="Dein Schreibtisch lenkt dich ab." data-en="Your desk is full of distractions.">Dein Schreibtisch lenkt dich ab.</h3>
     <p data-de="Bildschirme blinken, Notifications summen, Browser-Tabs h&#228;ufen sich. Du wei&#223;t was wichtig ist &#8211; aber du siehst es nie wirklich." data-en="Screens flicker, notifications buzz, browser tabs pile up. You know what's important &#8211; but you never really see it.">Bildschirme blinken, Notifications summen, Browser-Tabs h&#228;ufen sich. Du wei&#223;t was wichtig ist &#8211; aber du siehst es nie wirklich.</p>
     <ul class="ps-list">
-      <li data-de="Zu viele Ablenkungen auf dem Monitor" data-en="Too many distractions on your main screen">Zu viele Ablenkungen auf dem Monitor</li>
-      <li data-de="St&#228;ndige Unterbrechungen durch Notifications" data-en="Constant interruptions from notifications">St&#228;ndige Unterbrechungen durch Notifications</li>
-      <li data-de="Bildschirm-Erm&#252;dung nach langen Arbeitstagen" data-en="Eye strain after long working days">Bildschirm-Erm&#252;dung nach langen Arbeitstagen</li>
-      <li data-de="Wichtige Infos gehen im L&#228;rm unter" data-en="Important info gets lost in the noise">Wichtige Infos gehen im L&#228;rm unter</li>
+      <li data-de="Dein Monitor k&#228;mpft um deine Aufmerksamkeit" data-en="Your monitor fights for your attention">Dein Monitor k&#228;mpft um deine Aufmerksamkeit</li>
+      <li data-de="Notifications unterbrechen deinen Flow" data-en="Notifications break your flow">Notifications unterbrechen deinen Flow</li>
+      <li data-de="Augen brennen nach 8 Stunden Bildschirm" data-en="Eyes burn after 8 hours of screen time">Augen brennen nach 8 Stunden Bildschirm</li>
+      <li data-de="Wichtige Infos verschwinden in 47 offenen Tabs" data-en="Important info disappears in 47 open tabs">Wichtige Infos verschwinden in 47 offenen Tabs</li>
     </ul>
   </div>
   <div class="ps-card solution reveal-right" style="transition-delay:.15s">
@@ -759,10 +849,10 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
     <h3 data-de="StickINK zeigt nur was z&#228;hlt." data-en="StickINK shows only what counts.">StickINK zeigt nur was z&#228;hlt.</h3>
     <p data-de="Ein ruhiges, papier&#228;hnliches E-Ink Display neben deinem Monitor. Immer sichtbar, nie ablenkend &#8211; dein pers&#246;nliches Dashboard mit kaum Strom und ohne L&#228;rm." data-en="A calm, paper-like E-Ink display next to your monitor. Always visible, never distracting &#8211; your personal dashboard with barely any power and zero noise.">Ein ruhiges, papier&#228;hnliches E-Ink Display neben deinem Monitor. Immer sichtbar, nie ablenkend &#8211; dein pers&#246;nliches Dashboard mit kaum Strom und ohne L&#228;rm.</p>
     <ul class="ps-list">
-      <li data-de="Ruhig und ablenkungsfrei wie Papier" data-en="Calm and distraction-free like paper">Ruhig und ablenkungsfrei wie Papier</li>
-      <li data-de="Kaum Strom &#8211; bistabile E-Ink Technologie h&#228;lt das Bild ohne Energie" data-en="Barely any power &#8211; bistable E-Ink tech holds the image without energy">Kaum Strom &#8211; bistabile E-Ink Technologie h&#228;lt das Bild ohne Energie</li>
-      <li data-de="Deine wichtigsten Infos immer im Blick" data-en="Your most important info always in sight">Deine wichtigsten Infos immer im Blick</li>
-      <li data-de="Einmalig verbinden, f&#252;r immer konfiguriert" data-en="Connect once, configured forever">Einmalig verbinden, f&#252;r immer konfiguriert</li>
+      <li data-de="So ruhig wie Papier &#8211; kein Flimmern, kein Leuchten" data-en="As calm as paper &#8211; no flicker, no glow">So ruhig wie Papier &#8211; kein Flimmern, kein Leuchten</li>
+      <li data-de="0 W im Standby &#8211; das Bild bleibt ohne Strom" data-en="0 W on standby &#8211; the image stays without power">0 W im Standby &#8211; das Bild bleibt ohne Strom</li>
+      <li data-de="Termine, Wetter, Aufgaben &#8211; ein Blick gen&#252;gt" data-en="Calendar, weather, tasks &#8211; one glance is enough">Termine, Wetter, Aufgaben &#8211; ein Blick gen&#252;gt</li>
+      <li data-de="Einrichten in 60 Sekunden, danach l&#228;uft alles automatisch" data-en="Set up in 60 seconds, then everything runs automatically">Einrichten in 60 Sekunden, danach l&#228;uft alles automatisch</li>
     </ul>
   </div>
 </div>
@@ -771,7 +861,7 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
 <div class="imagine-sec">
   <div class="imagine-inner reveal">
     <h2 data-de="Stell dir vor, du setzt dich an deinen Schreibtisch &#8211; und alles ist schon da." data-en="Imagine sitting down at your desk &#8211; and everything is already there.">Stell dir vor, du setzt dich an deinen Schreibtisch &#8211; und alles ist schon da.</h2>
-    <p data-de="Keine App &#246;ffnen. Kein Handy entsperren. Kein Tab suchen. Du schaust kurz nach rechts &#8211; und siehst deine Termine, das Wetter, deine n&#228;chste Aufgabe. Leise. Ruhig. Wie ein Notizzettel, der nie verloren geht." data-en="No app to open. No phone to unlock. No tab to find. You glance to the right &#8211; and see your schedule, the weather, your next task. Quiet. Calm. Like a note that never gets lost.">Keine App &#246;ffnen. Kein Handy entsperren. Kein Tab suchen. Du schaust kurz nach rechts &#8211; und siehst deine Termine, das Wetter, deine n&#228;chste Aufgabe. Leise. Ruhig. Wie ein Notizzettel, der nie verloren geht.</p>
+    <p data-de="Keine App &#246;ffnen. Kein Handy entsperren. Kein Tab suchen. Du schaust kurz nach rechts &#8211; 14&#176;C und Regen, zwei offene Aufgaben, n&#228;chster Termin um 15 Uhr. Leise. Ruhig. Wie ein Notizzettel, der nie verloren geht." data-en="No app to open. No phone to unlock. No tab to find. You glance to the right &#8211; 14&#176;C and rain, two open tasks, next meeting at 3 PM. Quiet. Calm. Like a note that never gets lost.">Keine App &#246;ffnen. Kein Handy entsperren. Kein Tab suchen. Du schaust kurz nach rechts &#8211; 14&#176;C und Regen, zwei offene Aufgaben, n&#228;chster Termin um 15 Uhr. Leise. Ruhig. Wie ein Notizzettel, der nie verloren geht.</p>
     <p class="imagine-closer" data-de="StickINK. Dein ruhiger Fokus-Anker." data-en="StickINK. Your calm focus anchor.">StickINK. Dein ruhiger Fokus-Anker.</p>
   </div>
 </div>
@@ -792,12 +882,12 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
       <div class="hiw-step reveal-card">
         <div class="hiw-num">2</div>
         <h3 data-de="Einstecken" data-en="Plug In">Einstecken</h3>
-        <p data-de="USB in deinen PC &#8211; Windows erkennt StickINK automatisch." data-en="USB into your PC &#8211; Windows detects StickINK automatically.">USB in deinen PC &#8211; Windows erkennt StickINK automatisch.</p>
+        <p data-de="USB an deinen PC oder Laptop &#8211; fertig." data-en="USB into your PC or laptop &#8211; done.">USB an deinen PC oder Laptop &#8211; fertig.</p>
       </div>
       <div class="hiw-step reveal-card">
         <div class="hiw-num">3</div>
         <h3 data-de="Konfigurieren" data-en="Configure">Konfigurieren</h3>
-        <p data-de="App starten, Widgets w&#228;hlen &#8211; oder die Web-App nutzen." data-en="Launch the app, pick widgets &#8211; or use the web app.">App starten, Widgets w&#228;hlen &#8211; oder die Web-App nutzen.</p>
+        <p data-de="Web-App &#246;ffnen, Widgets w&#228;hlen, Layout anpassen." data-en="Open the web app, pick widgets, adjust the layout.">Web-App &#246;ffnen, Widgets w&#228;hlen, Layout anpassen.</p>
       </div>
       <div class="hiw-step reveal-card">
         <div class="hiw-num">4</div>
@@ -818,7 +908,7 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
 <!-- ─── FEATURES ─── -->
 <section class="features-bg">
   <div class="sec sec-center">
-    <div class="sl reveal" data-de="Warum StickINK" data-en="Why StickINK">Warum StickINK</div>
+    <div class="sl reveal" data-de="Was StickINK besonders macht" data-en="What Makes StickINK Special">Was StickINK besonders macht</div>
     <h2 class="reveal" style="transition-delay:.08s" data-de="Informiert. Ohne abgelenkt zu sein." data-en="Informed. Without the Distraction.">Informiert. Ohne abgelenkt zu sein.</h2>
     <p class="sec-desc reveal" style="transition-delay:.16s" data-de="Dein Monitor k&#228;mpft um deine Aufmerksamkeit. StickINK nicht. Es zeigt dir leise, was z&#228;hlt &#8211; wie ein Notizbuch, das sich selbst aktualisiert." data-en="Your monitor fights for your attention. StickINK doesn't. It quietly shows what matters &#8211; like a notebook that updates itself.">Dein Monitor k&#228;mpft um deine Aufmerksamkeit. StickINK nicht. Es zeigt dir leise, was z&#228;hlt &#8211; wie ein Notizbuch, das sich selbst aktualisiert.</p>
     <div class="fg">
@@ -835,12 +925,12 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
       <div class="fc reveal-card">
         <div class="fi id"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/><path d="M9 22h6"/><path d="M12 22v-2"/></svg></div>
         <h3 data-de="Auspacken. Einstecken. Fertig." data-en="Unbox. Plug In. Done.">Auspacken. Einstecken. Fertig.</h3>
-        <p data-de="USB verbinden, Doppelklick &#8211; l&#228;uft. Kein Installer, kein Setup, keine verlorene Zeit." data-en="Connect USB, double-click &#8211; done. No installer, no setup, no wasted time.">USB verbinden, Doppelklick &#8211; l&#228;uft. Kein Installer, kein Setup, keine verlorene Zeit.</p>
+        <p data-de="USB verbinden, Web-App &#246;ffnen &#8211; l&#228;uft. Kein Download, kein Setup, keine verlorene Zeit." data-en="Connect USB, open the web app &#8211; done. No download, no setup, no wasted time.">USB verbinden, Web-App &#246;ffnen &#8211; l&#228;uft. Kein Download, kein Setup, keine verlorene Zeit.</p>
       </div>
       <div class="fc reveal-card">
         <div class="fi ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
-        <h3 data-de="Arbeit. Privat. Sofort wechseln." data-en="Work. Personal. Switch Instantly.">Arbeit. Privat. Sofort wechseln.</h3>
-        <p data-de="Unbegrenzt viele Ansichten &#8211; ein Klick, anderer Kontext. Morgens dein Kalender, abends dein Lieblingsfoto. Jede Ansicht zeigt bis zu 4 Plugins." data-en="Unlimited views &#8211; one click, different context. Morning calendar, evening photo. Each view shows up to 4 plugins.">Unbegrenzt viele Ansichten &#8211; ein Klick, anderer Kontext. Morgens dein Kalender, abends dein Lieblingsfoto. Jede Ansicht zeigt bis zu 4 Plugins.</p>
+        <h3 data-de="Ein Klick. Anderer Kontext." data-en="One Click. Different Context.">Ein Klick. Anderer Kontext.</h3>
+        <p data-de="Unbegrenzt viele Ansichten &#8211; jede mit bis zu 4 Plugins. Morgens dein Kalender, abends dein Lieblingsfoto. Wechsel per Knopfdruck." data-en="Unlimited views &#8211; each with up to 4 plugins. Morning calendar, evening photo. Switch at the press of a button.">Unbegrenzt viele Ansichten &#8211; jede mit bis zu 4 Plugins. Morgens dein Kalender, abends dein Lieblingsfoto. Wechsel per Knopfdruck.</p>
       </div>
       <div class="fc reveal-card">
         <div class="fi is"><svg viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10"/><path d="M20.49 15a9 9 0 01-14.85 3.36L1 14"/></svg></div>
@@ -849,8 +939,8 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
       </div>
       <div class="fc reveal-card">
         <div class="fi ib"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-        <h3 data-de="Dein Foto. Dein Display." data-en="Your Photo. Your Display.">Dein Foto. Dein Display.</h3>
-        <p data-de="Lade ein Foto hoch und StickINK verwandelt es in Kunst. Das Schwarz-Wei&#223;-Dithering sieht aus wie eine handgezeichnete Illustration &#8211; dein Schreibtisch wird zum Hingucker." data-en="Upload a photo and StickINK turns it into art. The black &amp; white dithering looks like a hand-drawn illustration &#8211; your desk becomes an eye-catcher.">Lade ein Foto hoch und StickINK verwandelt es in Kunst. Das Schwarz-Wei&#223;-Dithering sieht aus wie eine handgezeichnete Illustration &#8211; dein Schreibtisch wird zum Hingucker.</p>
+        <h3 data-de="Dein Foto. Als Kunstwerk." data-en="Your Photo. As Artwork.">Dein Foto. Als Kunstwerk.</h3>
+        <p data-de="Lade ein Foto hoch und StickINK verwandelt es per Floyd-Steinberg-Dithering in eine Schwarz-Wei&#223;-Illustration. Familienfotos, Haustiere, Lieblingsorte &#8211; dein Schreibtisch wird zum Hingucker." data-en="Upload a photo and StickINK transforms it via Floyd-Steinberg dithering into a black &amp; white illustration. Family photos, pets, favorite places &#8211; your desk becomes an eye-catcher.">Lade ein Foto hoch und StickINK verwandelt es per Floyd-Steinberg-Dithering in eine Schwarz-Wei&#223;-Illustration. Familienfotos, Haustiere, Lieblingsorte &#8211; dein Schreibtisch wird zum Hingucker.</p>
       </div>
     </div>
   </div>
@@ -862,7 +952,7 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
     <div class="ws-hero">
       <div class="ws-badge reveal"><span class="ws-badge-dot"></span> <span data-de="9 Widgets verf&#252;gbar" data-en="9 Widgets Available">9 Widgets verf&#252;gbar</span></div>
       <h2 class="reveal" style="transition-delay:.08s" data-de="Dein Dashboard. <span style='color:var(--coral)'>Immer im Blick.</span>" data-en="Your Dashboard. <span style='color:var(--coral)'>Always in Sight.</span>" data-html>Dein Dashboard. <span style="color:var(--coral)">Immer im Blick.</span></h2>
-      <p class="sec-desc reveal" style="transition-delay:.16s" data-de="Plug &amp; Play via USB. Kein Account. Keine Cloud. Deine Daten bleiben bei dir &#8211; f&#252;r immer." data-en="Plug &amp; Play via USB. No account. No cloud. Your data stays with you &#8211; forever.">Plug &amp; Play via USB. Kein Account. Keine Cloud. Deine Daten bleiben bei dir &#8211; f&#252;r immer.</p>
+      <p class="sec-desc reveal" style="transition-delay:.16s" data-de="9 Widgets, null Cloud. Deine Daten bleiben lokal &#8211; kein Account, kein Tracking, keine Server." data-en="9 widgets, zero cloud. Your data stays local &#8211; no account, no tracking, no servers.">9 Widgets, null Cloud. Deine Daten bleiben lokal &#8211; kein Account, kein Tracking, keine Server.</p>
     </div>
     <div class="ws-grid">
       <!-- Uhr -->
@@ -1037,8 +1127,8 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
 <div class="webapp-bg">
   <div class="webapp-inner">
     <div class="sl reveal" data-de="Web-App" data-en="Web App">Web-App</div>
-    <h2 class="reveal" style="transition-delay:.08s" data-de="Kein Windows? Kein Problem." data-en="No Windows? No Problem.">Kein Windows? Kein Problem.</h2>
-    <p class="sec-desc reveal" style="transition-delay:.16s" data-de="Mit der StickINK Web-App unter app.stickink.de konfigurierst du dein Dashboard direkt im Browser &#8211; auf jedem Ger&#228;t. Installierbar als PWA, auch offline nutzbar." data-en="With the StickINK web app at app.stickink.de, configure your dashboard right in the browser &#8211; on any device. Installable as a PWA, works offline too.">Mit der StickINK Web-App unter app.stickink.de konfigurierst du dein Dashboard direkt im Browser &#8211; auf jedem Ger&#228;t. Installierbar als PWA, auch offline nutzbar.</p>
+    <h2 class="reveal" style="transition-delay:.08s" data-de="Dein Dashboard. <span style='color:var(--coral)'>Im Browser.</span>" data-en="Your Dashboard. <span style='color:var(--coral)'>In the Browser.</span>" data-html>Dein Dashboard. <span style="color:var(--coral)">Im Browser.</span></h2>
+    <p class="sec-desc reveal" style="transition-delay:.16s" data-de="&#214;ffne app.stickink.de, konfiguriere dein Dashboard und schick es ans Display. L&#228;uft auf jedem Ger&#228;t &#8211; Mac, Windows, Linux, Tablet, Handy. Installierbar als PWA, auch offline nutzbar." data-en="Open app.stickink.de, configure your dashboard and send it to the display. Works on any device &#8211; Mac, Windows, Linux, tablet, phone. Installable as PWA, works offline.">&#214;ffne app.stickink.de, konfiguriere dein Dashboard und schick es ans Display. L&#228;uft auf jedem Ger&#228;t &#8211; Mac, Windows, Linux, Tablet, Handy. Installierbar als PWA, auch offline nutzbar.</p>
     <div class="webapp-pills reveal" style="transition-delay:.24s">
       <span class="webapp-pill" data-de="&#128197; Kalender (ICS, CalDAV, Microsoft)" data-en="&#128197; Calendar (ICS, CalDAV, Microsoft)">&#128197; Kalender (ICS, CalDAV, Microsoft)</span>
       <span class="webapp-pill" data-de="&#9925; Wetter" data-en="&#9925; Weather">&#9925; Wetter</span>
@@ -1051,26 +1141,6 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
   </div>
 </div>
 
-<!-- ─── APP SHOWCASE ─── -->
-<div class="showcase-bg">
-  <div class="showcase-inner">
-    <div class="reveal-left">
-      <img src="assets/programm.jpg" alt="StickINK App Screenshot" class="showcase-img"/>
-    </div>
-    <div class="showcase-text reveal-right" style="transition-delay:.15s">
-      <div class="sl" data-de="Die App" data-en="The App">Die App</div>
-      <h2 data-de="Dein Dashboard. Deine Regeln." data-en="Your Dashboard. Your Rules.">Dein Dashboard. Deine Regeln.</h2>
-      <p data-de="Die StickINK Desktop-App startet per Doppelklick &#8211; kein Installer, kein Setup. Zieh deine Widgets ins Layout, sieh die Live-Vorschau und schick alles mit einem Klick ans Display." data-en="The StickINK desktop app launches with a double-click &#8211; no installer, no setup. Drag your widgets into the layout, see the live preview, and send everything to the display with one click.">Die StickINK Desktop-App startet per Doppelklick &#8211; kein Installer, kein Setup. Zieh deine Widgets ins Layout, sieh die Live-Vorschau und schick alles mit einem Klick ans Display.</p>
-      <ul class="feature-list">
-        <li data-de="Live-Vorschau in der App vor dem Senden" data-en="Live preview in the app before sending">Live-Vorschau in der App vor dem Senden</li>
-        <li data-de="Unbegrenzt viele Screen-Konfigurationen" data-en="Unlimited screen configurations">Unbegrenzt viele Screen-Konfigurationen</li>
-        <li data-de="Auto-Modus mit konfigurierbarem Intervall" data-en="Auto mode with configurable interval">Auto-Modus mit konfigurierbarem Intervall</li>
-        <li data-de="Smart Refresh: sendet nur bei tats&#228;chlichen &#196;nderungen" data-en="Smart Refresh: only sends on actual changes">Smart Refresh: sendet nur bei tats&#228;chlichen &#196;nderungen</li>
-        <li data-de="Portable ZIP &#8211; kein Installer, kein Python n&#246;tig" data-en="Portable ZIP &#8211; no installer, no Python required">Portable ZIP &#8211; kein Installer, kein Python n&#246;tig</li>
-      </ul>
-    </div>
-  </div>
-</div>
 
 <!-- ─── WAVE DIVIDER ─── -->
 <div class="wave-divider" style="margin-bottom:-2px">
@@ -1107,7 +1177,7 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
   <div class="specs-inner">
     <div class="sec-center reveal" style="padding:0 0 2rem">
       <div class="sl" data-de="Technische Details" data-en="Technical Details">Technische Details</div>
-      <h2 data-de="Hochwertige Hardware. Durchdachte Software." data-en="Premium Hardware. Thoughtful Software.">Hochwertige Hardware. Durchdachte Software.</h2>
+      <h2 data-de="Die Technik dahinter." data-en="The Tech Behind It.">Die Technik dahinter.</h2>
     </div>
     <div class="specs-grid">
       <div class="specs-block reveal-left">
@@ -1145,15 +1215,15 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
         <h3 data-de="Software" data-en="Software">Software</h3>
         <div class="spec-row">
           <span class="spec-key" data-de="Betriebssystem" data-en="Operating System">Betriebssystem</span>
-          <span class="spec-val">Windows 10 / 11</span>
+          <span class="spec-val" data-de="Jeder Browser (Web-App)" data-en="Any Browser (Web App)">Jeder Browser (Web-App)</span>
         </div>
         <div class="spec-row">
           <span class="spec-key" data-de="Installation" data-en="Installation">Installation</span>
-          <span class="spec-val" data-de="Kein Installer n&#246;tig" data-en="No installer required">Kein Installer n&#246;tig</span>
+          <span class="spec-val" data-de="Keine &#8211; l&#228;uft im Browser" data-en="None &#8211; runs in browser">Keine &#8211; l&#228;uft im Browser</span>
         </div>
         <div class="spec-row">
           <span class="spec-key" data-de="Screens" data-en="Screens">Screens</span>
-          <span class="spec-val" data-de="Unbegrenzt (max. 4 Plugins/Ansicht)" data-en="Unlimited (max 4 plugins/view)">Unbegrenzt (max. 4 Plugins/Ansicht)</span>
+          <span class="spec-val" data-de="Unbegrenzte Ansichten (je max. 4 Plugins)" data-en="Unlimited views (max 4 plugins each)">Unbegrenzte Ansichten (je max. 4 Plugins)</span>
         </div>
         <div class="spec-row">
           <span class="spec-key" data-de="Wetter-API" data-en="Weather API">Wetter-API</span>
@@ -1165,11 +1235,11 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
         </div>
         <div class="spec-row">
           <span class="spec-key" data-de="Microcontroller" data-en="Microcontroller">Microcontroller</span>
-          <span class="spec-val">ESP32 (vorgeflasht)</span>
+          <span class="spec-val">ESP32 (vorgeflasht, sofort einsatzbereit)</span>
         </div>
         <div class="spec-row">
           <span class="spec-key" data-de="Lieferumfang" data-en="In the Box">Lieferumfang</span>
-          <span class="spec-val" data-de="Display + ESP32 + USB + App" data-en="Display + ESP32 + USB + App">Display + ESP32 + USB + App</span>
+          <span class="spec-val" data-de="Display + ESP32 + USB-Kabel" data-en="Display + ESP32 + USB cable">Display + ESP32 + USB-Kabel</span>
         </div>
       </div>
     </div>
@@ -1185,9 +1255,9 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
     </div>
     <div class="faq-list reveal" style="transition-delay:.1s">
       <div class="faq-item">
-        <button class="faq-q" data-de="Funktioniert StickINK auf Mac oder Linux?" data-en="Does StickINK work on Mac or Linux?">Funktioniert StickINK auf Mac oder Linux?</button>
+        <button class="faq-q" data-de="Auf welchen Ger&#228;ten funktioniert StickINK?" data-en="What devices does StickINK work with?">Auf welchen Ger&#228;ten funktioniert StickINK?</button>
         <div class="faq-a">
-          <p data-de="Die Desktop-App ist aktuell nur f&#252;r Windows verf&#252;gbar. Aber die Web-App unter <a href='https://app.stickink.de' target='_blank'>app.stickink.de</a> l&#228;uft auf jedem Ger&#228;t mit Browser. Windows wird nur f&#252;r die USB-&#220;bertragung zum Display ben&#246;tigt." data-en="The desktop app is currently Windows only. But the web app at <a href='https://app.stickink.de' target='_blank'>app.stickink.de</a> runs on any device with a browser. Windows is only needed for the USB transfer to the display." data-html>Die Desktop-App ist aktuell nur f&#252;r Windows verf&#252;gbar. Aber die Web-App unter <a href="https://app.stickink.de" target="_blank">app.stickink.de</a> l&#228;uft auf jedem Ger&#228;t mit Browser. Windows wird nur f&#252;r die USB-&#220;bertragung zum Display ben&#246;tigt.</p>
+          <p data-de="StickINK wird per USB an einen PC oder Laptop angeschlossen. Die Konfiguration l&#228;uft &#252;ber die Web-App unter <a href='https://app.stickink.de' target='_blank'>app.stickink.de</a> &#8211; die funktioniert auf jedem Ger&#228;t mit Browser: Windows, Mac, Linux, Tablet oder Handy." data-en="StickINK connects via USB to a PC or laptop. Configuration is done through the web app at <a href='https://app.stickink.de' target='_blank'>app.stickink.de</a> &#8211; which works on any device with a browser: Windows, Mac, Linux, tablet, or phone." data-html>StickINK wird per USB an einen PC oder Laptop angeschlossen. Die Konfiguration l&#228;uft &#252;ber die Web-App unter <a href="https://app.stickink.de" target="_blank">app.stickink.de</a> &#8211; die funktioniert auf jedem Ger&#228;t mit Browser: Windows, Mac, Linux, Tablet oder Handy.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -1199,7 +1269,7 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
       <div class="faq-item">
         <button class="faq-q" data-de="Was ist der Early-Bird Preis?" data-en="What's the Early-Bird price?">Was ist der Early-Bird Preis?</button>
         <div class="faq-a">
-          <p data-de="Der genaue Preis wird mit dem Kickstarter-Launch bekannt gegeben. Die ersten 50 Supporter erhalten den besten Preis. Wer auf der Waitlist steht, bekommt den Link als Erster." data-en="The exact price will be announced at Kickstarter launch. The first 50 supporters get the best price. Waitlist subscribers get the link first.">Der genaue Preis wird mit dem Kickstarter-Launch bekannt gegeben. Die ersten 50 Supporter erhalten den besten Preis. Wer auf der Waitlist steht, bekommt den Link als Erster.</p>
+          <p data-de="Der genaue Preis wird mit dem Kickstarter-Launch bekannt gegeben &#8211; deutlich weniger als der sp&#228;tere Verkaufspreis. Die ersten 50 Supporter erhalten den besten Preis. Wer auf der Waitlist steht, bekommt den Link als Erster." data-en="The exact price will be announced at Kickstarter launch &#8211; significantly less than the later retail price. The first 50 supporters get the best price. Waitlist subscribers get the link first.">Der genaue Preis wird mit dem Kickstarter-Launch bekannt gegeben &#8211; deutlich weniger als der sp&#228;tere Verkaufspreis. Die ersten 50 Supporter erhalten den besten Preis. Wer auf der Waitlist steht, bekommt den Link als Erster.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -1217,7 +1287,7 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
       <div class="faq-item">
         <button class="faq-q" data-de="Kann ich eigene Fotos anzeigen?" data-en="Can I display my own photos?">Kann ich eigene Fotos anzeigen?</button>
         <div class="faq-a">
-          <p data-de="Ja. Floyd-Steinberg Dithering wandelt dein Foto in ein Schwarz-Wei&#223;-Muster aus Punkten um. Das Ergebnis sieht aus wie eine Illustration auf Papier &#8211; sch&#228;rfer und kontrastreicher als Graustufen." data-en="Yes. Floyd-Steinberg dithering converts your photo into a black &amp; white dot pattern. The result looks like an illustration on paper &#8211; sharper and higher contrast than grayscale.">Ja. Floyd-Steinberg Dithering wandelt dein Foto in ein Schwarz-Wei&#223;-Muster aus Punkten um. Das Ergebnis sieht aus wie eine Illustration auf Papier &#8211; sch&#228;rfer und kontrastreicher als Graustufen.</p>
+          <p data-de="Ja. Floyd-Steinberg Dithering wandelt dein Foto in ein Schwarz-Wei&#223;-Muster aus Punkten um. Familienfotos, Haustiere, Lieblingsorte &#8211; das Ergebnis sieht aus wie eine Illustration auf Papier." data-en="Yes. Floyd-Steinberg dithering converts your photo into a black &amp; white dot pattern. Family photos, pets, favorite places &#8211; the result looks like an illustration on paper.">Ja. Floyd-Steinberg Dithering wandelt dein Foto in ein Schwarz-Wei&#223;-Muster aus Punkten um. Familienfotos, Haustiere, Lieblingsorte &#8211; das Ergebnis sieht aus wie eine Illustration auf Papier.</p>
         </div>
       </div>
     </div>
@@ -1228,9 +1298,9 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
 <div class="brand-strip">
   <div class="brand-strip-inner reveal-scale">
     <div class="brand-banner">
-      <img src="assets/icon_preview.png" alt="StickINK – Make your goals Stick" height="48"/>
+      <img src="assets/icon_preview.png" alt="StickINK – Make your goals Stick" height="48" width="280" loading="lazy"/>
     </div>
-    <p class="brand-tagline" data-de="Weniger Bildschirm. Mehr Klarheit. Null Ablenkung." data-en="Less Screen. More Clarity. Zero Distraction.">Weniger Bildschirm. Mehr Klarheit. Null Ablenkung.</p>
+    <p class="brand-tagline" data-de="Dein ruhiger Anker im digitalen Chaos." data-en="Your calm anchor in the digital chaos.">Dein ruhiger Anker im digitalen Chaos.</p>
   </div>
 </div>
 
@@ -1240,7 +1310,7 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
     <div class="urgency-badge"><span class="urgency-dot"></span> <span data-de="Limitiert auf 50 Early-Bird Pl&#228;tze" data-en="Limited to 50 Early-Bird Spots">Limitiert auf 50 Early-Bird Pl&#228;tze</span></div>
     <div class="sl" data-de="Kickstarter" data-en="Kickstarter">Kickstarter</div>
     <h2 data-de="Wer zuerst kommt, zahlt am wenigsten." data-en="First Come, Best Price.">Wer zuerst kommt, zahlt am wenigsten.</h2>
-    <p class="ks-desc" data-de="Die ersten 50 Supporter erhalten StickINK zum niedrigsten Preis, den es jemals geben wird. Kein Risiko &#8211; du meldest dich nur f&#252;r die Benachrichtigung an. Wenn der Kickstarter startet, entscheidest du." data-en="The first 50 supporters get StickINK at the lowest price it will ever be. No risk &#8211; you're only signing up for the notification. When Kickstarter launches, you decide.">Die ersten 50 Supporter erhalten StickINK zum niedrigsten Preis, den es jemals geben wird. Kein Risiko &#8211; du meldest dich nur f&#252;r die Benachrichtigung an. Wenn der Kickstarter startet, entscheidest du.</p>
+    <p class="ks-desc" data-de="Die ersten 50 Supporter erhalten StickINK zum niedrigsten Preis, den es jemals geben wird. Kein Kauf, keine Verpflichtung &#8211; du meldest dich nur f&#252;r die Benachrichtigung an. Wenn der Kickstarter startet, entscheidest du." data-en="The first 50 supporters get StickINK at the lowest price it will ever be. No purchase, no obligation &#8211; you're only signing up for the notification. When Kickstarter launches, you decide.">Die ersten 50 Supporter erhalten StickINK zum niedrigsten Preis, den es jemals geben wird. Kein Kauf, keine Verpflichtung &#8211; du meldest dich nur f&#252;r die Benachrichtigung an. Wenn der Kickstarter startet, entscheidest du.</p>
 
     <div class="ks-form-wrap">
       <div class="sib-form">
@@ -1307,10 +1377,12 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
       <p class="fn" data-de="&#128274; Kein Spam. Keine Weitergabe. Abmeldung jederzeit m&#246;glich." data-en="&#128274; No spam. No sharing. Unsubscribe at any time.">&#128274; Kein Spam. Keine Weitergabe. Abmeldung jederzeit m&#246;glich.</p>
     </div>
     <div class="loss-box reveal">
-      <p data-de="Knowledge Worker verlieren durchschnittlich <span class='loss-highlight'>2,1 Stunden t&#228;glich</span> an digitale Ablenkungen. Das sind &#252;ber 500 Stunden pro Jahr &#8211; die du nie zur&#252;ckbekommst.<span class='loss-source'>Quelle: Gloria Mark, University of California Irvine</span>" data-en="Knowledge workers lose an average of <span class='loss-highlight'>2.1 hours per day</span> to digital distractions. That's over 500 hours per year &#8211; that you'll never get back.<span class='loss-source'>Source: Gloria Mark, University of California Irvine</span>" data-html>Knowledge Worker verlieren durchschnittlich <span class="loss-highlight">2,1 Stunden t&#228;glich</span> an digitale Ablenkungen. Das sind &#252;ber 500 Stunden pro Jahr &#8211; die du nie zur&#252;ckbekommst.<span class="loss-source">Quelle: Gloria Mark, University of California Irvine</span></p>
+      <p data-de="Wusstest du? Knowledge Worker verlieren durchschnittlich <span class='loss-highlight'>2,1 Stunden t&#228;glich</span> an digitale Ablenkungen. Das sind &#252;ber 500 Stunden pro Jahr. StickINK gibt dir einen ruhigen Fixpunkt &#8211; damit du dich auf das konzentrierst, was z&#228;hlt.<span class='loss-source'>Quelle: Gloria Mark, University of California Irvine</span>" data-en="Did you know? Knowledge workers lose an average of <span class='loss-highlight'>2.1 hours per day</span> to digital distractions. That's over 500 hours per year. StickINK gives you a calm anchor &#8211; so you can focus on what matters.<span class='loss-source'>Source: Gloria Mark, University of California Irvine</span>" data-html>Wusstest du? Knowledge Worker verlieren durchschnittlich <span class="loss-highlight">2,1 Stunden t&#228;glich</span> an digitale Ablenkungen. Das sind &#252;ber 500 Stunden pro Jahr. StickINK gibt dir einen ruhigen Fixpunkt &#8211; damit du dich auf das konzentrierst, was z&#228;hlt.<span class="loss-source">Quelle: Gloria Mark, University of California Irvine</span></p>
     </div>
   </div>
 </div>
+
+</main>
 
 <!-- ─── FOOTER ─── -->
 <footer>
@@ -1321,7 +1393,7 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
       </div>
       <span class="footer-logo-text">Stick<em>INK</em></span>
     </a>
-    <span class="footer-copy">&copy; 2026 StickINK &middot; <span data-de="Hergestellt in Deutschland" data-en="Made in Germany">Hergestellt in Deutschland</span></span>
+    <span class="footer-copy">&copy; 2026 StickINK &middot; <span data-de="Entwickelt &amp; hergestellt in Deutschland" data-en="Designed &amp; made in Germany">Entwickelt &amp; hergestellt in Deutschland</span></span>
     <div class="footer-links">
       <a href="mailto:info@stickink.de">info@stickink.de</a>
       <a href="https://stickink.de">stickink.de</a>
