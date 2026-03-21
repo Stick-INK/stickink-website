@@ -366,17 +366,6 @@ h1 em{font-style:italic;color:var(--coral)}
 .d-img-lbl{position:absolute;bottom:5px;right:6px;background:#000;color:#fff;font-size:8px;font-weight:800;padding:2px 5px;border-radius:2px;letter-spacing:.06em}
 
 /* ─── SPECS ─── */
-.specs-bg{background:#fff;border-top:1px solid var(--beige-dark);border-bottom:1px solid var(--beige-dark);position:relative;z-index:1}
-.specs-inner{max-width:1100px;margin:0 auto;padding:6rem 2rem}
-.specs-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:.5rem}
-@media(max-width:720px){.specs-grid{grid-template-columns:1fr;padding:0}}
-.specs-block{background:var(--beige);border-radius:var(--radius-lg);padding:2rem;border:1px solid var(--beige-dark);transition:transform .4s var(--ease-expo)}
-.specs-block:hover{transform:translateY(-4px)}
-.specs-block h3{font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1.4px;color:var(--sage);margin-bottom:1.2rem}
-.spec-row{display:flex;justify-content:space-between;align-items:flex-start;padding:.55rem 0;border-bottom:1px solid var(--beige-dark);gap:1rem}
-.spec-row:last-child{border-bottom:none}
-.spec-key{font-size:.84rem;color:var(--muted);font-weight:500;flex-shrink:0}
-.spec-val{font-size:.84rem;color:var(--dark);font-weight:600;text-align:right}
 
 /* ─── BRAND BANNER ─── */
 .brand-strip{background:var(--dark);padding:4.5rem 2rem;position:relative;z-index:1;overflow:hidden}
@@ -524,7 +513,6 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
   .sec{padding:4rem 1.5rem}
   h1{font-size:2.2rem}
   .prob-sol{padding:3rem 1.5rem}
-  .specs-inner{padding:4rem 1.5rem}
   .ks-bg{padding:5rem 1.5rem}
   .eink-device{max-width:340px}
   .hiw-inner{padding:4rem 1.5rem}
@@ -890,7 +878,7 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
       <div class="hiw-step reveal-card">
         <div class="hiw-num">1</div>
         <h3 data-de="Auspacken" data-en="Unbox">Auspacken</h3>
-        <p data-de="Display, ESP32 und USB-Kabel &#8211; alles dabei, nichts fehlt." data-en="Display, ESP32, and USB cable &#8211; everything included, nothing missing.">Display, ESP32 und USB-Kabel &#8211; alles dabei, nichts fehlt.</p>
+        <p data-de="Fertiges Ger&#228;t mit Stand und USB-Kabel &#8211; auspacken, einstecken, fertig." data-en="Complete device with stand and USB cable &#8211; unbox, plug in, done.">Fertiges Ger&#228;t mit Stand und USB-Kabel &#8211; auspacken, einstecken, fertig.</p>
       </div>
       <div class="hiw-step reveal-card">
         <div class="hiw-num">2</div>
@@ -1185,79 +1173,6 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
   </div>
 </section>
 
-<!-- ─── SPECS ─── -->
-<div class="specs-bg">
-  <div class="specs-inner">
-    <div class="sec-center reveal" style="padding:0 0 2rem">
-      <div class="sl" data-de="Technische Details" data-en="Technical Details">Technische Details</div>
-      <h2 data-de="Die Technik dahinter." data-en="The Tech Behind It.">Die Technik dahinter.</h2>
-    </div>
-    <div class="specs-grid">
-      <div class="specs-block reveal-left">
-        <h3 data-de="Hardware" data-en="Hardware">Hardware</h3>
-        <div class="spec-row">
-          <span class="spec-key" data-de="Display" data-en="Display">Display</span>
-          <span class="spec-val">7,5" E-Ink (Seeed Studio)</span>
-        </div>
-        <div class="spec-row">
-          <span class="spec-key" data-de="Aufl&#246;sung" data-en="Resolution">Aufl&#246;sung</span>
-          <span class="spec-val">800 &#215; 480 px</span>
-        </div>
-        <div class="spec-row">
-          <span class="spec-key" data-de="Farben" data-en="Colors">Farben</span>
-          <span class="spec-val" data-de="Schwarz &amp; Wei&#223; (1-Bit)" data-en="Black &amp; White (1-Bit)">Schwarz &amp; Wei&#223; (1-Bit)</span>
-        </div>
-        <div class="spec-row">
-          <span class="spec-key" data-de="Kontrast" data-en="Contrast">Kontrast</span>
-          <span class="spec-val">15:1</span>
-        </div>
-        <div class="spec-row">
-          <span class="spec-key" data-de="Refresh" data-en="Refresh">Refresh</span>
-          <span class="spec-val" data-de="Full ~2 s &#183; Partial ~0,5 s" data-en="Full ~2 s &#183; Partial ~0.5 s">Full ~2 s &#183; Partial ~0,5 s</span>
-        </div>
-        <div class="spec-row">
-          <span class="spec-key" data-de="Verbindung" data-en="Connection">Verbindung</span>
-          <span class="spec-val">USB (inkl. Kabel)</span>
-        </div>
-        <div class="spec-row">
-          <span class="spec-key" data-de="Standby-Verbrauch" data-en="Standby Power">Standby-Verbrauch</span>
-          <span class="spec-val">0 W</span>
-        </div>
-      </div>
-      <div class="specs-block reveal-right" style="transition-delay:.12s">
-        <h3 data-de="Software" data-en="Software">Software</h3>
-        <div class="spec-row">
-          <span class="spec-key" data-de="Betriebssystem" data-en="Operating System">Betriebssystem</span>
-          <span class="spec-val" data-de="Jeder Browser (Web-App)" data-en="Any Browser (Web App)">Jeder Browser (Web-App)</span>
-        </div>
-        <div class="spec-row">
-          <span class="spec-key" data-de="Installation" data-en="Installation">Installation</span>
-          <span class="spec-val" data-de="Keine &#8211; l&#228;uft im Browser" data-en="None &#8211; runs in browser">Keine &#8211; l&#228;uft im Browser</span>
-        </div>
-        <div class="spec-row">
-          <span class="spec-key" data-de="Screens" data-en="Screens">Screens</span>
-          <span class="spec-val" data-de="Unbegrenzte Ansichten (je max. 4 Plugins)" data-en="Unlimited views (max 4 plugins each)">Unbegrenzte Ansichten (je max. 4 Plugins)</span>
-        </div>
-        <div class="spec-row">
-          <span class="spec-key" data-de="Wetter-API" data-en="Weather API">Wetter-API</span>
-          <span class="spec-val" data-de="Open-Meteo (kostenlos)" data-en="Open-Meteo (free)">Open-Meteo (kostenlos)</span>
-        </div>
-        <div class="spec-row">
-          <span class="spec-key" data-de="B&#246;rsen-API" data-en="Stock API">B&#246;rsen-API</span>
-          <span class="spec-val" data-de="yfinance (kostenlos)" data-en="yfinance (free)">yfinance (kostenlos)</span>
-        </div>
-        <div class="spec-row">
-          <span class="spec-key" data-de="Microcontroller" data-en="Microcontroller">Microcontroller</span>
-          <span class="spec-val">ESP32 (vorgeflasht, sofort einsatzbereit)</span>
-        </div>
-        <div class="spec-row">
-          <span class="spec-key" data-de="Lieferumfang" data-en="In the Box">Lieferumfang</span>
-          <span class="spec-val" data-de="Display + ESP32 + USB-Kabel" data-en="Display + ESP32 + USB cable">Display + ESP32 + USB-Kabel</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- ─── FAQ ─── -->
 <section class="faq-bg">
