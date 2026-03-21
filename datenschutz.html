@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title data-de="Datenschutzerkl&#228;rung – StickINK" data-en="Privacy Policy – StickINK">Datenschutzerkl&#228;rung – StickINK</title>
+<link rel="canonical" href="https://stickink.de/datenschutz.html"/>
+<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon.png"/>
+<meta name="robots" content="noindex, follow"/>
+<style>
+@font-face{font-family:'Outfit';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/outfit-latin.woff2') format('woff2')}
+@font-face{font-family:'Outfit';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/outfit-latin.woff2') format('woff2')}
+@font-face{font-family:'Outfit';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/outfit-latin.woff2') format('woff2')}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/playfair-700-latin.woff2') format('woff2')}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --beige:#D9D2C5;--beige-dark:#C8BFB0;--coral:#C96840;--coral-dark:#B05A34;
+  --sage:#5F8A72;--dark:#2C2A27;--text:#3E3A35;--muted:#7A7167;
+  --shadow-sm:0 2px 8px rgba(44,42,39,.08);--ease-expo:cubic-bezier(.16,1,.3,1);
+  --ease-back:cubic-bezier(.34,1.56,.64,1);--radius:12px
+}
+html{scroll-behavior:smooth}
+body{font-family:"Outfit",sans-serif;background:var(--beige);color:var(--text);line-height:1.75;overflow-x:hidden}
+h1{font-family:"Playfair Display",serif;font-size:clamp(1.9rem,3vw,2.7rem);color:var(--dark);margin-bottom:1.5rem;line-height:1.15;letter-spacing:-.01em}
+h2{font-family:"Playfair Display",serif;font-size:1.3rem;color:var(--dark);margin:2.5rem 0 .8rem;padding-top:1.5rem;border-top:1px solid var(--beige-dark)}
+h2:first-of-type{border-top:none;padding-top:0;margin-top:1.5rem}
+h3{font-size:1rem;font-weight:700;color:var(--dark);margin:1.5rem 0 .5rem}
+p{font-size:.95rem;color:var(--muted);line-height:1.75;margin-bottom:.8rem}
+a{color:var(--coral);text-decoration:none;transition:color .2s}
+a:hover{color:var(--coral-dark)}
+ul{margin:0 0 1rem 1.5rem;color:var(--muted);font-size:.95rem}
+li{margin-bottom:.4rem}
+::selection{background:var(--coral);color:#fff}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--beige)}
+::-webkit-scrollbar-thumb{background:var(--beige-dark);border-radius:99px}
+::-webkit-scrollbar-thumb:hover{background:var(--muted)}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(217,210,197,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid transparent;height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;transition:border-color .3s,box-shadow .3s}
+nav.scrolled{border-bottom-color:var(--beige-dark);box-shadow:0 2px 24px rgba(44,42,39,.08)}
+.nav-logo{display:flex;align-items:center;gap:.55rem;text-decoration:none}
+.nav-logo-icon{width:36px;height:36px;flex-shrink:0;transition:transform .3s var(--ease-back)}
+.nav-logo:hover .nav-logo-icon{transform:rotate(-8deg) scale(1.1)}
+.nav-logo-icon img{width:100%;height:100%;object-fit:contain;border-radius:8px}
+.nav-logo-text{font-family:"Playfair Display",serif;font-size:1.25rem;color:var(--dark);line-height:1}
+.nav-logo-text em{font-style:normal;color:var(--coral)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.lang-toggle{display:flex;align-items:center;background:rgba(44,42,39,.07);border-radius:999px;padding:3px;gap:2px}
+.lang-btn{background:none;border:none;padding:.3rem .7rem;border-radius:999px;font-size:.8rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .25s var(--ease-expo);font-family:"Outfit",sans-serif}
+.lang-btn.active{background:#fff;color:var(--dark);box-shadow:var(--shadow-sm)}
+.lang-btn:hover:not(.active){color:var(--dark)}
+.legal-content{max-width:800px;margin:0 auto;padding:6rem 2rem 4rem}
+.legal-back{display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;color:var(--sage);margin-bottom:2rem;text-decoration:none;transition:color .2s}
+.legal-back:hover{color:var(--coral)}
+footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 2rem;position:relative;z-index:1}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-logo{display:flex;align-items:center;gap:.5rem;text-decoration:none}
+.footer-logo-icon{width:28px;height:28px;flex-shrink:0}
+.footer-logo-icon img{width:100%;height:100%;object-fit:contain;border-radius:6px}
+.footer-logo-text{font-family:"Playfair Display",serif;font-size:1.05rem;color:rgba(255,255,255,.6);line-height:1}
+.footer-logo-text em{font-style:normal;color:var(--coral)}
+.footer-copy{font-size:.8rem;color:rgba(255,255,255,.35)}
+.footer-links{display:flex;align-items:center;gap:1.5rem}
+.footer-links a{font-size:.8rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,.8)}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.028;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media(max-width:768px){
+  nav{padding:0 1.25rem}
+  .legal-content{padding:5rem 1.5rem 3rem}
+  .footer-inner{flex-direction:column;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+:focus-visible{outline:2px solid var(--coral);outline-offset:2px;border-radius:4px}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-icon"><img src="/assets/icon.png" alt="StickINK Icon" width="36" height="36"/></div>
+    <span class="nav-logo-text">Stick<em>INK</em></span>
+  </a>
+  <div class="nav-right">
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button class="lang-btn active" id="btn-de" onclick="setLang('de')" aria-pressed="true">DE</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</nav>
+
+<main class="legal-content">
+  <a href="/" class="legal-back" data-de="&#8592; Zur&#252;ck zur Startseite" data-en="&#8592; Back to Homepage">&#8592; Zur&#252;ck zur Startseite</a>
+
+  <h1 data-de="Datenschutzerkl&#228;rung" data-en="Privacy Policy">Datenschutzerkl&#228;rung</h1>
+
+  <h2 data-de="1. Verantwortlicher" data-en="1. Controller">1. Verantwortlicher</h2>
+  <p>Thomas Schack<br/>
+  N&#252;rtinger Str. 32<br/>
+  70794 Filderstadt<br/>
+  <span data-de="Deutschland" data-en="Germany">Deutschland</span><br/>
+  E-Mail: <a href="mailto:info@stickink.de">info@stickink.de</a></p>
+
+  <h2 data-de="2. &#220;berblick der Verarbeitungen" data-en="2. Overview of Data Processing">2. &#220;berblick der Verarbeitungen</h2>
+  <p data-de="Wir verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung unserer Website und unserer Dienste erforderlich ist. Die Verarbeitung personenbezogener Daten erfolgt regelm&#228;&#223;ig nur nach Einwilligung oder wenn die Verarbeitung durch gesetzliche Vorschriften gestattet ist." data-en="We only process personal data to the extent necessary to provide our website and services. Personal data is regularly processed only with consent or when processing is permitted by law.">Wir verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung unserer Website und unserer Dienste erforderlich ist. Die Verarbeitung personenbezogener Daten erfolgt regelm&#228;&#223;ig nur nach Einwilligung oder wenn die Verarbeitung durch gesetzliche Vorschriften gestattet ist.</p>
+
+  <h2 data-de="3. Hosting" data-en="3. Hosting">3. Hosting</h2>
+  <p data-de="Diese Website wird auf Cloudflare Pages gehostet. Anbieter ist die Cloudflare Inc., 101 Townsend St, San Francisco, CA 94107, USA." data-en="This website is hosted on Cloudflare Pages. The provider is Cloudflare Inc., 101 Townsend St, San Francisco, CA 94107, USA.">Diese Website wird auf Cloudflare Pages gehostet. Anbieter ist die Cloudflare Inc., 101 Townsend St, San Francisco, CA 94107, USA.</p>
+  <p data-de="Beim Besuch unserer Website erfasst Cloudflare automatisch technische Zugriffsdaten (Server-Log-Dateien). Dazu geh&#246;ren:" data-en="When you visit our website, Cloudflare automatically collects technical access data (server log files). These include:">Beim Besuch unserer Website erfasst Cloudflare automatisch technische Zugriffsdaten (Server-Log-Dateien). Dazu geh&#246;ren:</p>
+  <ul>
+    <li data-de="IP-Adresse des anfragenden Rechners" data-en="IP address of the requesting device">IP-Adresse des anfragenden Rechners</li>
+    <li data-de="Datum und Uhrzeit des Zugriffs" data-en="Date and time of access">Datum und Uhrzeit des Zugriffs</li>
+    <li data-de="Browsertyp und Betriebssystem" data-en="Browser type and operating system">Browsertyp und Betriebssystem</li>
+    <li data-de="Referrer-URL" data-en="Referrer URL">Referrer-URL</li>
+  </ul>
+  <p data-de="Die Datenverarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der sicheren und effizienten Bereitstellung der Website). Cloudflare hat sich den EU-Standardvertragsklauseln (SCCs) unterworfen und ist gem&#228;&#223; dem EU-U.S. Data Privacy Framework zertifiziert." data-en="Data processing is based on Art. 6(1)(f) GDPR (legitimate interest in the secure and efficient provision of the website). Cloudflare is subject to EU Standard Contractual Clauses (SCCs) and is certified under the EU-U.S. Data Privacy Framework.">Die Datenverarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der sicheren und effizienten Bereitstellung der Website). Cloudflare hat sich den EU-Standardvertragsklauseln (SCCs) unterworfen und ist gem&#228;&#223; dem EU-U.S. Data Privacy Framework zertifiziert.</p>
+
+  <h2 data-de="4. Kontaktaufnahme per E-Mail" data-en="4. Contact via Email">4. Kontaktaufnahme per E-Mail</h2>
+  <p data-de="Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben (E-Mail-Adresse, Name, Inhalt der Anfrage) zur Bearbeitung der Kontaktanfrage und deren Abwicklung gem&#228;&#223; Art. 6 Abs. 1 lit. b DSGVO (Vertragserf&#252;llung) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse) verarbeitet." data-en="If you contact us by email, your information (email address, name, content of inquiry) will be processed to handle the contact request pursuant to Art. 6(1)(b) GDPR (contract performance) or Art. 6(1)(f) GDPR (legitimate interest).">Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben (E-Mail-Adresse, Name, Inhalt der Anfrage) zur Bearbeitung der Kontaktanfrage und deren Abwicklung gem&#228;&#223; Art. 6 Abs. 1 lit. b DSGVO (Vertragserf&#252;llung) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse) verarbeitet.</p>
+
+  <h2 data-de="5. Waitlist / Newsletter (Brevo)" data-en="5. Waitlist / Newsletter (Brevo)">5. Waitlist / Newsletter (Brevo)</h2>
+  <p data-de="F&#252;r die Anmeldung zu unserer Kickstarter-Waitlist nutzen wir den Dienst Brevo (ehemals Sendinblue). Anbieter ist die Brevo (Sendinblue GmbH), K&#246;penicker Str. 126, 10179 Berlin, Deutschland." data-en="For registration to our Kickstarter waitlist, we use the service Brevo (formerly Sendinblue). The provider is Brevo (Sendinblue GmbH), K&#246;penicker Str. 126, 10179 Berlin, Germany.">F&#252;r die Anmeldung zu unserer Kickstarter-Waitlist nutzen wir den Dienst Brevo (ehemals Sendinblue). Anbieter ist die Brevo (Sendinblue GmbH), K&#246;penicker Str. 126, 10179 Berlin, Deutschland.</p>
+  <p data-de="<strong>Erhobene Daten:</strong> E-Mail-Adresse.<br/><strong>Zweck:</strong> Benachrichtigung &#252;ber den StickINK Kickstarter-Launch.<br/><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Sie k&#246;nnen Ihre Einwilligung jederzeit widerrufen, z.B. &#252;ber den Abmeldelink in jeder E-Mail." data-en="<strong>Data collected:</strong> Email address.<br/><strong>Purpose:</strong> Notification about the StickINK Kickstarter launch.<br/><strong>Legal basis:</strong> Art. 6(1)(a) GDPR (consent). You can withdraw your consent at any time, e.g., via the unsubscribe link in every email." data-html><strong>Erhobene Daten:</strong> E-Mail-Adresse.<br/><strong>Zweck:</strong> Benachrichtigung &#252;ber den StickINK Kickstarter-Launch.<br/><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Sie k&#246;nnen Ihre Einwilligung jederzeit widerrufen, z.B. &#252;ber den Abmeldelink in jeder E-Mail.</p>
+  <p data-de="Beim Laden der Anmeldeformulare werden externe Ressourcen (CSS und JavaScript) von sibforms.com geladen. Dabei wird Ihre IP-Adresse an Brevo &#252;bermittelt. Dies ist technisch notwendig f&#252;r die Funktionalit&#228;t der Formulare. Ein Auftragsverarbeitungsvertrag (AVV) mit Brevo liegt vor." data-en="When loading the registration forms, external resources (CSS and JavaScript) from sibforms.com are loaded. Your IP address is transmitted to Brevo in the process. This is technically necessary for the functionality of the forms. A data processing agreement (DPA) with Brevo is in place.">Beim Laden der Anmeldeformulare werden externe Ressourcen (CSS und JavaScript) von sibforms.com geladen. Dabei wird Ihre IP-Adresse an Brevo &#252;bermittelt. Dies ist technisch notwendig f&#252;r die Funktionalit&#228;t der Formulare. Ein Auftragsverarbeitungsvertrag (AVV) mit Brevo liegt vor.</p>
+
+  <h2 data-de="6. Cookies und lokale Speicherung" data-en="6. Cookies and Local Storage">6. Cookies und lokale Speicherung</h2>
+  <p data-de="Diese Website verwendet <strong>keine</strong> Tracking- oder Marketing-Cookies. Die Brevo-Formulare k&#246;nnen technisch notwendige Cookies setzen (z.B. f&#252;r CSRF-Schutz und Formular-Zustand). Diese sind f&#252;r die Funktion der Formulare erforderlich und bed&#252;rfen keiner Einwilligung." data-en="This website uses <strong>no</strong> tracking or marketing cookies. The Brevo forms may set technically necessary cookies (e.g., for CSRF protection and form state). These are required for form functionality and do not require consent." data-html>Diese Website verwendet <strong>keine</strong> Tracking- oder Marketing-Cookies. Die Brevo-Formulare k&#246;nnen technisch notwendige Cookies setzen (z.B. f&#252;r CSRF-Schutz und Formular-Zustand). Diese sind f&#252;r die Funktion der Formulare erforderlich und bed&#252;rfen keiner Einwilligung.</p>
+  <p data-de="Wir nutzen den localStorage Ihres Browsers, um Ihre Spracheinstellung (Deutsch/Englisch) zu speichern. Dies ist kein Cookie und wird nicht an Server &#252;bermittelt." data-en="We use your browser's localStorage to save your language preference (German/English). This is not a cookie and is not transmitted to any server.">Wir nutzen den localStorage Ihres Browsers, um Ihre Spracheinstellung (Deutsch/Englisch) zu speichern. Dies ist kein Cookie und wird nicht an Server &#252;bermittelt.</p>
+
+  <h2 data-de="7. Keine Analyse- oder Tracking-Tools" data-en="7. No Analytics or Tracking Tools">7. Keine Analyse- oder Tracking-Tools</h2>
+  <p data-de="Wir setzen <strong>keine</strong> Analyse-Tools (wie Google Analytics), Tracking-Pixel oder Social-Media-Plugins ein. Es findet kein Tracking Ihres Nutzungsverhaltens statt." data-en="We do <strong>not</strong> use any analytics tools (such as Google Analytics), tracking pixels, or social media plugins. No tracking of your usage behavior takes place." data-html>Wir setzen <strong>keine</strong> Analyse-Tools (wie Google Analytics), Tracking-Pixel oder Social-Media-Plugins ein. Es findet kein Tracking Ihres Nutzungsverhaltens statt.</p>
+
+  <h2 data-de="8. Ihre Rechte" data-en="8. Your Rights">8. Ihre Rechte</h2>
+  <p data-de="Sie haben gegen&#252;ber uns folgende Rechte hinsichtlich Ihrer personenbezogenen Daten:" data-en="You have the following rights regarding your personal data:">Sie haben gegen&#252;ber uns folgende Rechte hinsichtlich Ihrer personenbezogenen Daten:</p>
+  <ul>
+    <li data-de="<strong>Auskunft</strong> (Art. 15 DSGVO)" data-en="<strong>Access</strong> (Art. 15 GDPR)" data-html><strong>Auskunft</strong> (Art. 15 DSGVO)</li>
+    <li data-de="<strong>Berichtigung</strong> (Art. 16 DSGVO)" data-en="<strong>Rectification</strong> (Art. 16 GDPR)" data-html><strong>Berichtigung</strong> (Art. 16 DSGVO)</li>
+    <li data-de="<strong>L&#246;schung</strong> (Art. 17 DSGVO)" data-en="<strong>Erasure</strong> (Art. 17 GDPR)" data-html><strong>L&#246;schung</strong> (Art. 17 DSGVO)</li>
+    <li data-de="<strong>Einschr&#228;nkung der Verarbeitung</strong> (Art. 18 DSGVO)" data-en="<strong>Restriction of processing</strong> (Art. 18 GDPR)" data-html><strong>Einschr&#228;nkung der Verarbeitung</strong> (Art. 18 DSGVO)</li>
+    <li data-de="<strong>Daten&#252;bertragbarkeit</strong> (Art. 20 DSGVO)" data-en="<strong>Data portability</strong> (Art. 20 GDPR)" data-html><strong>Daten&#252;bertragbarkeit</strong> (Art. 20 DSGVO)</li>
+    <li data-de="<strong>Widerspruch</strong> (Art. 21 DSGVO)" data-en="<strong>Objection</strong> (Art. 21 GDPR)" data-html><strong>Widerspruch</strong> (Art. 21 DSGVO)</li>
+    <li data-de="<strong>Widerruf</strong> erteilter Einwilligungen (Art. 7 Abs. 3 DSGVO)" data-en="<strong>Withdrawal</strong> of given consent (Art. 7(3) GDPR)" data-html><strong>Widerruf</strong> erteilter Einwilligungen (Art. 7 Abs. 3 DSGVO)</li>
+  </ul>
+
+  <h2 data-de="9. Beschwerderecht" data-en="9. Right to Complain">9. Beschwerderecht</h2>
+  <p data-de="Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbeh&#246;rde &#252;ber die Verarbeitung Ihrer personenbezogenen Daten zu beschweren. Die f&#252;r uns zust&#228;ndige Aufsichtsbeh&#246;rde ist:" data-en="You have the right to lodge a complaint with a data protection supervisory authority regarding the processing of your personal data. The supervisory authority responsible for us is:">Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbeh&#246;rde &#252;ber die Verarbeitung Ihrer personenbezogenen Daten zu beschweren. Die f&#252;r uns zust&#228;ndige Aufsichtsbeh&#246;rde ist:</p>
+  <p data-de="Der Landesbeauftragte f&#252;r den Datenschutz und die Informationsfreiheit Baden-W&#252;rttemberg<br/>K&#246;nigstra&#223;e 10a<br/>70173 Stuttgart<br/><a href='https://www.baden-wuerttemberg.datenschutz.de' target='_blank' rel='noopener'>www.baden-wuerttemberg.datenschutz.de</a>" data-en="The State Commissioner for Data Protection and Freedom of Information Baden-W&#252;rttemberg<br/>K&#246;nigstra&#223;e 10a<br/>70173 Stuttgart<br/><a href='https://www.baden-wuerttemberg.datenschutz.de' target='_blank' rel='noopener'>www.baden-wuerttemberg.datenschutz.de</a>" data-html>Der Landesbeauftragte f&#252;r den Datenschutz und die Informationsfreiheit Baden-W&#252;rttemberg<br/>K&#246;nigstra&#223;e 10a<br/>70173 Stuttgart<br/><a href="https://www.baden-wuerttemberg.datenschutz.de" target="_blank" rel="noopener">www.baden-wuerttemberg.datenschutz.de</a></p>
+
+  <h2 data-de="10. Aktualit&#228;t" data-en="10. Updates">10. Aktualit&#228;t</h2>
+  <p data-de="Stand dieser Datenschutzerkl&#228;rung: M&#228;rz 2026." data-en="Last updated: March 2026.">Stand dieser Datenschutzerkl&#228;rung: M&#228;rz 2026.</p>
+
+  <p style="margin-top:3rem"><a href="/" class="legal-back" data-de="&#8592; Zur&#252;ck zur Startseite" data-en="&#8592; Back to Homepage">&#8592; Zur&#252;ck zur Startseite</a></p>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-logo">
+      <div class="footer-logo-icon"><img src="/assets/icon.png" alt="StickINK Icon" width="28" height="28"/></div>
+      <span class="footer-logo-text">Stick<em>INK</em></span>
+    </a>
+    <span class="footer-copy">&copy; 2026 StickINK &middot; <span data-de="Entwickelt &amp; hergestellt in Deutschland" data-en="Designed &amp; made in Germany">Entwickelt &amp; hergestellt in Deutschland</span></span>
+    <div class="footer-links">
+      <a href="/impressum.html" data-de="Impressum" data-en="Imprint">Impressum</a>
+      <a href="/datenschutz.html" data-de="Datenschutz" data-en="Privacy Policy">Datenschutz</a>
+      <a href="mailto:info@stickink.de">info@stickink.de</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function setLang(lang){
+  document.documentElement.lang=lang;
+  localStorage.setItem('stickink-lang',lang);
+  document.getElementById('btn-de').classList.toggle('active',lang==='de');
+  document.getElementById('btn-en').classList.toggle('active',lang==='en');
+  document.getElementById('btn-de').setAttribute('aria-pressed',lang==='de');
+  document.getElementById('btn-en').setAttribute('aria-pressed',lang==='en');
+  document.querySelectorAll('[data-de][data-en]').forEach(function(el){
+    var val=el.getAttribute('data-'+lang);
+    if(el.hasAttribute('data-html')||['H1','H2','H3'].includes(el.tagName)){
+      el.innerHTML=val;
+    }else if(el.tagName==='TITLE'){
+      document.title=val;
+    }else{
+      el.textContent=val;
+    }
+  });
+}
+(function(){
+  var saved=localStorage.getItem('stickink-lang');
+  if(saved==='en') setLang('en');
+  var nav=document.querySelector('nav');
+  window.addEventListener('scroll',function(){
+    nav.classList.toggle('scrolled',window.scrollY>10);
+  });
+})();
+</script>
+</body>
+</html>
