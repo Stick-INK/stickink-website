@@ -446,39 +446,38 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 .webapp-cta:hover{gap:.8rem;color:#fff}
 
 /* ─── OFFICE SECTION ─── */
-.office-bg{background:var(--dark);position:relative;z-index:1;overflow:hidden}
-.office-bg::before{content:'';position:absolute;top:-20%;right:-10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,104,64,.06) 0%,transparent 60%);pointer-events:none}
-.office-bg::after{content:'';position:absolute;bottom:-20%;left:-10%;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(95,138,114,.05) 0%,transparent 60%);pointer-events:none}
+.office-bg{background:var(--beige);position:relative;z-index:1;overflow:hidden}
+.office-bg::before{content:'';position:absolute;top:-20%;right:-10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,104,64,.04) 0%,transparent 60%);pointer-events:none}
+.office-bg::after{content:'';position:absolute;bottom:-20%;left:-10%;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(95,138,114,.04) 0%,transparent 60%);pointer-events:none}
 .office-inner{max-width:900px;margin:0 auto;padding:6rem 2rem;position:relative;z-index:1}
 .office-bg .sl{color:var(--coral)}
-.office-bg h2{color:#fff}
-.office-sub{font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.7;max-width:580px;margin:0 auto 2.5rem;text-align:center}
+.office-sub{font-size:.95rem;color:var(--muted);line-height:1.7;max-width:580px;margin:0 auto 2.5rem;text-align:center}
 .office-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:2.5rem}
-.office-card{border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:1.5rem;background:rgba(255,255,255,.04);backdrop-filter:blur(4px);transition:border-color .25s,transform .3s var(--ease-expo),background .25s}
-.office-card:hover{border-color:var(--coral);transform:translateY(-3px);background:rgba(255,255,255,.07)}
+.office-card{border:1px solid var(--beige-dark);border-radius:var(--radius);padding:1.5rem;background:#fff;transition:border-color .25s,transform .3s var(--ease-expo),box-shadow .3s}
+.office-card:hover{border-color:var(--coral);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06)}
 .office-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
 .office-icon svg{width:20px;height:20px;stroke-width:1.3;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.office-icon.oi-coral{background:rgba(201,104,64,.15)}
+.office-icon.oi-coral{background:rgba(201,104,64,.1)}
 .office-icon.oi-coral svg{stroke:var(--coral)}
-.office-icon.oi-sage{background:rgba(95,138,114,.15)}
+.office-icon.oi-sage{background:rgba(95,138,114,.1)}
 .office-icon.oi-sage svg{stroke:var(--sage)}
-.office-icon.oi-dark{background:rgba(255,255,255,.08)}
-.office-icon.oi-dark svg{stroke:rgba(255,255,255,.7)}
-.office-icon.oi-muted{background:rgba(255,255,255,.06)}
-.office-icon.oi-muted svg{stroke:rgba(255,255,255,.5)}
-.office-card h4{font-size:.92rem;font-weight:600;color:#fff;margin-bottom:6px}
-.office-card p{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.65}
-.office-divider{border:none;border-top:1px solid rgba(255,255,255,.08);margin:0 0 2.5rem}
+.office-icon.oi-dark{background:rgba(44,42,39,.07)}
+.office-icon.oi-dark svg{stroke:var(--dark)}
+.office-icon.oi-muted{background:rgba(44,42,39,.05)}
+.office-icon.oi-muted svg{stroke:var(--muted)}
+.office-card h4{font-size:.92rem;font-weight:600;color:var(--dark);margin-bottom:6px}
+.office-card p{font-size:.82rem;color:var(--muted);line-height:1.65}
+.office-divider{border:none;border-top:1px solid var(--beige-dark);margin:0 0 2.5rem}
 .office-check-label{font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);margin-bottom:1.2rem;text-align:center}
 .office-checks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:2.5rem}
-.office-chk{display:flex;align-items:center;gap:10px;padding:11px 16px;background:rgba(255,255,255,.04);border-radius:8px;border:1px solid rgba(255,255,255,.06);transition:border-color .2s}
-.office-chk:hover{border-color:rgba(255,255,255,.15)}
-.office-chk-dot{width:20px;height:20px;border-radius:50%;background:rgba(95,138,114,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.office-chk{display:flex;align-items:center;gap:10px;padding:11px 16px;background:#fff;border-radius:8px;border:1px solid var(--beige-dark);transition:border-color .2s}
+.office-chk:hover{border-color:var(--coral)}
+.office-chk-dot{width:20px;height:20px;border-radius:50%;background:rgba(95,138,114,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .office-chk-dot svg{width:10px;height:10px}
-.office-chk span{font-size:.83rem;color:rgba(255,255,255,.7);line-height:1.4}
-.office-cta-strip{border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;background:rgba(255,255,255,.03)}
-.office-cta-title{font-size:1.05rem;font-weight:600;color:#fff;margin-bottom:4px}
-.office-cta-sub{font-size:.83rem;color:rgba(255,255,255,.45)}
+.office-chk span{font-size:.83rem;color:var(--dark);line-height:1.4}
+.office-cta-strip{border:1px solid var(--beige-dark);border-radius:var(--radius);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;background:#fff}
+.office-cta-title{font-size:1.05rem;font-weight:600;color:var(--dark);margin-bottom:4px}
+.office-cta-sub{font-size:.83rem;color:var(--muted)}
 .office-cta-btn{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;font-size:.88rem;font-weight:600;padding:12px 26px;border-radius:8px;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 16px rgba(201,104,64,.25)}
 .office-cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(201,104,64,.35)}
 @media(max-width:600px){
@@ -996,6 +995,13 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
   </div>
 </section>
 
+<!-- ─── WAVE DIVIDER: Features → Widgets ─── -->
+<div class="wave-divider" style="margin-bottom:-2px">
+  <svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,24 C240,48 480,0 720,24 C960,48 1200,0 1440,24 L1440,48 L0,48 Z" fill="var(--dark)"/>
+  </svg>
+</div>
+
 <!-- ─── WIDGETS ─── -->
 <div class="ws-bg">
   <div class="ws-inner">
@@ -1191,6 +1197,13 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
   </div>
 </div>
 
+<!-- ─── WAVE DIVIDER: WebApp → Office ─── -->
+<div class="wave-divider" style="margin-bottom:-2px">
+  <svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,20 C480,48 960,0 1440,28 L1440,48 L0,48 Z" fill="var(--beige)"/>
+  </svg>
+</div>
+
 <!-- ─── OFFICE / BÜRO ─── -->
 <div class="office-bg">
   <div class="office-inner">
@@ -1255,7 +1268,7 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
 <!-- ─── WAVE DIVIDER ─── -->
 <div class="wave-divider" style="margin-bottom:-2px">
   <svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,20 C480,48 960,0 1440,28 L1440,48 L0,48 Z" fill="#ffffff"/>
+    <path d="M0,20 C480,48 960,0 1440,28 L1440,48 L0,48 Z" fill="var(--dark)"/>
   </svg>
 </div>
 
@@ -1336,6 +1349,13 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
     </div>
   </div>
 </section>
+
+<!-- ─── WAVE DIVIDER: FAQ → Brand Strip ─── -->
+<div class="wave-divider" style="margin-bottom:-2px">
+  <svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,24 C360,0 720,48 1080,16 C1260,6 1380,24 1440,20 L1440,48 L0,48 Z" fill="var(--dark)"/>
+  </svg>
+</div>
 
 <!-- ─── BRAND BANNER ─── -->
 <div class="brand-strip">
