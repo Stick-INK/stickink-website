@@ -445,6 +445,43 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 .webapp-cta{display:inline-flex;align-items:center;gap:.5rem;margin-top:2.5rem;color:var(--coral);font-weight:600;font-size:.95rem;text-decoration:none;transition:gap .3s,color .2s}
 .webapp-cta:hover{gap:.8rem;color:#fff}
 
+/* ─── OFFICE SECTION ─── */
+.office-bg{background:var(--beige);position:relative;z-index:1}
+.office-inner{max-width:900px;margin:0 auto;padding:6rem 2rem}
+.office-bg .sl{color:var(--coral)}
+.office-sub{font-size:.95rem;color:var(--muted);line-height:1.7;max-width:580px;margin:0 auto 2.5rem;text-align:center}
+.office-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:2.5rem}
+.office-card{border:1px solid var(--beige-dark);border-radius:var(--radius);padding:1.25rem;background:#fff;transition:border-color .2s,transform .3s var(--ease-expo)}
+.office-card:hover{border-color:var(--coral);transform:translateY(-3px)}
+.office-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.office-icon svg{width:18px;height:18px;stroke-width:1.3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.office-icon.oi-coral{background:rgba(201,104,64,.1)}
+.office-icon.oi-coral svg{stroke:var(--coral)}
+.office-icon.oi-sage{background:rgba(95,138,114,.1)}
+.office-icon.oi-sage svg{stroke:var(--sage)}
+.office-icon.oi-dark{background:rgba(44,42,39,.08)}
+.office-icon.oi-dark svg{stroke:var(--dark)}
+.office-icon.oi-muted{background:rgba(122,113,103,.1)}
+.office-icon.oi-muted svg{stroke:var(--muted)}
+.office-card h4{font-size:.9rem;font-weight:600;color:var(--dark);margin-bottom:6px}
+.office-card p{font-size:.82rem;color:var(--muted);line-height:1.6}
+.office-divider{border:none;border-top:1px solid var(--beige-dark);margin:0 0 2.5rem}
+.office-check-label{font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--coral);margin-bottom:1rem;text-align:center}
+.office-checks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:2.5rem}
+.office-chk{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#fff;border-radius:8px;border:1px solid var(--beige-dark)}
+.office-chk-dot{width:18px;height:18px;border-radius:50%;background:rgba(95,138,114,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.office-chk-dot svg{width:10px;height:10px}
+.office-chk span{font-size:.82rem;color:var(--dark);line-height:1.4}
+.office-cta-strip{border:1px solid var(--beige-dark);border-radius:var(--radius);padding:1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;background:#fff}
+.office-cta-title{font-size:1rem;font-weight:600;color:var(--dark);margin-bottom:4px}
+.office-cta-sub{font-size:.82rem;color:var(--muted)}
+.office-cta-btn{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;font-size:.85rem;font-weight:600;padding:10px 22px;border-radius:8px;text-decoration:none;transition:opacity .15s,transform .2s}
+.office-cta-btn:hover{opacity:.88;transform:translateY(-1px)}
+@media(max-width:600px){
+  .office-grid,.office-checks{grid-template-columns:1fr}
+  .office-cta-strip{flex-direction:column;text-align:center}
+}
+
 /* ─── COMPARISON TABLE ─── */
 .compare-bg{background:var(--dark);position:relative;z-index:1}
 .compare-inner{max-width:900px;margin:0 auto;padding:6rem 2rem}
@@ -569,6 +606,14 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "StickINK wird per USB an einen PC oder Laptop angeschlossen. Die Konfiguration l\u00e4uft \u00fcber die Web-App unter app.stickink.de \u2013 die funktioniert auf jedem Ger\u00e4t mit Browser: Windows, Mac, Linux, Tablet oder Handy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann ich StickINK auch im B\u00fcro nutzen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. StickINK verbindet sich per USB \u2013 kein WLAN, keine Cloud, keine Installation n\u00f6tig. Die Web-App l\u00e4uft direkt in Chrome oder Edge. Keine IT-Freigabe n\u00f6tig, keine Daten verlassen deinen Rechner."
           }
         },
         {
@@ -1142,6 +1187,66 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
   </div>
 </div>
 
+<!-- ─── OFFICE / BÜRO ─── -->
+<div class="office-bg">
+  <div class="office-inner">
+    <div class="sec-center reveal">
+      <div class="sl" data-de="Im B&#252;ro" data-en="At the Office">Im B&#252;ro</div>
+      <h2 data-de="Funktioniert auch im B&#252;ro. <span style='color:var(--coral)'>Ohne Umwege.</span>" data-en="Works at the office. <span style='color:var(--coral)'>No hoops.</span>" data-html>Funktioniert auch im B&#252;ro. <span style="color:var(--coral)">Ohne Umwege.</span></h2>
+    </div>
+    <p class="office-sub reveal" style="transition-delay:.08s" data-de="StickINK braucht keine IT-Freigabe, keinen Netzwerkzugang und keine Installation. Nur einen USB-Port und einen Browser." data-en="StickINK needs no IT approval, no network access, and no installation. Just a USB port and a browser.">StickINK braucht keine IT-Freigabe, keinen Netzwerkzugang und keine Installation. Nur einen USB-Port und einen Browser.</p>
+
+    <div class="office-grid">
+      <div class="office-card reveal-card">
+        <div class="office-icon oi-sage">
+          <svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="10" rx="2"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"/><circle cx="12" cy="12" r="2"/></svg>
+        </div>
+        <h4 data-de="Keine IT-Freigabe n&#246;tig" data-en="No IT approval needed">Keine IT-Freigabe n&#246;tig</h4>
+        <p data-de="StickINK erscheint als normales USB-Ger&#228;t &#8211; wie eine Tastatur. Keine Treiber, keine Admin-Rechte." data-en="StickINK appears as a standard USB device &#8211; like a keyboard. No drivers, no admin rights.">StickINK erscheint als normales USB-Ger&#228;t &#8211; wie eine Tastatur. Keine Treiber, keine Admin-Rechte.</p>
+      </div>
+      <div class="office-card reveal-card">
+        <div class="office-icon oi-coral">
+          <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4" stroke-dasharray="3 2"/></svg>
+        </div>
+        <h4 data-de="Kein WLAN, keine Firewall" data-en="No WiFi, no firewall issues">Kein WLAN, keine Firewall</h4>
+        <p data-de="L&#228;uft komplett &#252;ber USB. Dein Firmennetzwerk ist nicht beteiligt &#8211; kein Proxy, kein VPN-Konflikt." data-en="Runs entirely over USB. Your corporate network is not involved &#8211; no proxy, no VPN conflict.">L&#228;uft komplett &#252;ber USB. Dein Firmennetzwerk ist nicht beteiligt &#8211; kein Proxy, kein VPN-Konflikt.</p>
+      </div>
+      <div class="office-card reveal-card">
+        <div class="office-icon oi-dark">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 22h10"/><path d="M12 18v4"/></svg>
+        </div>
+        <h4 data-de="Keine Installation" data-en="No installation">Keine Installation</h4>
+        <p data-de="Chrome oder Edge &#246;ffnen, app.stickink.de aufrufen, verbinden. Funktioniert auf verwalteten Firmen-Laptops." data-en="Open Chrome or Edge, go to app.stickink.de, connect. Works on managed corporate laptops.">Chrome oder Edge &#246;ffnen, app.stickink.de aufrufen, verbinden. Funktioniert auf verwalteten Firmen-Laptops.</p>
+      </div>
+      <div class="office-card reveal-card">
+        <div class="office-icon oi-muted">
+          <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 22h6"/><path d="M12 18h.01"/><path d="M9 6h6M9 10h6M9 14h4"/></svg>
+        </div>
+        <h4 data-de="Deine Daten bleiben lokal" data-en="Your data stays local">Deine Daten bleiben lokal</h4>
+        <p data-de="Kalender, Aufgaben und Widgets werden auf deinem Rechner verarbeitet. Nichts wird an Server gesendet." data-en="Calendar, tasks, and widgets are processed on your machine. Nothing is sent to servers.">Kalender, Aufgaben und Widgets werden auf deinem Rechner verarbeitet. Nichts wird an Server gesendet.</p>
+      </div>
+    </div>
+
+    <hr class="office-divider">
+    <div class="office-check-label reveal" data-de="Das spricht f&#252;r den Einsatz im B&#252;ro" data-en="Why it works at the office">Das spricht f&#252;r den Einsatz im B&#252;ro</div>
+    <div class="office-checks">
+      <div class="office-chk reveal-card"><div class="office-chk-dot"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2" stroke="var(--sage)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-de="Keine Cloud-Abh&#228;ngigkeit" data-en="No cloud dependency">Keine Cloud-Abh&#228;ngigkeit</span></div>
+      <div class="office-chk reveal-card"><div class="office-chk-dot"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2" stroke="var(--sage)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-de="Kein Netzwerk-Traffic" data-en="No network traffic">Kein Netzwerk-Traffic</span></div>
+      <div class="office-chk reveal-card"><div class="office-chk-dot"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2" stroke="var(--sage)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-de="Keine Software-Wartung" data-en="No software to maintain">Keine Software-Wartung</span></div>
+      <div class="office-chk reveal-card"><div class="office-chk-dot"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2" stroke="var(--sage)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-de="Funktioniert auf gesperrten PCs" data-en="Works on locked-down PCs">Funktioniert auf gesperrten PCs</span></div>
+      <div class="office-chk reveal-card"><div class="office-chk-dot"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2" stroke="var(--sage)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-de="Outlook-Kalender via ICS-Feed" data-en="Outlook calendar via ICS feed">Outlook-Kalender via ICS-Feed</span></div>
+      <div class="office-chk reveal-card"><div class="office-chk-dot"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2" stroke="var(--sage)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span data-de="Kein Admin-Zugang erforderlich" data-en="No admin access required">Kein Admin-Zugang erforderlich</span></div>
+    </div>
+
+    <div class="office-cta-strip reveal">
+      <div>
+        <div class="office-cta-title" data-de="Bereit f&#252;r deinen Schreibtisch?" data-en="Ready for your desk?">Bereit f&#252;r deinen Schreibtisch?</div>
+        <div class="office-cta-sub" data-de="Trag dich in die Waitlist ein &#8211; Kickstarter startet bald." data-en="Join the waitlist &#8211; Kickstarter launch coming soon.">Trag dich in die Waitlist ein &#8211; Kickstarter startet bald.</div>
+      </div>
+      <a href="#ks" class="office-cta-btn" data-de="Platz sichern &#8594;" data-en="Secure your spot &#8594;">Platz sichern &#8594;</a>
+    </div>
+  </div>
+</div>
 
 <!-- ─── WAVE DIVIDER ─── -->
 <div class="wave-divider" style="margin-bottom:-2px">
@@ -1186,6 +1291,12 @@ html[lang="en"] .sc.winner::before{content:attr(data-winner-en)}
         <button class="faq-q" data-de="Auf welchen Ger&#228;ten funktioniert StickINK?" data-en="What devices does StickINK work with?">Auf welchen Ger&#228;ten funktioniert StickINK?</button>
         <div class="faq-a">
           <p data-de="StickINK wird per USB an einen PC oder Laptop angeschlossen. Die Konfiguration l&#228;uft &#252;ber die Web-App unter <a href='https://app.stickink.de' target='_blank'>app.stickink.de</a> &#8211; die funktioniert auf jedem Ger&#228;t mit Browser: Windows, Mac, Linux, Tablet oder Handy." data-en="StickINK connects via USB to a PC or laptop. Configuration is done through the web app at <a href='https://app.stickink.de' target='_blank'>app.stickink.de</a> &#8211; which works on any device with a browser: Windows, Mac, Linux, tablet, or phone." data-html>StickINK wird per USB an einen PC oder Laptop angeschlossen. Die Konfiguration l&#228;uft &#252;ber die Web-App unter <a href="https://app.stickink.de" target="_blank">app.stickink.de</a> &#8211; die funktioniert auf jedem Ger&#228;t mit Browser: Windows, Mac, Linux, Tablet oder Handy.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" data-de="Kann ich StickINK auch im B&#252;ro nutzen?" data-en="Can I use StickINK at the office?">Kann ich StickINK auch im B&#252;ro nutzen?</button>
+        <div class="faq-a">
+          <p data-de="Ja. StickINK verbindet sich per USB &#8211; kein WLAN, keine Cloud, keine Installation n&#246;tig. Die Web-App l&#228;uft direkt in Chrome oder Edge. Keine IT-Freigabe n&#246;tig, keine Daten verlassen deinen Rechner." data-en="Yes. StickINK connects via USB &#8211; no WiFi, no cloud, no installation. The web app runs directly in Chrome or Edge. No IT approval needed, no data leaves your computer.">Ja. StickINK verbindet sich per USB &#8211; kein WLAN, keine Cloud, keine Installation n&#246;tig. Die Web-App l&#228;uft direkt in Chrome oder Edge. Keine IT-Freigabe n&#246;tig, keine Daten verlassen deinen Rechner.</p>
         </div>
       </div>
       <div class="faq-item">
