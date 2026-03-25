@@ -1552,7 +1552,7 @@ const gridObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.fg, .ws-grid, .hiw-steps').forEach(grid => gridObserver.observe(grid));
+document.querySelectorAll('.fg, .ws-grid, .hiw-steps, .office-grid, .office-checks').forEach(grid => gridObserver.observe(grid));
 
 // ── Counter animation ──
 const counterObserver = new IntersectionObserver((entries) => {
